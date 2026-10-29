@@ -1,0 +1,13 @@
+[Unit]
+Description=Run PAK'nSAVE Supermarket Scraper daily at 03:00 NZST
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+# Runs at 03:00 Pacific/Auckland time (15:00 UTC previous day)
+OnCalendar=*-*-* 15:00:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

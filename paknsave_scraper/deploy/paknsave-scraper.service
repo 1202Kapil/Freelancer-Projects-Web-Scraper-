@@ -1,0 +1,17 @@
+[Unit]
+Description=PAK'nSAVE Daily Supermarket Scraper & Importer Pipeline
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/opt/paknsave_scraper
+EnvironmentFile=/opt/paknsave_scraper/.env
+ExecStart=/opt/paknsave_scraper/deploy/run_paknsave.sh
+TimeoutStartSec=14400
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

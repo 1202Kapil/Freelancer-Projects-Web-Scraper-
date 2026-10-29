@@ -1,0 +1,39 @@
+# Environment & Credentials (NEVER commit credentials to repository)
+.env
+*.env
+*.env.local
+
+# Session & Authentication Tokens (Foodstuffs tokens & Turnstile cookies)
+.paknsave_session.json
+.paknsave_cookies.json
+.paknsave_direct_template.json
+*.session.json
+*.cookies.json
+
+# Cache Backups & Temporary files
+*.bak
+*.tmp
+*.lock
+build_multi_branch.py
+
+# Python runtime artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Distribution & Package Archives
+dist/
+*.zip
+*.tar.gz
+
+# Logs & OS artifacts
+logs/*.log
+logs/runs-index.json.lock
+.DS_Store
+Thumbs.db
