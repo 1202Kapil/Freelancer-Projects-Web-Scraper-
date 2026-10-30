@@ -32,6 +32,17 @@ Freelancer-Projects-Web-Scraper/
     ├── import_all_branches.py  # Multi-branch batch importer orchestrator
     ├── exports/                # Exported JSONL datasets
     └── README.md               # Detailed technical documentation
+│
+└── farro_scraper/              # Farro Fresh NZ Supermarket Scraper & Data Pipeline
+    ├── farro_scraper.py        # Main scraper engine (Reverse-engineered Search API)
+    ├── catalog_branches.py     # 8 Auckland branches registry & DB resolver
+    ├── normalize.py            # GS1 Modulo-10 check, barcode, brand & size normalizers
+    ├── jsonl_exporter.py       # Atomic PICO contract JSONL exporter
+    ├── validate_export.py      # Contract & schema compliance auditor
+    ├── import_products.py      # Pico branch DB importer (bulk PostgreSQL SQL)
+    ├── import_all_branches.py  # Multi-branch batch importer orchestrator
+    ├── exports/                # Verified multi-branch JSONL datasets
+    └── README.md               # Detailed technical documentation
 ```
 
 ---
@@ -58,6 +69,16 @@ Freelancer-Projects-Web-Scraper/
   * **Groceries Taxonomy Recovery**: Overcomes MyFoodLink's 50-page (2,400 items) ceiling by automatically crawling 13 direct subcategories and 10 Depth-2 Ethnic subcategories.
   * **GS1 Modulo-10 Barcode Validation**: Mathematically verifies GTIN-8, 12, 13, and 14 check digits while isolating produce PLUs (e.g. Bananas `4011`).
   * **Multi-Branch Isolation**: Registry and lookup for 76 New Zealand supermarket locations with batch ingestion into PostgreSQL/Supabase.
+
+### 3. [Farro Fresh NZ Supermarket Scraper](./farro_scraper/)
+* **Client / Target**: Farro Fresh (`https://www.farro.co.nz/`) — Premium Auckland artisan & specialty food supermarket chain.
+* **Architecture**: Direct ASP.NET Core / OlympicTrader JSON search API reverse engineering with fast paginated catalog discovery (~4,000 products in ~2 minutes).
+* **Key Capabilities**:
+  * **PICO Scraper Data Contract Compliant**: 100% compliant observation schema with integer cents (`current_price_cents`, `comparison_price_cents`).
+  * **GS1 Modulo-10 Checksum Verification**: 100% mathematical validation on all GTIN-8, 12, 13, and 14 barcodes extracted from high-resolution image URLs.
+  * **8 Auckland Branch Coverage**: Fully cataloged and mapped all 8 retail stores across Auckland (Grey Lynn, Newmarket, Epsom, Mt Eden, Smales Farm, Mairangi Bay, Mt Wellington, Orakei Bay Village).
+  * **Price & Promotion Classification**: Integer cents pricing, special deals, and *Friends of Farro* (`friends-of-farro`) loyalty member pricing.
+  * **Automated Batch Importer**: Standalone batch importer for multi-branch JSONL ingestion.
 
 ---
 

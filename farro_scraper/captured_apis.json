@@ -1,0 +1,121 @@
+[
+  {
+    "url": "https://www.farro.co.nz/api/TraderLayout/IsAuthenticated",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"authenticated\": false}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/TraderComponent/ScopedConfigs",
+    "method": "POST",
+    "status": 200,
+    "request_body": "[{\"scope\":\"menu-navigation\"},{\"scope\":\"modal\"},{\"scope\":\"footer-navigation\"},{\"scope\":\"footer-links\"}]",
+    "response_preview": "{\"configurations\": {\"menu-navigation\": {\"scope\": \"menu-navigation\", \"configuration\": {\"scope\": \"menu-navigation\", \"properties\": {\"Link1Label\": \"Seasonal\", \"Link1\": \"\", \"Link3Label\": \"Recipes\", \"Link3\": \"recipes\", \"Link2Label\": \"Ready to go meals\", \"Link2\": \"shop/ready-to-go\"}, \"defaultModel\": {\"Link1Label\": \"Link 1 label\", \"Link1\": \"Link 1\", \"Link2Label\": \"Link 2 label\", \"Link2\": \"Link 2\", \"Link3Label\": \"Link 3 label\", \"Link3\": \"Link 3\"}, \"templates\": {\"default_template\": [\"trader-wrapper\", null, [\"div\", {\"class\": \"menu-nav\"}, \"\\r\\n\\r\\n  \", \"\\r\\n  \", [\"div\", {\"class\": \"nav-link nav-link--shop\"}, \"\\r\\n    \", [\"div\", {\"class\": \"nav-link__parent d-flex justify-content-between align-items-center\"}, \"\\r\\n      \", [\"a\", {\"class\": \"nav-link__parent--underline w-100\", \"onclick\": \"toggleList('shopMobile')\"}, \"Shop\"], \"\\r\\n      \", [\"button\", {\"class\": \"btn btn-primary nav-link__button d-xl-none\", \"type\": \"button\", \"aria-expanded\": \"false\", \"aria-controls\": \"shopMobile\", \"onclick\": \"toggleList('shopMobile')\"}, \"\\r\\n        \", [\"i\", {\"x-if\": \"!showing('shopMobile')\", \"class\": \"nav-link--grey text-white bi bi-chevron-down\"}], \"\\r\\n        \", [\"i\", {\"x-if\": \"showing('shopMobile')\", \"class\": \"nav-link--grey text-white bi bi-chevron-up\"}], \"\\r\\n      \"], \"\\r\\n    \"], \"\\r\\n\\r\\n    \", \"\\r\\n    \", [\"div\", {\"id\": \"shopMega\", \"class\": \"dropdown-content mega-menu d-none d-lg-flex\", \"onclick\": \"this.collapseNavBar?.()\"}, \"\\r\\n\\r\\n      \", \"\\r\\n      \", [\"div\", {\"class\": \"mega-column\"}, \"\\r\\n      "
+  },
+  {
+    "url": "https://www.farro.co.nz/api/TraderLayout/BatchEvaluate",
+    "method": "POST",
+    "status": 200,
+    "request_body": "{\"requests\":[{\"key\":\"45268270-9cf8-4b5e-9204-e90594ff44ac\",\"scope\":\"site-alerts\"},{\"key\":\"5b435652-de6d-4a31-ac07-f2a9d394a1c6\",\"scope\":\"shop\"},{\"key\":\"280cde31-983c-4104-9152-94347f0f1e44\",\"scope\":\"products-search\"}]}",
+    "response_preview": "{\"layouts\": [{\"scope\": \"site-alerts\", \"key\": \"45268270-9cf8-4b5e-9204-e90594ff44ac\", \"layout\": {\"id\": 0, \"name\": \"Default Layout\", \"rows\": [{\"containers\": [{\"gridColumnStart\": 1, \"gridColumnEnd\": 13, \"isShadow\": false, \"items\": [{\"scope\": \"optimize\", \"name\": \"Optimize\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"site-ale_default_optimize_1hgdin2\"}, {\"scope\": \"hotjar\", \"name\": \"Hotjar\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"site-ale_default_hotjar_1hfjal6\"}, {\"scope\": \"dd-tracking\", \"name\": \"DD-tracking\", \"start\": \"2022-11-01T12:22:00\", \"end\": null, \"groups\": [], \"id\": \"site-ale_default_dd-track_1hn5jdl\"}, {\"scope\": \"dd-web-insights\", \"name\": \"DD-Web-insights\", \"start\": \"2022-11-03T12:00:00\", \"end\": null, \"groups\": [], \"id\": \"site-ale_default_dd-web-i_1hm0ld8\"}, {\"scope\": \"fb-gtm\", \"name\": \"FB-GTM\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"site-ale_default_fb-gtm_1i4ljeg\"}, {\"scope\": \"quantcast\", \"name\": \"Quantcast\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"site-ale_default_quantcas_1iau7cm\"}], \"mobile\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"tablet\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"desktop\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}}]}, {\"containers\": [{\"gridColumnStart\": 1, \"gridColumnEnd\": 13, \"isShadow\": false, \"items\": [], \"mobile\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"tablet\": {\"containerType\": \"Flex\", \"c"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/TraderComponent/IsAuthenticated",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"accessInstance\": false, \"accessConfig\": false, \"accessMarketplace\": false, \"defaultMarketplaceFeed\": null}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/TraderComponent/ScopedConfigs",
+    "method": "POST",
+    "status": 200,
+    "request_body": "[{\"scope\":\"optimize\",\"name\":\"site-ale_default_optimize_1hgdin2\"},{\"scope\":\"hotjar\",\"name\":\"site-ale_default_hotjar_1hfjal6\"},{\"scope\":\"dd-tracking\",\"name\":\"site-ale_default_dd-track_1hn5jdl\"},{\"scope\":\"dd-web-insights\",\"name\":\"site-ale_default_dd-web-i_1hm0ld8\"},{\"scope\":\"fb-gtm\",\"name\":\"site-ale_default_fb-gtm_1i4ljeg\"},{\"scope\":\"quantcast\",\"name\":\"site-ale_default_quantcas_1iau7cm\"},{\"scope\":\"title_and_copy\",\"name\":\"shop_default_title_an_1iau7tb\"},{\"scope\":\"page_banner_image_only\",\"name\":\"shop_default_page_ban_1krgpal\"},{\"scope\":\"static_menu\",\"name\":\"shop_default_static_m_1krgnrc\"},{\"scope\":\"page_banner_image_only\",\"name\":\"shop_default_page_ban_1krgq0s\"},{\"scope\":\"delivery_module\",\"name\":\"shop_default_delivery_1iapjr3\"}]",
+    "response_preview": "{\"configurations\": {\"optimize\": {\"scope\": \"optimize\", \"configuration\": {\"scope\": \"optimize\", \"properties\": {}, \"defaultModel\": {}, \"templates\": {\"default_template\": [\"trader-wrapper\", null, [\"script\", {\"src\": \"https://www.googleoptimize.com/optimize.js?id=OPT-5GCZTSQ\"}], \"\\r\\n\"]}, \"schedule\": {\"defaultTemplate\": \"default_template\", \"scheduledTemplates\": []}, \"script\": \"\", \"style\": \"\", \"server\": false}, \"instances\": [{\"scope\": \"optimize\", \"name\": \"site-ale_default_optimize_1hgdin2\", \"properties\": {}}], \"groups\": null}, \"hotjar\": {\"scope\": \"hotjar\", \"configuration\": {\"scope\": \"hotjar\", \"properties\": {}, \"defaultModel\": {}, \"templates\": {\"default_template\": [\"trader-wrapper\", null, \"\\n\", [\"script\", null, \"\\n    (function(h,o,t,j,a,r){\\n        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};\\n        h._hjSettings={hjid:3108465,hjsv:6};\\n        a=o.getElementsByTagName('head')[0];\\n        r=o.createElement('script');r.async=1;\\n        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;\\n        a.appendChild(r);\\n    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');\\n\"]]}, \"schedule\": {\"defaultTemplate\": \"default_template\", \"scheduledTemplates\": []}, \"script\": \"\", \"style\": \"\", \"server\": false}, \"instances\": [], \"groups\": null}, \"dd-tracking\": {\"scope\": \"dd-tracking\", \"configuration\": {\"scope\": \"dd-tracking\", \"properties\": {}, \"defaultModel\": {}, \"templates\": {\"default_template\": [\"trader-wrapper\", null, [\"script\", {\"src\": \"https://r3-t.trackedlink.n"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Basket/Basket?basketId=",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"basket\": {\"id\": \"cbc38f9d-82df-4e37-b28f-31baef97dcb2\", \"basketHeader\": {\"delivery\": 0.0, \"discount\": 0.0, \"address\": null, \"hampersFulfilmentDate\": null, \"note\": null, \"groceryDeliveryNote\": null}, \"lines\": [], \"fulfilmentTotals\": [], \"basketModifiers\": [], \"subtotal\": 0.0, \"total\": 0.0, \"headerValidationErrors\": [], \"giftCardBasketPayments\": [], \"hasOnlyHampers\": true}, \"errorType\": \"None\", \"message\": null}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Basket/Basket?basketId=",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"basket\": {\"id\": \"cbc38f9d-82df-4e37-b28f-31baef97dcb2\", \"basketHeader\": {\"delivery\": 0.0, \"discount\": 0.0, \"address\": null, \"hampersFulfilmentDate\": null, \"note\": null, \"groceryDeliveryNote\": null}, \"lines\": [], \"fulfilmentTotals\": [], \"basketModifiers\": [], \"subtotal\": 0.0, \"total\": 0.0, \"headerValidationErrors\": [], \"giftCardBasketPayments\": [], \"hasOnlyHampers\": true}, \"errorType\": \"None\", \"message\": null}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Bootstrap/",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"applicationSettings\": {\"orderEditStartMessage\": \"Please note product, pricing, and discount code availability may have changed since your order was placed. To edit your order, please select YES.\", \"orderEditInformationIconMessage\": \"Forgotten something? You can edit your order up until 0 hrs before your delivery window.\", \"orderEditBannerMessage\": \"You're editing an existing order. Discard changes to exit the editing session.\", \"orderEditBannerWindowClosingSoonMessage\": \"This order can only be edited until {0} today. Confirm to checkout, or select discard changes to exit the editing session.\", \"fulfilmentWindowSize\": {\"Foodkits\": 7, \"Hampers\": 30, \"Local\": 14, \"Preorders\": 55}, \"joinFoFTopText\": \"You no longer need to present a physical Friends of Farro card to collect your points for your purchase.\", \"joinFoFBottomText\": \"If you shop at any Farro store, simply let the checkout team know your mobile number attached to the card.\", \"successfulRegistrationText\": \"You are now a member of Friends of Farro!\", \"registrationDateOfBirthInfoText\": \"As we sell alcohol, we are required to collect your date of birth.\", \"registrationSubtitle\": \"Register to shop online.\", \"registrationAddressOptionalNote\": \"Optional \\u2014 you can also add this at checkout\", \"registrationFofSectionSubtitle\": \"It's easy to become our friend and start earning rewards.\", \"registrationFofJoinConfirmation\": \"You'll be signed up when you create your account.\", \"registrationNewsletterLabel\": \"Email me inspiring "
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Search/Search",
+    "method": "POST",
+    "status": 200,
+    "request_body": "{\"searchPattern\":\"\",\"sortBy\":\"\",\"skip\":0,\"take\":1,\"filters\":[],\"appliedSearchAggregationFilters\":[]}",
+    "response_preview": "{\"content\": [{\"id\": \"Grocery-72B36425-D350-4766-AF86-B2E3004819BB\", \"catalog\": \"grocery\", \"categories\": [{\"Level1\": \"Pantry\", \"Level2\": \"herbs and spices\", \"FullPath\": \"Pantry/herbs and spices\"}, {\"Level1\": \"grocery\", \"Level2\": \"herbs and spices\", \"Level3\": \"stocks\", \"FullPath\": \"grocery/herbs and spices/stocks\"}], \"productSKU\": \"72B36425-D350-4766-AF86-B2E3004819BB\", \"weight\": 0.0, \"minimumWeight\": 0.0, \"quantity\": 0, \"increment\": 1.0, \"unitOfMeasure\": \"each\", \"title\": \"Wild Nation Bone Broth Premium Chicken 500g\", \"category\": \"grocery\", \"department\": \"herbs and spices\", \"group\": \"stocks\", \"brand\": \"\", \"originalPrice\": 10.99, \"originalPriceDollars\": \"10\", \"originalPriceCents\": \"99\", \"sellPrice\": 10.99, \"onSale\": false, \"sellPriceDollars\": \"10\", \"sellPriceCents\": \"99\", \"perUnitOriginalPrice\": 2.2, \"perUnitSellPrice\": 2.2, \"perUnitKind\": \"Per 100g\", \"savings\": \"$0.00\", \"description\": \"\", \"productInformation\": \"\", \"productUse\": \"\", \"ingredients\": \"\", \"countryOfOrigin\": \"<p>New Zealand</p>\\n\", \"isLoyaltyCardSpecial\": false, \"isHeroProduct\": false, \"isGlutenFree\": false, \"isPlantBased\": false, \"isVegetarian\": false, \"isFreeFarmed\": false, \"isFreeRange\": false, \"isGrassFed\": false, \"isNZRaised\": false, \"isBuffaloMilkCheese\": false, \"isCowMilkCheese\": false, \"isGoatMilkCheese\": false, \"isRawMilkCheese\": false, \"isSheepMilkCheese\": false, \"isVeganCheese\": false, \"isEcoBuy\": false, \"isFairTrade\": false, \"isNZMade\": false, \"isOrganic\": false, \"productStampImageUrl\": \"https://images.fa"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Search/SortOptions",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "[{\"name\": \"Most Popular\", \"value\": \"Relevance\"}, {\"name\": \"Price - [High to Low]\", \"value\": \"PriceDesc\"}, {\"name\": \"Price - [Low to High]\", \"value\": \"PriceAsc\"}, {\"name\": \"Name - [A to Z]\", \"value\": \"NameAsc\"}, {\"name\": \"Name - [Z to A]\", \"value\": \"NameDesc\"}]"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Basket/Basket?basketId=",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"basket\": {\"id\": \"cbc38f9d-82df-4e37-b28f-31baef97dcb2\", \"basketHeader\": {\"delivery\": 0.0, \"discount\": 0.0, \"address\": null, \"hampersFulfilmentDate\": null, \"note\": null, \"groceryDeliveryNote\": null}, \"lines\": [], \"fulfilmentTotals\": [], \"basketModifiers\": [], \"subtotal\": 0.0, \"total\": 0.0, \"headerValidationErrors\": [], \"giftCardBasketPayments\": [], \"hasOnlyHampers\": true}, \"errorType\": \"None\", \"message\": null}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/TraderLayout/BatchEvaluate",
+    "method": "POST",
+    "status": 200,
+    "request_body": "{\"requests\":[{\"key\":\"d3093980-bfd7-4013-babe-10086b617bdd\",\"scope\":\"shop\"},{\"key\":\"a54d8aa8-5b65-4030-a4b0-ddad98cc051a\",\"scope\":\"products-search\"},{\"key\":\"d975b9fa-4edf-48af-8a2a-e884994743fa\",\"scope\":\"site-alerts\"}]}",
+    "response_preview": "{\"layouts\": [{\"scope\": \"shop\", \"key\": \"d3093980-bfd7-4013-babe-10086b617bdd\", \"layout\": {\"id\": 0, \"name\": \"Default Layout\", \"rows\": [{\"containers\": [{\"gridColumnStart\": 2, \"gridColumnEnd\": 12, \"isShadow\": false, \"items\": [{\"scope\": \"title_and_copy\", \"name\": \"title and copy\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"shop_default_title_an_1iau7tb\"}], \"mobile\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"tablet\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"desktop\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}}]}, {\"containers\": [{\"gridColumnStart\": 2, \"gridColumnEnd\": 12, \"isShadow\": false, \"items\": [{\"scope\": \"page_banner_image_only\", \"name\": \"Page Banner Image Only\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"shop_default_page_ban_1krgpal\"}], \"mobile\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"tablet\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"desktop\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}}]}, {\"containers\": [{\"gridColumnStart\": 2, \"gridColumnEnd\": 12, \"isShadow\": false, \"items\": [{\"scope\": \"static_menu\", \"name\": \"Static Menu\", \"start\": null, \"end\": null, \"groups\": [], \"id\": \"shop_default_static_m_1krgnrc\"}], \"mobile\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"tablet\": {\"containerType\": \"Flex\", \"customStyle\": \"\", \"carouselDuration\": 5.0}, \"desktop\": {\"containerT"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Basket/Basket?basketId=",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"basket\": {\"id\": \"cbc38f9d-82df-4e37-b28f-31baef97dcb2\", \"basketHeader\": {\"delivery\": 0.0, \"discount\": 0.0, \"address\": null, \"hampersFulfilmentDate\": null, \"note\": null, \"groceryDeliveryNote\": null}, \"lines\": [], \"fulfilmentTotals\": [], \"basketModifiers\": [], \"subtotal\": 0.0, \"total\": 0.0, \"headerValidationErrors\": [], \"giftCardBasketPayments\": [], \"hasOnlyHampers\": true}, \"errorType\": \"None\", \"message\": null}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Search/Browse",
+    "method": "POST",
+    "status": 200,
+    "request_body": "{\"searchPattern\":\"\",\"sortBy\":\"\",\"skip\":0,\"take\":10,\"filters\":[],\"appliedSearchAggregationFilters\":[]}",
+    "response_preview": "[{\"name\": \"\", \"categoryLink\": \"\", \"childLinks\": []}, {\"name\": \"Bakery\", \"categoryLink\": \"deli\", \"childLinks\": [\"Fresh bread\", \"Packed bread\", \"cakes\", \"gluten free bread\", \"seasonal bakery\", \"sweets and pastries\", \"sweets packed\", \"fresh bread\", \"gluten free bread\", \"packed bread\", \"sweets pastries\"]}, {\"name\": \"Farro Kitchen\", \"categoryLink\": \"chilled\", \"childLinks\": [\"Butchery\", \"Essentials\", \"Farro Pizza\", \"desserts\", \"family meals\", \"pies and quiches\", \"serves 2 to 3\", \"sides\", \"single meals\", \"soups\", \"sous vide\", \"all\", \"ready meals\"]}, {\"name\": \"Freezer\", \"categoryLink\": \"chilled\", \"childLinks\": [\"desserts\", \"frozen meals\", \"fruit\", \"meats\", \"pastries\", \"plant-based\", \"poultry\", \"seasonal\", \"vegetables\", \"frozen desserts\", \"frozen fruits vegetables\", \"meals snacks\"]}, {\"name\": \"Fresh\", \"categoryLink\": \"produce\", \"childLinks\": [\"flowers\", \"fruit\", \"herbs\", \"vegetables\"]}, {\"name\": \"Fridge\", \"categoryLink\": \"chilled\", \"childLinks\": [\"Farro Sausages\", \"beef\", \"dairy\", \"eggs\", \"fresh\", \"ham\", \"lamb\", \"pork\", \"poultry\", \"sausages\", \"seafood\", \"service butchery\", \"smallgoods\", \"venison\", \"bread pastry\", \"desserts custards\", \"fresh pasta noodles\", \"fresh\", \"fresh\", \"pickles krauts\", \"plant based\", \"ready meals\", \"ready to go\", \"ready to go\", \"ready to go\", \"ready to go\", \"ready to go\", \"ready to go\", \"ready to go\", \"ready to go\", \"ready to go\", \"sauces stocks\"]}, {\"name\": \"Pantry\", \"categoryLink\": \"grocery\", \"childLinks\": [\"baking\", \"breakfast\", \"bulk bins\", \"confectionery\", "
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Basket/Basket?basketId=",
+    "method": "GET",
+    "status": 200,
+    "request_body": null,
+    "response_preview": "{\"basket\": {\"id\": \"cbc38f9d-82df-4e37-b28f-31baef97dcb2\", \"basketHeader\": {\"delivery\": 0.0, \"discount\": 0.0, \"address\": null, \"hampersFulfilmentDate\": null, \"note\": null, \"groceryDeliveryNote\": null}, \"lines\": [], \"fulfilmentTotals\": [], \"basketModifiers\": [], \"subtotal\": 0.0, \"total\": 0.0, \"headerValidationErrors\": [], \"giftCardBasketPayments\": [], \"hasOnlyHampers\": true}, \"errorType\": \"None\", \"message\": null}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/ViewModel/Search/Search",
+    "method": "POST",
+    "status": 200,
+    "request_body": "{\"searchPattern\":\"\",\"sortBy\":\"\",\"skip\":0,\"take\":24,\"filters\":[],\"appliedSearchAggregationFilters\":[{\"key\":\"CatalogId\",\"items\":[{\"name\":\"grocery\",\"count\":0,\"applied\":true,\"extraOutputFields\":{}},{\"name\":\"foodkits\",\"count\":0,\"applied\":true,\"extraOutputFields\":{}},{\"name\":\"preorders\",\"count\":0,\"applied\":true,\"extraOutputFields\":{}},{\"name\":\"hampers\",\"count\":0,\"applied\":true,\"extraOutputFields\":{}},{\"name\":\"egiftcards\",\"count\":0,\"applied\":true,\"extraOutputFields\":{}}],\"rangeItems\":null,\"retrieveAll\":false},{\"key\":\"Category\",\"items\":[{\"name\":\"shop\",\"count\":0,\"applied\":true,\"extraOutputFields\":{}}],\"rangeItems\":null,\"retrieveAll\":false}]}",
+    "response_preview": "{\"content\": [], \"aggregations\": [{\"key\": \"Category\", \"displayName\": \"Category\", \"rank\": 1, \"hasMore\": false, \"retrieveAll\": true, \"type\": \"Term\", \"items\": [{\"name\": \"\", \"count\": 1, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"beverages\", \"count\": 975, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"chilled\", \"count\": 878, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"deli\", \"count\": 497, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"gift cards\", \"count\": 13, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"grocery\", \"count\": 2335, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"hampers and food kits\", \"count\": 18, \"applied\": false, \"extraOutputFields\": {}}, {\"name\": \"produce\", \"count\": 189, \"applied\": false, \"extraOutputFields\": {}}], \"aggregationType\": \"Multi\", \"hideFromUI\": false}], \"totalElements\": 0, \"skipped\": 0, \"pageSize\": 24}"
+  },
+  {
+    "url": "https://www.farro.co.nz/api/TraderComponent/ScopedConfigs",
+    "method": "POST",
+    "status": 200,
+    "request_body": "[{\"scope\":\"hotjar\",\"name\":\"site-ale_default_hotjar_1hfjal6\"},{\"scope\":\"fb-gtm\",\"name\":\"site-ale_default_fb-gtm_1i4ljeg\"}]",
+    "response_preview": "{\"configurations\": {\"hotjar\": {\"scope\": \"hotjar\", \"configuration\": {\"scope\": \"hotjar\", \"properties\": {}, \"defaultModel\": {}, \"templates\": {\"default_template\": [\"trader-wrapper\", null, \"\\n\", [\"script\", null, \"\\n    (function(h,o,t,j,a,r){\\n        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};\\n        h._hjSettings={hjid:3108465,hjsv:6};\\n        a=o.getElementsByTagName('head')[0];\\n        r=o.createElement('script');r.async=1;\\n        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;\\n        a.appendChild(r);\\n    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');\\n\"]]}, \"schedule\": {\"defaultTemplate\": \"default_template\", \"scheduledTemplates\": []}, \"script\": \"\", \"style\": \"\", \"server\": false}, \"instances\": [], \"groups\": null}, \"fb-gtm\": {\"scope\": \"fb-gtm\", \"configuration\": {\"scope\": \"fb-gtm\", \"properties\": {}, \"defaultModel\": {}, \"templates\": {\"default_template\": [\"trader-wrapper\", null, \"\\n\", [\"script\", null, \"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\\n})(window,document,'script','dataLayer','GTM-NS2Z73S');\"], \"\\n\", \"\\n\", \"\\n\", [\"noscript\", null, [\"iframe\", {\"src\": \"https://www.googletagmanager.com/ns.html?id=GTM-NS2Z73S\", \"height\": \"0\", \"width\": \"0\", \"style\": {\"display\": \"none\", \"visibility\": \"hidd"
+  }
+]

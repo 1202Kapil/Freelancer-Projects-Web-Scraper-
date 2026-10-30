@@ -1,0 +1,359 @@
+{
+  "layouts": [
+    {
+      "scope": "corporate-stores",
+      "key": "stores1",
+      "layout": {
+        "id": 0,
+        "name": "Default Layout",
+        "rows": [
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [
+                  {
+                    "scope": null,
+                    "name": "Stores SEO",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "corporat_default_dyn_1le2i8i"
+                  }
+                ],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scope": "stores-page",
+      "key": "stores2",
+      "layout": {
+        "id": 0,
+        "name": "Default Layout",
+        "rows": [
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "display: grid;\ngap: 12px;\ngrid-template-columns: repeat(1, 1fr);",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(2, 1fr);",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(2, 1fr);",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [
+                  {
+                    "scope": "title_and_copy",
+                    "name": "title and copy",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_title_an_1jq1aht"
+                  }
+                ],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [
+                  {
+                    "scope": "contact_us",
+                    "name": "Contact Us",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_contact_1jr50aa"
+                  }
+                ],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [
+                  {
+                    "scope": "store_tile",
+                    "name": "Newmarket",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1l84hsi"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1jfjjpl"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1gjtem2"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1gjtem4"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1gjtem6"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1gjtem3"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1gjtem5"
+                  },
+                  {
+                    "scope": "store_tile",
+                    "name": "Store Tile",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_store_ti_1gjtem7"
+                  }
+                ],
+                "mobile": {
+                  "containerType": "Custom",
+                  "customStyle": "display: grid;\ngap: 12px;\ngrid-template-columns: repeat(1, 1fr);",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Custom",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(2, 1fr);",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Custom",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(4, 1fr);",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [
+                  {
+                    "scope": "title_and_copy",
+                    "name": "title and copy",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_title_an_1jq1a38"
+                  }
+                ],
+                "mobile": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          },
+          {
+            "containers": [
+              {
+                "gridColumnStart": 1,
+                "gridColumnEnd": 13,
+                "isShadow": false,
+                "items": [
+                  {
+                    "scope": "event",
+                    "name": "Event",
+                    "start": null,
+                    "end": null,
+                    "groups": [],
+                    "id": "stores-p_default_event_1jq2m3n"
+                  }
+                ],
+                "mobile": {
+                  "containerType": "Custom",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(1, 1fr);",
+                  "carouselDuration": 5.0
+                },
+                "tablet": {
+                  "containerType": "Custom",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(2, 1fr);",
+                  "carouselDuration": 5.0
+                },
+                "desktop": {
+                  "containerType": "Flex",
+                  "customStyle": "display: grid;\ngap: 6px;\ngrid-template-columns: repeat(2, 1fr);",
+                  "carouselDuration": 5.0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

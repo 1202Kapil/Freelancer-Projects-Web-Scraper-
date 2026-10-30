@@ -1,0 +1,46 @@
+{
+  "applicationSettings": {
+    "orderEditStartMessage": "Please note product, pricing, and discount code availability may have changed since your order was placed. To edit your order, please select YES.",
+    "orderEditInformationIconMessage": "Forgotten something? You can edit your order up until 0 hrs before your delivery window.",
+    "orderEditBannerMessage": "You're editing an existing order. Discard changes to exit the editing session.",
+    "orderEditBannerWindowClosingSoonMessage": "This order can only be edited until {0} today. Confirm to checkout, or select discard changes to exit the editing session.",
+    "fulfilmentWindowSize": {
+      "Foodkits": 7,
+      "Hampers": 30,
+      "Local": 14,
+      "Preorders": 55
+    },
+    "joinFoFTopText": "You no longer need to present a physical Friends of Farro card to collect your points for your purchase.",
+    "joinFoFBottomText": "If you shop at any Farro store, simply let the checkout team know your mobile number attached to the card.",
+    "successfulRegistrationText": "You are now a member of Friends of Farro!",
+    "registrationDateOfBirthInfoText": "As we sell alcohol, we are required to collect your date of birth.",
+    "registrationSubtitle": "Register to shop online.",
+    "registrationAddressOptionalNote": "Optional \u2014 you can also add this at checkout",
+    "registrationFofSectionSubtitle": "It's easy to become our friend and start earning rewards.",
+    "registrationFofJoinConfirmation": "You'll be signed up when you create your account.",
+    "registrationNewsletterLabel": "Email me inspiring recipes, weekly promotions and my reward vouchers",
+    "afterPayEnabled": true,
+    "eGiftCardsEnabled": true,
+    "giftCardAppliedBannerCopy": "Gift card ending {0} applied \u2014 {1}.",
+    "giftCardAppliedPartialBannerCopy": "Gift card ending {0} applied \u2014 {1} (balance available). {2} still to pay.",
+    "giftCardMultiCardHelperText": "You can apply multiple gift cards.",
+    "giftCardMaskPrefix": "\u2022\u2022\u2022",
+    "giftCardTotalsRowLabel": "Gift Card",
+    "giftCardRemoveLabel": "Remove",
+    "giftCardRemoveRefusedMessage": "This gift card payment can no longer be removed. Please contact customer services if you need a refund.",
+    "giftCardRemoveProviderErrorMessage": "Payment using gift card ending in {0} ran into an error - {1}. Please contact customer services.",
+    "currencyCode": "NZD",
+    "allowSubsReminderMessage": [
+      "You have kept the \"Allow Subs\" button ticked. If your desired product is out of stock and you don't want our shoppers to select a substitute item, please untick.",
+      "If no suitable substitute is available, we may not be able to fulfil your full order. If you have specific preferences for items in your order, please use the \"Add Note\" feature or untick certain lines if you do not wish for an alternative."
+    ],
+    "productNotAvailableTitle": "This product is currently unavailable",
+    "productNotAvailableSubtitle": "This item isn't available online right now. Please check back soon, or browse our current range for alternatives.",
+    "productPageRecipesHeading": "Try this in a recipe",
+    "productPageRecipesBrowseMoreLabel": "Browse more delicious recipes",
+    "printRecipeButtonLabel": "Print recipe",
+    "addRecipeItemsToTrolleyLabel": "Add All Items to Trolley",
+    "saveRecipeButtonLabel": "Save recipe",
+    "printRecipeFooterPrefix": "For more recipes and inspiration visit "
+  }
+}
