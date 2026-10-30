@@ -17,6 +17,7 @@ populate_repo.py
 
 # Python runtime artifacts
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -24,6 +25,8 @@ __pycache__/
 env/
 venv/
 .venv/
+.pytest_cache/
+**/.pytest_cache/
 
 # Distribution & Package Archives
 dist/
@@ -33,6 +36,7 @@ archive/
 
 # Logs & OS artifacts
 logs/*.log
+**/logs/*.log
 logs/runs-index.json.lock
 .DS_Store
 Thumbs.db

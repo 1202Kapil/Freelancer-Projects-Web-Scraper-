@@ -1,0 +1,633 @@
+{
+  "source_url": "https://store.freshchoice.co.nz/",
+  "retrieved_date": "2026-10-17",
+  "method": "Public directory text retrieved through web lookup; matched by explicit catalogue hostname or existing store name. Not a raw HTML parser run.",
+  "branches": [
+    {
+      "id": "avondale",
+      "name": "Avondale",
+      "address": "2021 Great North Road, Avondale, Auckland Auckland 1026",
+      "postcode": "1026",
+      "service_notes": "Instore Only",
+      "shopping_online": false
+    },
+    {
+      "id": "barrington",
+      "name": "Barrington",
+      "address": "256 Barrington Street, Christchurch 8024",
+      "postcode": "8024",
+      "service_notes": "Delivers to select Christchurch suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "bormanroad",
+      "name": "Borman Road",
+      "address": "2/66 Hare Puke Drive, Flagstaff, Hamilton 3210",
+      "postcode": "3210",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "cambridge",
+      "name": "Cambridge",
+      "address": "97 Swayne Road, Cambridge 3493",
+      "postcode": "3493",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "cannonscreek",
+      "name": "Cannons Creek",
+      "address": "16 Warspite Avenue, Cannons Creek Porirua 5024",
+      "postcode": "5024",
+      "service_notes": "Delivers to Cannons Creek Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "central-mall",
+      "name": "Central Mall",
+      "address": "Retail 3, 1170 Amohau Street, Rotorua Bay of Plenty 3010",
+      "postcode": "3010",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "cromwell",
+      "name": "Cromwell",
+      "address": "1-3 Iles Street, Cromwell Cromwell 9310",
+      "postcode": "9310",
+      "service_notes": "Delivers to Cromwell surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "cubastreet",
+      "name": "Cuba Street",
+      "address": "250 Cuba Street, Te Aro Wellington 6011",
+      "postcode": "6011",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "edgeware",
+      "name": "Edgeware",
+      "address": "61 Edgeware Road, Edgeware, Christchurch 8014",
+      "postcode": "8014",
+      "service_notes": "Delivers to select Christchurch suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "epsom",
+      "name": "Epsom",
+      "address": "233A Green Lane West, Epsom, Auckland 1051",
+      "postcode": "1051",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "featherston",
+      "name": "Featherston",
+      "address": "42 Fitzherbert Street, Rimutaka Hill, Featherston 5710",
+      "postcode": "5710",
+      "service_notes": "Delivers to Featherston Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "fendalton",
+      "name": "Fendalton",
+      "address": "376 Ilam Road, Bryndwr, Fendalton 8053",
+      "postcode": "8053",
+      "service_notes": "Delivers to Fendalton Surrounds • Click & Collect 7 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "fitzroy",
+      "name": "Fitzroy",
+      "address": "531 Devon Street East, Fitzroy Taranaki 4312",
+      "postcode": "4312",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "flagstaff",
+      "name": "Flagstaff",
+      "address": "Unit 6, Flagstaff Shopping Centre, 1158 River Road, Hamilton 3120",
+      "postcode": "3120",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "flatbush",
+      "name": "Flat Bush",
+      "address": "8/130 Dawson Road, Flat Bush Auckland 2023",
+      "postcode": "2023",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "geraldine",
+      "name": "Geraldine",
+      "address": "7 Peel Street, Geraldine 7930",
+      "postcode": "7930",
+      "service_notes": "Delivers to Geraldine surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "gleneden",
+      "name": "Glen Eden",
+      "address": "142 West Coast Road, Auckland 0602",
+      "postcode": "0602",
+      "service_notes": "Delivers to Glen Eden surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "greenisland",
+      "name": "Green Island",
+      "address": "230 Main South Road, Dunedin 9018",
+      "postcode": "9018",
+      "service_notes": "Delivers to Green Island surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "greerton",
+      "name": "Greerton",
+      "address": "1368 Cameron Road Gate Pa, Tauranga Bay of Plenty 3112",
+      "postcode": "3112",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "greytown",
+      "name": "Greytown",
+      "address": "12 Hastwell Street, Greytown 5712",
+      "postcode": "5712",
+      "service_notes": "Delivers to Greytown surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "halfmoonbay",
+      "name": "Half Moon Bay",
+      "address": "1 Ara-Tai Road, Half Moon Bay, Auckland 2012",
+      "postcode": "2012",
+      "service_notes": "In-store shopping only.",
+      "shopping_online": false
+    },
+    {
+      "id": "huntly",
+      "name": "Huntly",
+      "address": "107 Main Street, Huntly 3700",
+      "postcode": "3700",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "kaikohe",
+      "name": "Kaikohe",
+      "address": "37 Station Road East, Kaikohe Northland 0405",
+      "postcode": "0405",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "kaiti",
+      "name": "Kaiti",
+      "address": "Kaiti Mall, 504 Wainui Road, Kaiti, Gisborne Gisborne 4010",
+      "postcode": "4010",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "kellyroad",
+      "name": "Kelly Road",
+      "address": "1913 Cambridge Road, Cambridge Waikato 3434",
+      "postcode": "3434",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "kumeu",
+      "name": "Kumeu",
+      "address": "Village Shopping Centre, Kumeu 0810",
+      "postcode": "0810",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "lakehawea",
+      "name": "Lake Hawea",
+      "address": "5 Bodkin Street, Lake Hāwea Otago 9382",
+      "postcode": "9382",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "leamington",
+      "name": "Leamington",
+      "address": "46 Burns Street, Cambridge, Waikato 3432",
+      "postcode": "3432",
+      "service_notes": "Save time and shop online with FreshChoice Leamington.",
+      "shopping_online": true
+    },
+    {
+      "id": "leeston",
+      "name": "Leeston",
+      "address": "78 High Street, Leeston 7632",
+      "postcode": "7632",
+      "service_notes": "Delivers to nearby suburbs • Click & Collect 7 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "lyttelton",
+      "name": "Lyttelton",
+      "address": "17 London Street, Lyttleton, Christchurch 8082",
+      "postcode": "8082",
+      "service_notes": "Delivers to Lyttleton, Corsair Bay & Cass Bay • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "mandeville",
+      "name": "Mandeville",
+      "address": "1/468 Mandeville Road, Ohoka, Christchurch 7692",
+      "postcode": "7692",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "mangerebridge",
+      "name": "Mangere Bridge",
+      "address": "40 Coronation Road, Mangere Bridge, Auckland AKL 2022",
+      "postcode": "2022",
+      "service_notes": "Delivers to Mangere Bridge & surrounding suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "marton",
+      "name": "Marton",
+      "address": "280 Broadway, Marton Manawatū 4710",
+      "postcode": "4710",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "merivale",
+      "name": "Merivale",
+      "address": "189 Papanui Road, Merivale, Merivale 8014",
+      "postcode": "8014",
+      "service_notes": "Delivers to Merivale & surrounding suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "methven",
+      "name": "Methven",
+      "address": "34 The Mall, Methven 7730",
+      "postcode": "7730",
+      "service_notes": "Delivers to Methven Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "nelsoncity",
+      "name": "Nelson City",
+      "address": "69 Collingwood Street, Nelson, Nelson City Tasman 7010",
+      "postcode": "7010",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "ngaruawahia",
+      "name": "Ngaruawahia",
+      "address": "150 Great South Road, Ngaruawahia 3720",
+      "postcode": "3720",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "omokoroa",
+      "name": "Omokoroa",
+      "address": "160 Omokoroa Road, Omokoroa 3114",
+      "postcode": "3114",
+      "service_notes": "Delivers to Omokoroa & surrounding suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "otahuhu",
+      "name": "Otahuhu",
+      "address": "29 Hall Avenue, Otahuhu, Auckland 1062",
+      "postcode": "1062",
+      "service_notes": "Delivers to nearby suburbs • Click & Collect 7 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "otaki",
+      "name": "Otaki",
+      "address": "Cnr Mill Road & WGN NZ, Aotaki Street, Ōtaki Wellington 5512",
+      "postcode": "5512",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "otautau",
+      "name": "Otautau",
+      "address": "157 Main Street, Otautau 9610",
+      "postcode": "9610",
+      "service_notes": "Delivers to Otautau Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "oxford",
+      "name": "Oxford",
+      "address": "52 Main Street, Oxford 7430",
+      "postcode": "7430",
+      "service_notes": "Delivers to select nearby suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "paetiki",
+      "name": "Paetiki",
+      "address": "222 Taharepa Road, Taupo, Waikato 3330, New Zealand",
+      "postcode": "3330",
+      "service_notes": "Delivers to Paetiki Surrounds • Click & Collect 7 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "palomino",
+      "name": "Palomino",
+      "address": "4/138 Sturges Road, Henderson, Auckland 0612",
+      "postcode": "0612",
+      "service_notes": "Delivers to Palomino Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "papakura",
+      "name": "Papakura",
+      "address": "54 Settlement Road, Papakura, Auckland 2110",
+      "postcode": "2110",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "papamoa",
+      "name": "Papamoa",
+      "address": "20 Coast Boulevard, Papamoa Beach, Papamoa 3175",
+      "postcode": "3175",
+      "service_notes": "Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "parklands",
+      "name": "Parklands",
+      "address": "60 Queenspark Drive, Parklands Christchurch 8083",
+      "postcode": "8083",
+      "service_notes": "Delivers to Parklands & surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "parkwood",
+      "name": "Parkwood",
+      "address": "4 Gordonton Road, Waikato Hamilton 3210",
+      "postcode": "3210",
+      "service_notes": "Delivers to Parkwood Surrounds • Click & Collect 7 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "pauanui",
+      "name": "Pauanui",
+      "address": "Pauanui Shopping Centre, 1 Jubilee Drive, Pauanui 3579",
+      "postcode": "3579",
+      "service_notes": "Delivers to Paunui • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "picton",
+      "name": "Picton",
+      "address": "100 High Street, Picton 7220",
+      "postcode": "7220",
+      "service_notes": "Delivers to Picton surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "plaza",
+      "name": "Plaza",
+      "address": "103 Yarrow Street, Invercargill 9810",
+      "postcode": "9810",
+      "service_notes": "Delivers to Plaza Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "prebbleton",
+      "name": "Prebbleton",
+      "address": "9 Tosswill Road, Prebbleton Canterbury 7604",
+      "postcode": "7604",
+      "service_notes": "Delivers to Prebbleton surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "pyespa",
+      "name": "Pyes Pa",
+      "address": "Unit 6, 83 Pyes Pa Road, Pyes Pa, Tauranga, New Zealand",
+      "postcode": null,
+      "service_notes": "Delivers to Pyes Pa Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "queenstown",
+      "name": "Queenstown",
+      "address": "64 Gorge Road, Queenstown, Otago 9300",
+      "postcode": "9300",
+      "service_notes": "Delivers to Queenstown & Surrounds - Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "raglan",
+      "name": "Raglan",
+      "address": "16-18 Bow Street, Raglan 3225",
+      "postcode": "3225",
+      "service_notes": "Delivers to Raglan Surrounds • Click & Collect 5 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "ranui",
+      "name": "Ranui",
+      "address": "433 Swanson Road, Ranui, Auckland 0612",
+      "postcode": "0612",
+      "service_notes": "Delivers to selected nearby suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "reefton",
+      "name": "Reefton",
+      "address": "65 Broadway, Reefton 7830",
+      "postcode": "7830",
+      "service_notes": "Pick up or delivery to Reefton and surrounding areas.",
+      "shopping_online": true
+    },
+    {
+      "id": "renwick",
+      "name": "Renwick",
+      "address": "78 High Street, Renwick 7204",
+      "postcode": "7204",
+      "service_notes": "Delivers to Renwick Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "riverton",
+      "name": "Riverton",
+      "address": "163 Palmerston Street, Riverton 9822",
+      "postcode": "9822",
+      "service_notes": "Delivers to Riverton Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "roslyn",
+      "name": "Roslyn",
+      "address": "279 Highgate, Roslyn, Dunedin Otago 9010",
+      "postcode": "9010",
+      "service_notes": "Delivers to select Dunedin suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "roxburgh",
+      "name": "Roxburgh",
+      "address": "93 Scotland Street, Roxburgh 9500",
+      "postcode": "9500",
+      "service_notes": "Delivers to Roxburgh Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "ruakaka",
+      "name": "Ruakaka",
+      "address": "Shop 24, Ruakaka Town Centre, 378 Marsden Point Road, Ruakaka 0116, Ruakaka 0116",
+      "postcode": "0116",
+      "service_notes": "Delivers to Ruakaka and surrounding suburbs",
+      "shopping_online": true
+    },
+    {
+      "id": "sumner",
+      "name": "Sumner",
+      "address": "43 Nayland Street, Sumner, Christchurch 8081",
+      "postcode": "8081",
+      "service_notes": "Delivers to Sumner Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "takaka",
+      "name": "Takaka",
+      "address": "13 Willow Street, Takaka 7110",
+      "postcode": "7110",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "teanau",
+      "name": "Te Anau",
+      "address": "5 Milford Crescent, Te Anau 9600",
+      "postcode": "9600",
+      "service_notes": null,
+      "shopping_online": true
+    },
+    {
+      "id": "teawamutu",
+      "name": "Te Awamutu",
+      "address": "39 Rewi Street, Te Awamutu 3800",
+      "postcode": "3800",
+      "service_notes": "Save time and shop online with FreshChoice Te Awamutu.",
+      "shopping_online": true
+    },
+    {
+      "id": "tengae",
+      "name": "Te Ngae",
+      "address": "554 Te Ngae Road, Owhata, Rotorua 3010",
+      "postcode": "3010",
+      "service_notes": "Delivers to nearby suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "tinwald",
+      "name": "Tinwald",
+      "address": "124 McMurdo Street, Tinwald, Ashburton 7700",
+      "postcode": "7700",
+      "service_notes": "Delivers to Tinwald Surrounds • Click & Collect 7 days a week",
+      "shopping_online": false
+    },
+    {
+      "id": "titirangi",
+      "name": "Titirangi",
+      "address": "429 Titirangi Road, Titirangi, Auckland 0604",
+      "postcode": "0604",
+      "service_notes": "Delivers to Titirangi Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "tuakau",
+      "name": "Tuakau",
+      "address": "2-4 George Street, Tuakau 2121",
+      "postcode": "2121",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "waihi",
+      "name": "Waihi",
+      "address": "6 Consols Street, Waihi Hauraki 3610",
+      "postcode": "3610",
+      "service_notes": "In-store only.",
+      "shopping_online": false
+    },
+    {
+      "id": "waimauku",
+      "name": "Waimauku",
+      "address": "2/5-19 Factory Road, Huapai, Waimauku 0812",
+      "postcode": "0812",
+      "service_notes": "Delivers to nearby suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "waiuku",
+      "name": "Waiuku",
+      "address": "67-69 Queen Street, Waiuku, Auckland 2123",
+      "postcode": "2123",
+      "service_notes": null,
+      "shopping_online": false
+    },
+    {
+      "id": "westport",
+      "name": "Westport",
+      "address": "18 Fonblanque Street, Westport 7825",
+      "postcode": "7825",
+      "service_notes": "Delivers to Westport surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "whanganui",
+      "name": "Whanganui",
+      "address": "47 Abbot St, Gonville, Whanganui 4501",
+      "postcode": "4501",
+      "service_notes": "Delivers to Wanganui Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": "woburn",
+      "name": "Woburn",
+      "address": "1/5 Cambridge Terrace, Waiwhetu, Lower Hutt 5010",
+      "postcode": "5010",
+      "service_notes": "Delivers to Woburn Surrounds • Click & Collect 7 days a week",
+      "shopping_online": true
+    }
+  ],
+  "directory_only_stores": [
+    {
+      "id": null,
+      "name": "City Market",
+      "address": "71 Lichfield Street, Christchurch Central, Christchurch Canterbury 8011",
+      "postcode": "8011",
+      "service_notes": "Christchurch • Delivery to select Christchurch suburbs • Click & Collect 7 days a week",
+      "shopping_online": true
+    },
+    {
+      "id": null,
+      "name": "Hauraki Corner",
+      "address": "367 Lake Road, , Auckland, Hauraki Northland 0627",
+      "postcode": "0627",
+      "service_notes": null,
+      "shopping_online": false
+    }
+  ]
+}

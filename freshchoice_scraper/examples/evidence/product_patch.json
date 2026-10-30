@@ -1,0 +1,27 @@
+{
+  "retrieved_date": "2026-10-17",
+  "method": "Public product-page text retrieved through web lookup and manually checked. This is one targeted correction, not a fresh full crawl.",
+  "products": [
+    {
+      "branch_id": "greenisland",
+      "product_id": "689e7992d0edca27fbe13bcb",
+      "source_url": "https://greenisland.store.freshchoice.co.nz/lines/ocean-blue-salmon-smoked-cooking-pieces-125g",
+      "displayed_price_text": "was $9.50 $9.30 each $74.40 per kg 3 for $25.00 - $66.67 per kg",
+      "price_nzd": "9.30",
+      "pricing_unit": "each",
+      "unit_price_nzd": "74.40",
+      "unit_price_basis": "per kg",
+      "promotion": {
+        "on_special": true,
+        "previous_price_nzd": "9.50",
+        "savings_nzd": "0.20",
+        "description": "Special; 3 for $25.00",
+        "valid_from": null,
+        "valid_until": null,
+        "multibuy_quantity": 3,
+        "multibuy_price_nzd": "25.00",
+        "multibuy_description": "3 for $25.00 - $66.67 per kg"
+      }
+    }
+  ]
+}

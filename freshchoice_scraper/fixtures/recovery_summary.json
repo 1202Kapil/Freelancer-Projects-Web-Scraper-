@@ -1,0 +1,625 @@
+{
+  "source": "output-pilot",
+  "branches": [
+    {
+      "branch": "merivale",
+      "status": "partial",
+      "original_products": 11985,
+      "merged_products": 15641,
+      "new_products": 3656,
+      "recovered_occurrences": 8481,
+      "previous_groceries_count": 2400,
+      "grocery_union_count": 6063,
+      "previous_reported_groceries_total": 6224,
+      "subcategories_scraped": 23,
+      "subcategories": [
+        {
+          "category": "Prepared Foods",
+          "url": "https://merivale.store.freshchoice.co.nz/category/prepared-foods",
+          "depth": 1,
+          "expected": 227,
+          "unique_on_listing": 227,
+          "pages_fetched": 5,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Breakfast Foods",
+          "url": "https://merivale.store.freshchoice.co.nz/category/breakfast-foods",
+          "depth": 1,
+          "expected": 180,
+          "unique_on_listing": 180,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Pasta / Rice",
+          "url": "https://merivale.store.freshchoice.co.nz/category/pasta-rice",
+          "depth": 1,
+          "expected": 261,
+          "unique_on_listing": 269,
+          "pages_fetched": 6,
+          "capped": false,
+          "issues": [
+            "Page 6: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Sauces & Condiments",
+          "url": "https://merivale.store.freshchoice.co.nz/category/sauces-condiments",
+          "depth": 1,
+          "expected": 443,
+          "unique_on_listing": 451,
+          "pages_fetched": 10,
+          "capped": false,
+          "issues": [
+            "Page 10: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Biscuits & Muesli Bars",
+          "url": "https://merivale.store.freshchoice.co.nz/category/biscuits-muesli-bars",
+          "depth": 1,
+          "expected": 417,
+          "unique_on_listing": 417,
+          "pages_fetched": 9,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned & Dried Vegetables",
+          "url": "https://merivale.store.freshchoice.co.nz/category/canned-dried-vegetables",
+          "depth": 1,
+          "expected": 76,
+          "unique_on_listing": 76,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned Fruit & Desserts",
+          "url": "https://merivale.store.freshchoice.co.nz/category/canned-fruit-desserts",
+          "depth": 1,
+          "expected": 162,
+          "unique_on_listing": 171,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": [
+            "Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Canned Fish & Chicken",
+          "url": "https://merivale.store.freshchoice.co.nz/category/canned-fish-chicken",
+          "depth": 1,
+          "expected": 132,
+          "unique_on_listing": 132,
+          "pages_fetched": 3,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Cooking Needs",
+          "url": "https://merivale.store.freshchoice.co.nz/category/cooking-needs",
+          "depth": 1,
+          "expected": 658,
+          "unique_on_listing": 658,
+          "pages_fetched": 14,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Ethnic, Gourmet Food",
+          "url": "https://merivale.store.freshchoice.co.nz/category/ethnic-gourmet-food",
+          "depth": 1,
+          "expected": 3026,
+          "unique_on_listing": 2400,
+          "pages_fetched": 50,
+          "capped": true,
+          "issues": [
+            "Category incomplete: 2400/3026"
+          ]
+        },
+        {
+          "category": "Jams, Spreads",
+          "url": "https://merivale.store.freshchoice.co.nz/category/jams-spreads",
+          "depth": 1,
+          "expected": 175,
+          "unique_on_listing": 175,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Oils & Vinegars",
+          "url": "https://merivale.store.freshchoice.co.nz/category/oils-vinegars",
+          "depth": 1,
+          "expected": 71,
+          "unique_on_listing": 78,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": [
+            "Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Health Foods",
+          "url": "https://merivale.store.freshchoice.co.nz/category/health-foods",
+          "depth": 1,
+          "expected": 396,
+          "unique_on_listing": 405,
+          "pages_fetched": 9,
+          "capped": false,
+          "issues": [
+            "Page 9: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "General",
+          "url": "https://merivale.store.freshchoice.co.nz/category/general-1",
+          "depth": 2,
+          "expected": 2591,
+          "unique_on_listing": 2400,
+          "pages_fetched": 50,
+          "capped": true,
+          "issues": [
+            "Category incomplete: 2400/2591"
+          ]
+        },
+        {
+          "category": "Asian",
+          "url": "https://merivale.store.freshchoice.co.nz/category/asian",
+          "depth": 2,
+          "expected": 182,
+          "unique_on_listing": 182,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Indian",
+          "url": "https://merivale.store.freshchoice.co.nz/category/indian",
+          "depth": 2,
+          "expected": 67,
+          "unique_on_listing": 74,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": [
+            "Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Middle Eastern",
+          "url": "https://merivale.store.freshchoice.co.nz/category/middle-eastern",
+          "depth": 2,
+          "expected": 2,
+          "unique_on_listing": 2,
+          "pages_fetched": 1,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Uk",
+          "url": "https://merivale.store.freshchoice.co.nz/category/uk",
+          "depth": 2,
+          "expected": 46,
+          "unique_on_listing": 46,
+          "pages_fetched": 1,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Nz",
+          "url": "https://merivale.store.freshchoice.co.nz/category/nz",
+          "depth": 2,
+          "expected": 10,
+          "unique_on_listing": 10,
+          "pages_fetched": 1,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Italian",
+          "url": "https://merivale.store.freshchoice.co.nz/category/italian",
+          "depth": 2,
+          "expected": 12,
+          "unique_on_listing": 12,
+          "pages_fetched": 1,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "South African",
+          "url": "https://merivale.store.freshchoice.co.nz/category/south-african",
+          "depth": 2,
+          "expected": 23,
+          "unique_on_listing": 23,
+          "pages_fetched": 1,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Dutch",
+          "url": "https://merivale.store.freshchoice.co.nz/category/dutch",
+          "depth": 2,
+          "expected": 17,
+          "unique_on_listing": 17,
+          "pages_fetched": 1,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Mexican",
+          "url": "https://merivale.store.freshchoice.co.nz/category/mexican",
+          "depth": 2,
+          "expected": 76,
+          "unique_on_listing": 76,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": []
+        }
+      ],
+      "missing_product_ids": 42,
+      "missing_images": 42,
+      "missing_prices": 0,
+      "issues": [
+        "Pasta / Rice: Page 6: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Sauces & Condiments: Page 10: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Canned Fruit & Desserts: Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Oils & Vinegars: Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Health Foods: Page 9: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "General: pagination cap reached at max depth 2",
+        "Indian: Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Groceries still below prior reported total: 6063/6224"
+      ],
+      "output_file": "output-recovered/merivale.jsonl",
+      "elapsed_seconds": 401.507
+    },
+    {
+      "branch": "epsom",
+      "status": "partial",
+      "original_products": 8790,
+      "merged_products": 9640,
+      "new_products": 850,
+      "recovered_occurrences": 3273,
+      "previous_groceries_count": 2400,
+      "grocery_union_count": 3259,
+      "previous_reported_groceries_total": 3230,
+      "subcategories_scraped": 13,
+      "subcategories": [
+        {
+          "category": "Prepared Foods",
+          "url": "https://epsom.store.freshchoice.co.nz/category/prepared-foods",
+          "depth": 1,
+          "expected": 184,
+          "unique_on_listing": 184,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Breakfast Foods",
+          "url": "https://epsom.store.freshchoice.co.nz/category/breakfast-foods",
+          "depth": 1,
+          "expected": 166,
+          "unique_on_listing": 176,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": [
+            "Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Pasta / Rice",
+          "url": "https://epsom.store.freshchoice.co.nz/category/pasta-rice",
+          "depth": 1,
+          "expected": 259,
+          "unique_on_listing": 266,
+          "pages_fetched": 6,
+          "capped": false,
+          "issues": [
+            "Page 6: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Sauces & Condiments",
+          "url": "https://epsom.store.freshchoice.co.nz/category/sauces-condiments",
+          "depth": 1,
+          "expected": 342,
+          "unique_on_listing": 346,
+          "pages_fetched": 8,
+          "capped": false,
+          "issues": [
+            "Page 8: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Biscuits & Muesli Bars",
+          "url": "https://epsom.store.freshchoice.co.nz/category/biscuits-muesli-bars",
+          "depth": 1,
+          "expected": 414,
+          "unique_on_listing": 414,
+          "pages_fetched": 9,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned & Dried Vegetables",
+          "url": "https://epsom.store.freshchoice.co.nz/category/canned-dried-vegetables",
+          "depth": 1,
+          "expected": 78,
+          "unique_on_listing": 78,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned Fruit & Desserts",
+          "url": "https://epsom.store.freshchoice.co.nz/category/canned-fruit-desserts",
+          "depth": 1,
+          "expected": 132,
+          "unique_on_listing": 132,
+          "pages_fetched": 3,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned Fish & Chicken",
+          "url": "https://epsom.store.freshchoice.co.nz/category/canned-fish-chicken",
+          "depth": 1,
+          "expected": 123,
+          "unique_on_listing": 123,
+          "pages_fetched": 3,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Cooking Needs",
+          "url": "https://epsom.store.freshchoice.co.nz/category/cooking-needs",
+          "depth": 1,
+          "expected": 487,
+          "unique_on_listing": 489,
+          "pages_fetched": 11,
+          "capped": false,
+          "issues": [
+            "Page 11: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Ethnic, Gourmet Food",
+          "url": "https://epsom.store.freshchoice.co.nz/category/ethnic-gourmet-food",
+          "depth": 1,
+          "expected": 494,
+          "unique_on_listing": 503,
+          "pages_fetched": 11,
+          "capped": false,
+          "issues": [
+            "Page 11: Used text-only HTML fallback: source_product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Jams, Spreads",
+          "url": "https://epsom.store.freshchoice.co.nz/category/jams-spreads",
+          "depth": 1,
+          "expected": 93,
+          "unique_on_listing": 93,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Oils & Vinegars",
+          "url": "https://epsom.store.freshchoice.co.nz/category/oils-vinegars",
+          "depth": 1,
+          "expected": 68,
+          "unique_on_listing": 74,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": [
+            "Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Health Foods",
+          "url": "https://epsom.store.freshchoice.co.nz/category/health-foods",
+          "depth": 1,
+          "expected": 390,
+          "unique_on_listing": 395,
+          "pages_fetched": 9,
+          "capped": false,
+          "issues": [
+            "Page 9: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        }
+      ],
+      "missing_product_ids": 52,
+      "missing_images": 52,
+      "missing_prices": 0,
+      "issues": [
+        "Breakfast Foods: Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Pasta / Rice: Page 6: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Sauces & Condiments: Page 8: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Cooking Needs: Page 11: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Ethnic, Gourmet Food: Page 11: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Oils & Vinegars: Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Health Foods: Page 9: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+      ],
+      "output_file": "output-recovered/epsom.jsonl",
+      "elapsed_seconds": 163.805
+    },
+    {
+      "branch": "greenisland",
+      "status": "partial",
+      "original_products": 8879,
+      "merged_products": 9129,
+      "new_products": 250,
+      "recovered_occurrences": 2671,
+      "previous_groceries_count": 0,
+      "grocery_union_count": 2660,
+      "previous_reported_groceries_total": 2628,
+      "subcategories_scraped": 13,
+      "subcategories": [
+        {
+          "category": "Prepared Foods",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/prepared-foods",
+          "depth": 1,
+          "expected": 221,
+          "unique_on_listing": 221,
+          "pages_fetched": 5,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Breakfast Foods",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/breakfast-foods",
+          "depth": 1,
+          "expected": 162,
+          "unique_on_listing": 171,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": [
+            "Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Pasta / Rice",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/pasta-rice",
+          "depth": 1,
+          "expected": 228,
+          "unique_on_listing": 228,
+          "pages_fetched": 5,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Sauces & Condiments",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/sauces-condiments",
+          "depth": 1,
+          "expected": 413,
+          "unique_on_listing": 413,
+          "pages_fetched": 9,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Biscuits & Muesli Bars",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/biscuits-muesli-bars",
+          "depth": 1,
+          "expected": 425,
+          "unique_on_listing": 425,
+          "pages_fetched": 9,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned & Dried Vegetables",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/canned-dried-vegetables",
+          "depth": 1,
+          "expected": 76,
+          "unique_on_listing": 76,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Canned Fruit & Desserts",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/canned-fruit-desserts",
+          "depth": 1,
+          "expected": 158,
+          "unique_on_listing": 167,
+          "pages_fetched": 4,
+          "capped": false,
+          "issues": [
+            "Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Canned Fish & Chicken",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/canned-fish-chicken",
+          "depth": 1,
+          "expected": 97,
+          "unique_on_listing": 98,
+          "pages_fetched": 3,
+          "capped": false,
+          "issues": [
+            "Page 3: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Cooking Needs",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/cooking-needs",
+          "depth": 1,
+          "expected": 450,
+          "unique_on_listing": 459,
+          "pages_fetched": 10,
+          "capped": false,
+          "issues": [
+            "Page 10: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Ethnic, Gourmet Food",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/ethnic-gourmet-food",
+          "depth": 1,
+          "expected": 106,
+          "unique_on_listing": 115,
+          "pages_fetched": 3,
+          "capped": false,
+          "issues": [
+            "Page 3: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Jams, Spreads",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/jams-spreads",
+          "depth": 1,
+          "expected": 91,
+          "unique_on_listing": 91,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": []
+        },
+        {
+          "category": "Oils & Vinegars",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/oils-vinegars",
+          "depth": 1,
+          "expected": 60,
+          "unique_on_listing": 66,
+          "pages_fetched": 2,
+          "capped": false,
+          "issues": [
+            "Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+          ]
+        },
+        {
+          "category": "Health Foods",
+          "url": "https://greenisland.store.freshchoice.co.nz/category/health-foods",
+          "depth": 1,
+          "expected": 141,
+          "unique_on_listing": 141,
+          "pages_fetched": 3,
+          "capped": false,
+          "issues": []
+        }
+      ],
+      "missing_product_ids": 41,
+      "missing_images": 41,
+      "missing_prices": 0,
+      "issues": [
+        "Breakfast Foods: Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Canned Fruit & Desserts: Page 4: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Canned Fish & Chicken: Page 3: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Cooking Needs: Page 10: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Ethnic, Gourmet Food: Page 3: Used text-only HTML fallback: source product IDs, image links and brands unverified",
+        "Oils & Vinegars: Page 2: Used text-only HTML fallback: source product IDs, image links and brands unverified"
+      ],
+      "output_file": "output-recovered/greenisland.jsonl",
+      "elapsed_seconds": 135.442
+    }
+  ],
+  "new_products": 4756,
+  "total_merged_products_selected": 34410,
+  "elapsed_seconds": 401.56,
+  "note": "Original pilot output untouched. These results do not resolve the Deli 404 or degraded text-only records."
+}
