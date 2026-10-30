@@ -1,0 +1,15 @@
+[
+  {
+    "kind": "import_all_branches",
+    "chain": "thewarehouse",
+    "file": "import_all_branches_thewarehouse_all_20261030T133527Z.json",
+    "status": "success",
+    "started_at": "2026-10-30T13:35:27.265339+00:00",
+    "finished_at": "2026-10-30T13:35:27.507930+00:00",
+    "duration_seconds": 0,
+    "totals": {
+      "products": 1
+    },
+    "indexed_at": "2026-10-30T13:35:27.509619+00:00"
+  }
+]

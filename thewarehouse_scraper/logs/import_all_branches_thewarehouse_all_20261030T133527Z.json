@@ -1,0 +1,15 @@
+{
+  "kind": "import_all_branches",
+  "retailer": "thewarehouse",
+  "branch_label": "all",
+  "command": "import_all_branches",
+  "started_at": "2026-10-30T13:35:27.265339+00:00",
+  "finished_at": "2026-10-30T13:35:27.507930+00:00",
+  "duration_seconds": 0,
+  "status": "success",
+  "categories": [],
+  "totals": {
+    "products": 1
+  },
+  "error": null
+}

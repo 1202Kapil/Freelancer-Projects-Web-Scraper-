@@ -1,0 +1,24 @@
+{
+  "kind": "thewarehouse_scraper",
+  "retailer": "thewarehouse",
+  "branch_label": "thewarehouse-auckland-central",
+  "command": "thewarehouse_scraper",
+  "started_at": "2026-10-30T13:32:25.562884+00:00",
+  "finished_at": "2026-10-30T13:32:29.820546+00:00",
+  "duration_seconds": 4.26,
+  "status": "success",
+  "categories": [
+    {
+      "name": "food-pets-household",
+      "status": "success",
+      "products": 0,
+      "promo": 0,
+      "multibuy": 0,
+      "out_of_stock": 0
+    }
+  ],
+  "totals": {
+    "products": 0
+  },
+  "error": null
+}

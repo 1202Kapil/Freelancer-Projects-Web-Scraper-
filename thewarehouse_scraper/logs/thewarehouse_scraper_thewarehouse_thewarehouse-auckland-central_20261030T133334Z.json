@@ -1,0 +1,25 @@
+{
+  "kind": "thewarehouse_scraper",
+  "retailer": "thewarehouse",
+  "branch_label": "thewarehouse-auckland-central",
+  "command": "thewarehouse_scraper",
+  "started_at": "2026-10-30T13:33:34.666348+00:00",
+  "finished_at": "2026-10-30T13:33:50.138215+00:00",
+  "duration_seconds": 15.47,
+  "status": "success",
+  "categories": [
+    {
+      "name": "food-pets-household",
+      "status": "success",
+      "products": 64,
+      "promo": 19,
+      "multibuy": 1,
+      "out_of_stock": 0
+    }
+  ],
+  "totals": {
+    "products": 64
+  },
+  "error": null,
+  "output_file": "C:\\Users\\singh\\.gemini\\antigravity\\scratch\\thewarehouse_scraper\\exports\\thewarehouse_thewarehouse-auckland-central_20261030T133350Z.jsonl"
+}

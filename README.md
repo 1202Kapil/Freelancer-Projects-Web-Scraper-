@@ -43,6 +43,18 @@ Freelancer-Projects-Web-Scraper/
     ├── import_all_branches.py  # Multi-branch batch importer orchestrator
     ├── exports/                # Verified multi-branch JSONL datasets
     └── README.md               # Detailed technical documentation
+│
+└── thewarehouse_scraper/       # The Warehouse NZ Retail & Supermarket Scraper & Ingestion Pipeline
+    ├── thewarehouse_scraper.py # Main scraper engine (Demandware Search Grid API)
+    ├── catalog_branches.py     # 76 NZ branch registry & resolver
+    ├── normalize.py            # GS1 Modulo-10 check, barcode, brand & size normalizers
+    ├── jsonl_exporter.py       # Atomic PICO contract JSONL exporter
+    ├── validate_export.py      # Contract & schema compliance auditor
+    ├── import_products.py      # Pico branch DB importer (bulk PostgreSQL SQL)
+    ├── import_all_branches.py  # Multi-branch batch importer orchestrator
+    ├── branches.json           # Authentic 76-branch registry
+    ├── exports/                # Verified branch JSONL datasets
+    └── README.md               # Detailed technical documentation
 ```
 
 ---
@@ -79,6 +91,16 @@ Freelancer-Projects-Web-Scraper/
   * **8 Auckland Branch Coverage**: Fully cataloged and mapped all 8 retail stores across Auckland (Grey Lynn, Newmarket, Epsom, Mt Eden, Smales Farm, Mairangi Bay, Mt Wellington, Orakei Bay Village).
   * **Price & Promotion Classification**: Integer cents pricing, special deals, and *Friends of Farro* (`friends-of-farro`) loyalty member pricing.
   * **Automated Batch Importer**: Standalone batch importer for multi-branch JSONL ingestion.
+
+### 4. [The Warehouse NZ Retail & Supermarket Scraper](./thewarehouse_scraper/)
+* **Client / Target**: The Warehouse (`https://www.thewarehouse.co.nz/`) — Major New Zealand general merchandise & grocery retail chain.
+* **Architecture**: Salesforce Commerce Cloud (Demandware `Sites-twl-Site`) search grid update pagination API with resilient TLS header negotiation.
+* **Key Capabilities**:
+  * **PICO Scraper Data Contract Compliant**: 100% schema conformance with integer cents pricing, ISO-8601 UTC timestamps, and zero orphan metadata.
+  * **GS1 Modulo-10 Checksum Verification**: 100% mathematical GTIN-8, 12, 13, 14 check digit validation on all barcodes extracted from Demandware product metadata.
+  * **76 Nationwide Branches**: Complete registry and lookup for all 76 physical stores across the North and South Islands with isolated JSONL exports.
+  * **Promotions & Multibuy Classification**: Full parsing of specials, bundle multibuys (`2 for $6.00`), clearance items, and MarketClub member discounts.
+  * **Pico Database Ingestion**: Full dry-run and bulk SQL importer compatibility via `import_products.py` and `import_all_branches.py`.
 
 ---
 
