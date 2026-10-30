@@ -55,6 +55,19 @@ Freelancer-Projects-Web-Scraper/
     ├── branches.json           # Authentic 76-branch registry
     ├── exports/                # Verified branch JSONL datasets
     └── README.md               # Detailed technical documentation
+│
+└── supervalue_scraper/         # SuperValue NZ Supermarket Scraper & Ingestion Pipeline
+    ├── supervalue_scraper.py   # Main async scraping engine (HTTPX + BeautifulSoup)
+    ├── catalog_branches.py     # SuperValue branch registry & DB resolver
+    ├── catalog_categories.py   # 606-category catalog discovery & sitemap auditor
+    ├── parsers.py              # HTML & JSON-LD parser, GS1 modulo-10 validator, multibuy engine
+    ├── jsonl_exporter.py       # Atomic PICO contract JSONL exporter
+    ├── validate_export.py      # Contract & schema compliance auditor
+    ├── import_products.py      # Pico branch DB importer (pooler-optimized bulk SQL)
+    ├── import_all_branches.py  # Multi-branch batch importer orchestrator
+    ├── test_scraper_parsers.py # Unit test suite
+    ├── exports/                # Verified branch JSONL datasets
+    └── README.md               # Detailed technical documentation
 ```
 
 ---
@@ -101,6 +114,16 @@ Freelancer-Projects-Web-Scraper/
   * **76 Nationwide Branches**: Complete registry and lookup for all 76 physical stores across the North and South Islands with isolated JSONL exports.
   * **Promotions & Multibuy Classification**: Full parsing of specials, bundle multibuys (`2 for $6.00`), clearance items, and MarketClub member discounts.
   * **Pico Database Ingestion**: Full dry-run and bulk SQL importer compatibility via `import_products.py` and `import_all_branches.py`.
+
+### 5. [SuperValue NZ Supermarket Scraper](./supervalue_scraper/)
+* **Client / Target**: SuperValue Supermarkets New Zealand (`https://www.supervalue.co.nz/`) — Sister supermarket brand under Woolworths NZ.
+* **Architecture**: High-throughput asynchronous crawler (HTTPX + BeautifulSoup) with sitemap.xml dynamic discovery and detail page enrichment.
+* **Key Capabilities**:
+  * **PICO Scraper Data Contract Compliant**: 100% compliant observation schema with integer cents (`current_price_cents`, `comparison_price_cents`).
+  * **Multibuy & Unit Price Isolation**: Strict separation of bundle offers from individual unit prices, eliminating pricing regressions.
+  * **Taxonomy & Sitemap Recovery**: Automatically discovers and traverses the complete 606-category catalog hierarchy via sitemap.xml and department routes.
+  * **GS1 Modulo-10 Barcode Validation**: Mathematically verifies GTIN-8, 12, 13, and 14 check digits while isolating produce PLUs.
+  * **Multi-Branch Isolation**: Registry and lookup for SuperValue branches (Milton online shopping hub, Mangawhai, Te Kuiti) with batch ingestion into PostgreSQL/Supabase.
 
 ---
 
