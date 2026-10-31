@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Kai Co Northwood",
+    "slug": "northwood",
+    "store_id": "kaico-northwood",
+    "external_id": "kaico-northwood",
+    "address": "Northwood Supa Centa, Main North Road, Christchurch 8051, New Zealand",
+    "suburb": "Northwood",
+    "city": "Christchurch",
+    "phone": "03 323 4555",
+    "email": "online@kaico.co.nz",
+    "is_active": true
+  }
+]

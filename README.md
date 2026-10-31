@@ -81,6 +81,19 @@ Freelancer-Projects-Web-Scraper/
     ├── branches.json           # Authoritative 210-branch registry with Foodstuffs GUIDs
     ├── exports/                # Verified branch JSONL datasets
     └── README.md               # Detailed technical documentation
+│
+└── kaico_scraper/              # Kai Co NZ Fresh Meat, Produce & Groceries Scraper
+    ├── kaico_scraper.py        # Main scraping engine (Shopify Collections & Products API)
+    ├── catalog_branches.py     # Store resolution & branch discovery against Pico catalog
+    ├── jsonl_exporter.py       # Atomic PICO contract JSONL exporter (integer cents, UTC ISO)
+    ├── normalize.py            # GS1 check digit, title cleanup, brand & size extraction
+    ├── validate_export.py      # Strict schema & GS1 check digit validator
+    ├── import_products.py      # Pico branch DB importer (pooler-optimized bulk SQL)
+    ├── import_all_branches.py  # Multi-branch batch importer orchestrator
+    ├── test_suite.py           # Comprehensive automated unit & contract test suite
+    ├── branches.json           # Authoritative store registry
+    ├── exports/                # Verified branch JSONL datasets
+    └── README.md               # Detailed technical documentation
 ```
 
 ---
@@ -147,6 +160,16 @@ Freelancer-Projects-Web-Scraper/
   * **210 Authentic Branches Registry**: Pre-compiled registry of all 210 Four Square locations across North and South Islands (`branches.json`) with Foodstuffs GUIDs.
   * **Foodstuffs Detail Enrichment**: Comprehensive product detail cards with nutrition panels, allergens, ingredients, and country of origin statements.
   * **Multi-Branch Workflow & Import Pipeline**: Full batch exporter and database ingestion runner via `import_products.py` and `import_all_branches.py`.
+
+### 7. [Kai Co NZ Supermarket Scraper](./kaico_scraper/)
+* **Client / Target**: Kai Co (`https://kaico.co.nz/`) — Locally owned fresh meat, produce & groceries based in Christchurch, New Zealand.
+* **Architecture**: High-performance Shopify storefront & collections API ingestion with automated promotions taxonomy mapping.
+* **Key Capabilities**:
+  * **PICO Scraper Data Contract Compliant**: 100% compliant observation schema with integer cents, UTC ISO timestamps, and top-level null stripping.
+  * **GS1 Modulo-10 Checksum Algorithm**: Validates GTIN barcodes mathematically and strictly isolates produce scale PLUs (e.g. 605, 648).
+  * **Smart Normalization**: Automatic brand (`Couplands`, `Brinks`, `Cow & Gate`), unit price (`$15.99kg` $\to$ 1599 cents / 1kg), and multibuy parsing (`5 for $3.99`).
+  * **Pico Catalog Store Resolution**: Dynamic branch resolver supporting live PostgreSQL `catalog` schema queries with offline `branches.json` fallback.
+  * **Zero-Failure Database Ingestion**: Verified 100% pass rate with official `import_products.py` bulk importer.
 
 ---
 

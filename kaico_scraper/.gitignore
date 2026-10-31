@@ -1,0 +1,10 @@
+.env
+.env.local
+*.bak
+*.tmp
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+logs/
+.kaico_cache.json
