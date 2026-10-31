@@ -1,0 +1,1472 @@
+[
+  {
+    "name": "Four Square Ahuriri",
+    "slug": "four-square-ahuriri",
+    "api_store_id": "0e6a8d76-b60f-4037-92fa-a06929cb47db",
+    "store_id_guid": "{0E6A8D76-B60F-4037-92FA-A06929CB47DB}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/ahuriri"
+  },
+  {
+    "name": "Four Square Akaroa",
+    "slug": "four-square-akaroa",
+    "api_store_id": "7ad89916-8716-4ad4-a518-bf2efc66dbdf",
+    "store_id_guid": "{7AD89916-8716-4AD4-A518-BF2EFC66DBDF}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/akaroa"
+  },
+  {
+    "name": "Four Square Albert Town",
+    "slug": "four-square-albert-town",
+    "api_store_id": "2fb520e9-3367-4501-b491-4a70ab33e1c9",
+    "store_id_guid": "{2FB520E9-3367-4501-B491-4A70AB33E1C9}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/albert-town"
+  },
+  {
+    "name": "Four Square Alexandra",
+    "slug": "four-square-alexandra",
+    "api_store_id": "fed55f4b-a6f2-45d9-a20e-ba642eb9cdf9",
+    "store_id_guid": "{FED55F4B-A6F2-45D9-A20E-BA642EB9CDF9}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/alexandra"
+  },
+  {
+    "name": "Four Square Aramoho",
+    "slug": "four-square-aramoho",
+    "api_store_id": "13b2e89f-51ea-4419-a583-0be7e881f4ed",
+    "store_id_guid": "{13B2E89F-51EA-4419-A583-0BE7E881F4ED}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/aramoho"
+  },
+  {
+    "name": "Four Square Arrowtown",
+    "slug": "four-square-arrowtown",
+    "api_store_id": "cff3b862-174a-4f8d-b440-f250e1363ec0",
+    "store_id_guid": "{CFF3B862-174A-4F8D-B440-F250E1363EC0}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/arrowtown"
+  },
+  {
+    "name": "Four Square Ascot",
+    "slug": "four-square-ascot",
+    "api_store_id": "2a8a3352-e5d0-4483-bdae-4fc75a76e38c",
+    "store_id_guid": "{2A8A3352-E5D0-4483-BDAE-4FC75A76E38C}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/ascot"
+  },
+  {
+    "name": "Four Square Ashhurst",
+    "slug": "four-square-ashhurst",
+    "api_store_id": "1e78d003-a80e-4dbb-bce3-2276710ba747",
+    "store_id_guid": "{1E78D003-A80E-4DBB-BCE3-2276710BA747}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/ashhurst"
+  },
+  {
+    "name": "Four Square Atawhai",
+    "slug": "four-square-atawhai",
+    "api_store_id": "64fb712d-7e6e-4587-bcf1-62a4f844541b",
+    "store_id_guid": "{64FB712D-7E6E-4587-BCF1-62A4F844541B}",
+    "url": "https://www.foursquare.co.nz/south-island/nelson/atawhai"
+  },
+  {
+    "name": "Four Square Awapuni",
+    "slug": "four-square-awapuni",
+    "api_store_id": "520d2898-12b1-40df-9a41-669d2d7c2f90",
+    "store_id_guid": "{520D2898-12B1-40DF-9A41-669D2D7C2F90}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/awapuni"
+  },
+  {
+    "name": "Four Square Balmoral Drive",
+    "slug": "four-square-balmoral-drive",
+    "api_store_id": "acd23892-482c-4fc1-8164-29e50da36dee",
+    "store_id_guid": "{ACD23892-482C-4FC1-8164-29E50DA36DEE}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/balmoral-drive"
+  },
+  {
+    "name": "Four Square Bayview",
+    "slug": "four-square-bayview",
+    "api_store_id": "a4d476a1-a251-485d-a40c-269e0571eda7",
+    "store_id_guid": "{A4D476A1-A251-485D-A40C-269E0571EDA7}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/bayview"
+  },
+  {
+    "name": "Four Square Blue Moon",
+    "slug": "four-square-blue-moon",
+    "api_store_id": "9802fbd7-8c0a-4328-a2f9-5871f74e4a72",
+    "store_id_guid": "{9802FBD7-8C0A-4328-A2F9-5871F74E4A72}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/blue-moon"
+  },
+  {
+    "name": "Four Square Bluff",
+    "slug": "four-square-bluff",
+    "api_store_id": "ee94f746-cd90-4232-9ab6-e32f0da65064",
+    "store_id_guid": "{EE94F746-CD90-4232-9AB6-E32F0DA65064}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/bluff"
+  },
+  {
+    "name": "Four Square Bombay",
+    "slug": "four-square-bombay",
+    "api_store_id": "c7549cd8-c5c5-48b0-84be-796bb24d01da",
+    "store_id_guid": "{C7549CD8-C5C5-48B0-84BE-796BB24D01DA}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/bombay"
+  },
+  {
+    "name": "Four Square Botany Junction",
+    "slug": "four-square-botany-junction",
+    "api_store_id": "3d64e158-e13b-4238-a5cb-c494830f19ce",
+    "store_id_guid": "{3D64E158-E13B-4238-A5CB-C494830F19CE}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/botany-junction"
+  },
+  {
+    "name": "Four Square Brightwater",
+    "slug": "four-square-brightwater",
+    "api_store_id": "d0bd5398-11cf-4699-bd6b-e9b61af914f0",
+    "store_id_guid": "{D0BD5398-11CF-4699-BD6B-E9B61AF914F0}",
+    "url": "https://www.foursquare.co.nz/south-island/nelson/brightwater"
+  },
+  {
+    "name": "Four Square Britomart",
+    "slug": "four-square-britomart",
+    "api_store_id": "5401b90c-2411-428c-990f-89bb575395b1",
+    "store_id_guid": "{5401B90C-2411-428C-990F-89BB575395B1}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/britomart"
+  },
+  {
+    "name": "Four Square Buffalo Beach",
+    "slug": "four-square-buffalo-beach",
+    "api_store_id": "f7d05f44-465a-413e-a09d-ed19930cc1b4",
+    "store_id_guid": "{F7D05F44-465A-413E-A09D-ED19930CC1B4}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/coromandel/buffalo-beach"
+  },
+  {
+    "name": "Four Square Bulls",
+    "slug": "four-square-bulls",
+    "api_store_id": "e8e71ada-95b7-4cd7-a4ac-efdd5ec9507f",
+    "store_id_guid": "{E8E71ADA-95B7-4CD7-A4AC-EFDD5EC9507F}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/bulls"
+  },
+  {
+    "name": "Four Square Cambridge",
+    "slug": "four-square-cambridge",
+    "api_store_id": "1e88563b-b97e-4a88-b97a-50b3942b3f46",
+    "store_id_guid": "{1E88563B-B97E-4A88-B97A-50B3942B3F46}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/cambridge"
+  },
+  {
+    "name": "Four Square Cape View",
+    "slug": "four-square-cape-view",
+    "api_store_id": "813fb950-712e-4131-970a-252a339ee1ee",
+    "store_id_guid": "{813FB950-712E-4131-970A-252A339EE1EE}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/cape-view"
+  },
+  {
+    "name": "Four Square Castlecliff",
+    "slug": "four-square-castlecliff",
+    "api_store_id": "ef2e7c48-95e8-47c9-83c9-5c1e3496c069",
+    "store_id_guid": "{EF2E7C48-95E8-47C9-83C9-5C1E3496C069}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/castlecliff"
+  },
+  {
+    "name": "Four Square Cherrywood",
+    "slug": "four-square-cherrywood",
+    "api_store_id": "49b4439a-6ee0-404b-9955-b7879b5d06a8",
+    "store_id_guid": "{49B4439A-6EE0-404B-9955-B7879B5D06A8}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/cherrywood"
+  },
+  {
+    "name": "Four Square Cheviot",
+    "slug": "four-square-cheviot",
+    "api_store_id": "20dcd2a9-9d99-481b-8223-af1b9867e017",
+    "store_id_guid": "{20DCD2A9-9D99-481B-8223-AF1B9867E017}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/cheviot"
+  },
+  {
+    "name": "Four Square Clive",
+    "slug": "four-square-clive",
+    "api_store_id": "da263c5a-1e30-4294-b759-26af792bea1b",
+    "store_id_guid": "{DA263C5A-1E30-4294-B759-26AF792BEA1B}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/clive"
+  },
+  {
+    "name": "Four Square Cloverlea",
+    "slug": "four-square-cloverlea",
+    "api_store_id": "50769f92-acbf-46b3-ac24-4f87568eca54",
+    "store_id_guid": "{50769F92-ACBF-46B3-AC24-4F87568ECA54}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/cloverlea"
+  },
+  {
+    "name": "Four Square Cockle Bay",
+    "slug": "four-square-cockle-bay",
+    "api_store_id": "e3f6ef17-426a-4dec-87a9-451dc776d666",
+    "store_id_guid": "{E3F6EF17-426A-4DEC-87A9-451DC776D666}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/cockle-bay"
+  },
+  {
+    "name": "Four Square Coopers Beach",
+    "slug": "four-square-coopers-beach",
+    "api_store_id": "14aec33d-62bf-440b-a45b-9d8b035d7e9e",
+    "store_id_guid": "{14AEC33D-62BF-440B-A45B-9D8B035D7E9E}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/coopers-beach"
+  },
+  {
+    "name": "Four Square Coromandel",
+    "slug": "four-square-coromandel",
+    "api_store_id": "89f037a4-b720-4514-8cc7-d2b80f52d3a7",
+    "store_id_guid": "{89F037A4-B720-4514-8CC7-D2B80F52D3A7}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/coromandel/coromandel"
+  },
+  {
+    "name": "Four Square Culverden",
+    "slug": "four-square-culverden",
+    "api_store_id": "b53c6a4b-474f-41af-9b20-5bbc3b0a5ff8",
+    "store_id_guid": "{B53C6A4B-474F-41AF-9B20-5BBC3B0A5FF8}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/culverden"
+  },
+  {
+    "name": "Four Square Dannevirke",
+    "slug": "four-square-dannevirke",
+    "api_store_id": "b00b0f1a-e572-4049-a743-610978dd68a3",
+    "store_id_guid": "{B00B0F1A-E572-4049-A743-610978DD68A3}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/dannevirke"
+  },
+  {
+    "name": "Four Square Darfield",
+    "slug": "four-square-darfield",
+    "api_store_id": "d1d6d658-4e4b-4184-823c-7419336036a4",
+    "store_id_guid": "{D1D6D658-4E4B-4184-823C-7419336036A4}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/darfield"
+  },
+  {
+    "name": "Four Square Diamond Harbour",
+    "slug": "four-square-diamond-harbour",
+    "api_store_id": "d3699955-0e99-462a-af50-ddf13cc86350",
+    "store_id_guid": "{D3699955-0E99-462A-AF50-DDF13CC86350}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/diamond-harbour"
+  },
+  {
+    "name": "Four Square Eastbourne",
+    "slug": "four-square-eastbourne",
+    "api_store_id": "4b72b5f7-1b89-459d-9e84-05d9f5d21145",
+    "store_id_guid": "{4B72B5F7-1B89-459D-9E84-05D9F5D21145}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/eastbourne"
+  },
+  {
+    "name": "Four Square Eastend",
+    "slug": "four-square-eastend",
+    "api_store_id": "f1b49f3b-1edc-4a7d-9e5f-d0cee011abb6",
+    "store_id_guid": "{F1B49F3B-1EDC-4A7D-9E5F-D0CEE011ABB6}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/eastend"
+  },
+  {
+    "name": "Four Square Eden Terrace",
+    "slug": "four-square-eden-terrace",
+    "api_store_id": "86d054c0-c527-4b78-9357-b583eb678b94",
+    "store_id_guid": "{86D054C0-C527-4B78-9357-B583EB678B94}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/eden-terrace"
+  },
+  {
+    "name": "Four Square Edmund Road",
+    "slug": "four-square-edmund-road",
+    "api_store_id": "a16f3a0f-4dd3-48d0-b279-3da6b0dc5cd8",
+    "store_id_guid": "{A16F3A0F-4DD3-48D0-B279-3DA6B0DC5CD8}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/edmund-road"
+  },
+  {
+    "name": "Four Square Eket\u0101huna",
+    "slug": "four-square-eket-huna",
+    "api_store_id": "e3b3fe95-bbe9-4d28-b879-04a25490af9e",
+    "store_id_guid": "{E3B3FE95-BBE9-4D28-B879-04A25490AF9E}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/eketahuna"
+  },
+  {
+    "name": "Four Square Ellerslie",
+    "slug": "four-square-ellerslie",
+    "api_store_id": "b7609be7-c28b-470f-8cb8-bcd44005ffbf",
+    "store_id_guid": "{B7609BE7-C28B-470F-8CB8-BCD44005FFBF}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/ellerslie"
+  },
+  {
+    "name": "Four Square Eltham",
+    "slug": "four-square-eltham",
+    "api_store_id": "934586e0-570d-4f7b-9b49-dccdddda6502",
+    "store_id_guid": "{934586E0-570D-4F7B-9B49-DCCDDDDA6502}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/eltham"
+  },
+  {
+    "name": "Four Square Fairlie",
+    "slug": "four-square-fairlie",
+    "api_store_id": "28051fde-5413-4897-a9ff-960e75ba92e9",
+    "store_id_guid": "{28051FDE-5413-4897-A9FF-960E75BA92E9}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/fairlie"
+  },
+  {
+    "name": "Four Square Fergusson Drive",
+    "slug": "four-square-fergusson-drive",
+    "api_store_id": "ada783c4-e671-49b3-95c4-7a1e1f33e329",
+    "store_id_guid": "{ADA783C4-E671-49B3-95C4-7A1E1F33E329}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/fergusson-drive"
+  },
+  {
+    "name": "Four Square Fordlands",
+    "slug": "four-square-fordlands",
+    "api_store_id": "4b19fd6b-2423-4f0f-8792-d0a13172de51",
+    "store_id_guid": "{4B19FD6B-2423-4F0F-8792-D0A13172DE51}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/central-plateau/fordlands"
+  },
+  {
+    "name": "Four Square Foxton Beach",
+    "slug": "four-square-foxton-beach",
+    "api_store_id": "08a8dd29-871a-4ce1-9b15-fd787c8579ec",
+    "store_id_guid": "{08A8DD29-871A-4CE1-9B15-FD787C8579EC}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/foxton-beach"
+  },
+  {
+    "name": "Four Square Franz Josef",
+    "slug": "four-square-franz-josef",
+    "api_store_id": "c64e9412-e6ee-4114-a726-40cc6ff18fe7",
+    "store_id_guid": "{C64E9412-E6EE-4114-A726-40CC6FF18FE7}",
+    "url": "https://www.foursquare.co.nz/south-island/west-coast/franz-josef"
+  },
+  {
+    "name": "Four Square Frimley",
+    "slug": "four-square-frimley",
+    "api_store_id": "f7899551-082a-4a26-b024-855cbc3c4edb",
+    "store_id_guid": "{F7899551-082A-4A26-B024-855CBC3C4EDB}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/frimley"
+  },
+  {
+    "name": "Four Square Glen Eden",
+    "slug": "four-square-glen-eden",
+    "api_store_id": "a69614ed-8db2-4912-96d3-e6a9e24b93d9",
+    "store_id_guid": "{A69614ED-8DB2-4912-96D3-E6A9E24B93D9}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/glen-eden"
+  },
+  {
+    "name": "Four Square Greenmeadows",
+    "slug": "four-square-greenmeadows",
+    "api_store_id": "7e370dbc-2781-4c4b-b16d-a178065a1654",
+    "store_id_guid": "{7E370DBC-2781-4C4B-B16D-A178065A1654}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/greenmeadows"
+  },
+  {
+    "name": "Four Square Gulf Harbour",
+    "slug": "four-square-gulf-harbour",
+    "api_store_id": "1f0acda6-31f0-4917-a90b-10be8cd29e02",
+    "store_id_guid": "{1F0ACDA6-31F0-4917-A90B-10BE8CD29E02}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/gulf-harbour"
+  },
+  {
+    "name": "Four Square Hanmer Springs",
+    "slug": "four-square-hanmer-springs",
+    "api_store_id": "201c7b48-809d-40a8-a8cb-051a6825ef59",
+    "store_id_guid": "{201C7B48-809D-40A8-A8CB-051A6825EF59}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/hanmer-springs"
+  },
+  {
+    "name": "Four Square Havelock",
+    "slug": "four-square-havelock",
+    "api_store_id": "84fed294-5fbe-40d2-87b7-61aa1657e1ff",
+    "store_id_guid": "{84FED294-5FBE-40D2-87B7-61AA1657E1FF}",
+    "url": "https://www.foursquare.co.nz/south-island/marlborough/havelock"
+  },
+  {
+    "name": "Four Square Hawarden",
+    "slug": "four-square-hawarden",
+    "api_store_id": "35b6715a-8e1d-456b-b0de-4d392826c941",
+    "store_id_guid": "{35B6715A-8E1D-456B-B0DE-4D392826C941}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/hawarden"
+  },
+  {
+    "name": "Four Square Heaphy Terrace",
+    "slug": "four-square-heaphy-terrace",
+    "api_store_id": "00db2959-5538-4491-8c79-37ad08f37849",
+    "store_id_guid": "{00DB2959-5538-4491-8C79-37AD08F37849}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/heaphy-terrace"
+  },
+  {
+    "name": "Four Square Hikurangi",
+    "slug": "four-square-hikurangi",
+    "api_store_id": "98adf1f3-0ee7-4f83-bc35-dd0f84ca23d1",
+    "store_id_guid": "{98ADF1F3-0EE7-4F83-BC35-DD0F84CA23D1}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/hikurangi"
+  },
+  {
+    "name": "Four Square Hillcrest",
+    "slug": "four-square-hillcrest",
+    "api_store_id": "3a5ee350-6423-4871-9de9-bd03cfd498dc",
+    "store_id_guid": "{3A5EE350-6423-4871-9DE9-BD03CFD498DC}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/hillcrest"
+  },
+  {
+    "name": "Four Square Hokowhitu",
+    "slug": "four-square-hokowhitu",
+    "api_store_id": "56f1698e-fd11-46f1-8019-bda7fb5f7e1c",
+    "store_id_guid": "{56F1698E-FD11-46F1-8019-BDA7FB5F7E1C}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/hokowhitu"
+  },
+  {
+    "name": "Four Square Horahora",
+    "slug": "four-square-horahora",
+    "api_store_id": "e05aab34-7706-4ef2-905b-3a41afd420c5",
+    "store_id_guid": "{E05AAB34-7706-4EF2-905B-3A41AFD420C5}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/horahora"
+  },
+  {
+    "name": "Four Square Houhora",
+    "slug": "four-square-houhora",
+    "api_store_id": "72a30363-af9a-4a3e-96e7-eb036bad925d",
+    "store_id_guid": "{72A30363-AF9A-4A3E-96E7-EB036BAD925D}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/houhora"
+  },
+  {
+    "name": "Four Square Huntly",
+    "slug": "four-square-huntly",
+    "api_store_id": "e1fadef2-b73c-4af9-93d6-7471d4a72085",
+    "store_id_guid": "{E1FADEF2-B73C-4AF9-93D6-7471D4A72085}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/huntly"
+  },
+  {
+    "name": "Four Square Kaiwaka",
+    "slug": "four-square-kaiwaka",
+    "api_store_id": "48c2aefd-74a0-4689-b18a-79e6d52366be",
+    "store_id_guid": "{48C2AEFD-74A0-4689-B18A-79E6D52366BE}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/kaiwaka"
+  },
+  {
+    "name": "Four Square Kamo",
+    "slug": "four-square-kamo",
+    "api_store_id": "cf657ea2-f593-4318-9226-dc5df658a932",
+    "store_id_guid": "{CF657EA2-F593-4318-9226-DC5DF658A932}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/kamo"
+  },
+  {
+    "name": "Four Square Kaponga",
+    "slug": "four-square-kaponga",
+    "api_store_id": "446b820b-a459-4ec9-b1a4-2295c3925fcd",
+    "store_id_guid": "{446B820B-A459-4EC9-B1A4-2295C3925FCD}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/kaponga"
+  },
+  {
+    "name": "Four Square Karamea",
+    "slug": "four-square-karamea",
+    "api_store_id": "0cb25657-23d4-4dac-84ad-56b98a035745",
+    "store_id_guid": "{0CB25657-23D4-4DAC-84AD-56B98A035745}",
+    "url": "https://www.foursquare.co.nz/south-island/west-coast/karamea"
+  },
+  {
+    "name": "Four Square Karori",
+    "slug": "four-square-karori",
+    "api_store_id": "8a0109ef-853d-4779-b2f1-4f968f8e8645",
+    "store_id_guid": "{8A0109EF-853D-4779-B2F1-4F968F8E8645}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/karori"
+  },
+  {
+    "name": "Four Square Katikati",
+    "slug": "four-square-katikati",
+    "api_store_id": "5289d127-dc1b-4c7f-ab77-8ee9607ebf07",
+    "store_id_guid": "{5289D127-DC1B-4C7F-AB77-8EE9607EBF07}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/katikati"
+  },
+  {
+    "name": "Four Square Kawakawa",
+    "slug": "four-square-kawakawa",
+    "api_store_id": "7553d29a-77ea-40aa-a30a-da62f91de272",
+    "store_id_guid": "{7553D29A-77EA-40AA-A30A-DA62F91DE272}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/kawakawa"
+  },
+  {
+    "name": "Four Square Kelburn",
+    "slug": "four-square-kelburn",
+    "api_store_id": "59fa0a3a-bba4-4b71-adb3-c9b0b30d07cc",
+    "store_id_guid": "{59FA0A3A-BBA4-4B71-ADB3-C9B0B30D07CC}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/kelburn"
+  },
+  {
+    "name": "Four Square Kena Kena",
+    "slug": "four-square-kena-kena",
+    "api_store_id": "995d257a-60cf-4abf-9f3d-0ca36c74d194",
+    "store_id_guid": "{995D257A-60CF-4ABF-9F3D-0CA36C74D194}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/kena-kena"
+  },
+  {
+    "name": "Four Square Kurow",
+    "slug": "four-square-kurow",
+    "api_store_id": "bd784f9a-5b7c-455e-864c-e657f40157a7",
+    "store_id_guid": "{BD784F9A-5B7C-455E-864C-E657F40157A7}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/kurow"
+  },
+  {
+    "name": "Four Square K\u0101eo",
+    "slug": "four-square-k-eo",
+    "api_store_id": "4edfba6c-574f-4361-9696-21d6d39d634e",
+    "store_id_guid": "{4EDFBA6C-574F-4361-9696-21D6D39D634E}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/kaeo"
+  },
+  {
+    "name": "Four Square Lake Taupo",
+    "slug": "four-square-lake-taupo",
+    "api_store_id": "2ee3d746-bbe8-4a02-b947-578b3dc29392",
+    "store_id_guid": "{2EE3D746-BBE8-4A02-B947-578B3DC29392}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/central-plateau/lake-taupo"
+  },
+  {
+    "name": "Four Square Lancaster",
+    "slug": "four-square-lancaster",
+    "api_store_id": "b607a601-34f0-4441-8d6d-702490b58400",
+    "store_id_guid": "{B607A601-34F0-4441-8D6D-702490B58400}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/lancaster"
+  },
+  {
+    "name": "Four Square Lawrence",
+    "slug": "four-square-lawrence",
+    "api_store_id": "308d685e-b7ad-4f80-b6c7-0e25755b4042",
+    "store_id_guid": "{308D685E-B7AD-4F80-B6C7-0E25755B4042}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/lawrence"
+  },
+  {
+    "name": "Four Square Lumsden",
+    "slug": "four-square-lumsden",
+    "api_store_id": "f3aabb96-62c0-4799-9b1e-b85b5e219259",
+    "store_id_guid": "{F3AABB96-62C0-4799-9B1E-B85B5E219259}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/lumsden"
+  },
+  {
+    "name": "Four Square Mackenzie",
+    "slug": "four-square-mackenzie",
+    "api_store_id": "0654cf10-122a-4f2b-a8d2-488c8ecfcfcb",
+    "store_id_guid": "{0654CF10-122A-4F2B-A8D2-488C8ECFCFCB}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/mackenzie"
+  },
+  {
+    "name": "Four Square Mahora",
+    "slug": "four-square-mahora",
+    "api_store_id": "414ede04-5502-4acc-8044-07b0d76e98b1",
+    "store_id_guid": "{414EDE04-5502-4ACC-8044-07B0D76E98B1}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/mahora"
+  },
+  {
+    "name": "Four Square Manaia",
+    "slug": "four-square-manaia",
+    "api_store_id": "aaf5f45b-66ff-4845-a42f-86762a4f924e",
+    "store_id_guid": "{AAF5F45B-66FF-4845-A42F-86762A4F924E}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/manaia"
+  },
+  {
+    "name": "Four Square Mangakino",
+    "slug": "four-square-mangakino",
+    "api_store_id": "ebfda01f-2497-412d-9692-0c3c57c4e504",
+    "store_id_guid": "{EBFDA01F-2497-412D-9692-0C3C57C4E504}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/mangakino"
+  },
+  {
+    "name": "Four Square Mangapapa",
+    "slug": "four-square-mangapapa",
+    "api_store_id": "babd9bd5-dd79-4a96-b6ee-d6dded7e6ef5",
+    "store_id_guid": "{BABD9BD5-DD79-4A96-B6EE-D6DDED7E6EF5}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/east-cape/mangapapa"
+  },
+  {
+    "name": "Four Square Mangawhai Heads",
+    "slug": "four-square-mangawhai-heads",
+    "api_store_id": "fd1d00e6-d19d-489d-955f-dc2fec3a7166",
+    "store_id_guid": "{FD1D00E6-D19D-489D-955F-DC2FEC3A7166}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/mangawhai-heads"
+  },
+  {
+    "name": "Four Square Mang\u014dnui",
+    "slug": "four-square-mang-nui",
+    "api_store_id": "8c473780-1374-4a7b-9ca9-615c475accc7",
+    "store_id_guid": "{8C473780-1374-4A7B-9CA9-615C475ACCC7}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/mangonui"
+  },
+  {
+    "name": "Four Square Maniototo",
+    "slug": "four-square-maniototo",
+    "api_store_id": "b2b2a630-259f-4b93-81be-c54c5487c0e3",
+    "store_id_guid": "{B2B2A630-259F-4B93-81BE-C54C5487C0E3}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/maniototo"
+  },
+  {
+    "name": "Four Square Maraenui",
+    "slug": "four-square-maraenui",
+    "api_store_id": "4ba2e3d8-7492-4aaa-9060-6c29d6a09058",
+    "store_id_guid": "{4BA2E3D8-7492-4AAA-9060-6C29D6A09058}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/maraenui"
+  },
+  {
+    "name": "Four Square Marsden Cove",
+    "slug": "four-square-marsden-cove",
+    "api_store_id": "b0698e1d-da6a-4fdf-aeb9-d3dc1d400ec2",
+    "store_id_guid": "{B0698E1D-DA6A-4FDF-AEB9-D3DC1D400EC2}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/marsden-cove"
+  },
+  {
+    "name": "Four Square Martina",
+    "slug": "four-square-martina",
+    "api_store_id": "92fa09fd-2f8f-4fa1-ac0c-505fbf281783",
+    "store_id_guid": "{92FA09FD-2F8F-4FA1-AC0C-505FBF281783}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/coromandel/martina"
+  },
+  {
+    "name": "Four Square Martinborough",
+    "slug": "four-square-martinborough",
+    "api_store_id": "10029238-905a-4f55-8c41-5f4e60f262ca",
+    "store_id_guid": "{10029238-905A-4F55-8C41-5F4E60F262CA}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wairarapa/martinborough"
+  },
+  {
+    "name": "Four Square Matakana",
+    "slug": "four-square-matakana",
+    "api_store_id": "32cbd661-f464-4936-8a9c-6d9799c79366",
+    "store_id_guid": "{32CBD661-F464-4936-8A9C-6D9799C79366}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/matakana"
+  },
+  {
+    "name": "Four Square Matakaoa",
+    "slug": "four-square-matakaoa",
+    "api_store_id": "665eadcd-bd8c-4d87-93c8-0906c9d2d849",
+    "store_id_guid": "{665EADCD-BD8C-4D87-93C8-0906C9D2D849}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/east-cape/matakaoa"
+  },
+  {
+    "name": "Four Square Matarangi",
+    "slug": "four-square-matarangi",
+    "api_store_id": "b33d5176-6050-4dba-a55f-b9dcf3959dfc",
+    "store_id_guid": "{B33D5176-6050-4DBA-A55F-B9DCF3959DFC}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/coromandel/matarangi"
+  },
+  {
+    "name": "Four Square Mataura",
+    "slug": "four-square-mataura",
+    "api_store_id": "8f529b38-4d92-4e1d-b9db-1f970c681587",
+    "store_id_guid": "{8F529B38-4D92-4E1D-B9DB-1F970C681587}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/mataura"
+  },
+  {
+    "name": "Four Square Maungaturoto",
+    "slug": "four-square-maungaturoto",
+    "api_store_id": "e67f1a31-08ff-42f4-ad77-1de6b386da3c",
+    "store_id_guid": "{E67F1A31-08FF-42F4-AD77-1DE6B386DA3C}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/maungaturoto"
+  },
+  {
+    "name": "Four Square Methven",
+    "slug": "four-square-methven",
+    "api_store_id": "22b37d24-e5a4-499a-811b-179c03e7c85b",
+    "store_id_guid": "{22B37D24-E5A4-499A-811B-179C03E7C85B}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/methven"
+  },
+  {
+    "name": "Four Square Milson",
+    "slug": "four-square-milson",
+    "api_store_id": "ca6f658e-2e30-492d-9e12-e50b0c67be5f",
+    "store_id_guid": "{CA6F658E-2E30-492D-9E12-E50B0C67BE5F}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/milson"
+  },
+  {
+    "name": "Four Square Moerewa Blue Lagoon",
+    "slug": "four-square-moerewa-blue-lagoon",
+    "api_store_id": "f4494dd5-1e7b-45ea-913f-ed0a0cbc9243",
+    "store_id_guid": "{F4494DD5-1E7B-45EA-913F-ED0A0CBC9243}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/moerewa-blue-lagoon"
+  },
+  {
+    "name": "Four Square Moturoa",
+    "slug": "four-square-moturoa",
+    "api_store_id": "0d46deba-e1bb-4fee-a562-086770fa05d5",
+    "store_id_guid": "{0D46DEBA-E1BB-4FEE-A562-086770FA05D5}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/moturoa"
+  },
+  {
+    "name": "Four Square Mount Maunganui",
+    "slug": "four-square-mount-maunganui",
+    "api_store_id": "1925bba8-ca20-491d-96b3-743054fc66fd",
+    "store_id_guid": "{1925BBA8-CA20-491D-96B3-743054FC66FD}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/mount-maunganui"
+  },
+  {
+    "name": "Four Square Murchison",
+    "slug": "four-square-murchison",
+    "api_store_id": "61e44711-2562-4abc-a757-dcf5c2be21ee",
+    "store_id_guid": "{61E44711-2562-4ABC-A757-DCF5C2BE21EE}",
+    "url": "https://www.foursquare.co.nz/south-island/nelson/murchison"
+  },
+  {
+    "name": "Four Square Murupara",
+    "slug": "four-square-murupara",
+    "api_store_id": "7c17e7ec-1851-43db-8dbd-5f9ee9e3fa91",
+    "store_id_guid": "{7C17E7EC-1851-43DB-8DBD-5F9EE9E3FA91}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/murupara"
+  },
+  {
+    "name": "Four Square M\u0101pua",
+    "slug": "four-square-m-pua",
+    "api_store_id": "ad5ff277-23ca-4612-9231-d6360c9024b6",
+    "store_id_guid": "{AD5FF277-23CA-4612-9231-D6360C9024B6}",
+    "url": "https://www.foursquare.co.nz/south-island/nelson/mapua"
+  },
+  {
+    "name": "Four Square M\u0101rewa",
+    "slug": "four-square-m-rewa",
+    "api_store_id": "0d137b51-a7a0-429b-9ef7-89bbc686ffb1",
+    "store_id_guid": "{0D137B51-A7A0-429B-9EF7-89BBC686FFB1}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/marewa"
+  },
+  {
+    "name": "Four Square M\u0101tangi",
+    "slug": "four-square-m-tangi",
+    "api_store_id": "cad80ae4-bef9-424d-b45c-bd80754c8c3b",
+    "store_id_guid": "{CAD80AE4-BEF9-424D-B45C-BD80754C8C3B}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/matangi"
+  },
+  {
+    "name": "Four Square Naenae",
+    "slug": "four-square-naenae",
+    "api_store_id": "2c72948a-8266-4c93-8aba-6e75d32245a3",
+    "store_id_guid": "{2C72948A-8266-4C93-8ABA-6E75D32245A3}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/naenae"
+  },
+  {
+    "name": "Four Square National Park",
+    "slug": "four-square-national-park",
+    "api_store_id": "3e0c3294-aee0-4fed-874a-7fe110d8f4b0",
+    "store_id_guid": "{3E0C3294-AEE0-4FED-874A-7FE110D8F4B0}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/national-park"
+  },
+  {
+    "name": "Four Square Netherby",
+    "slug": "four-square-netherby",
+    "api_store_id": "51750f4e-21a6-40f3-8dc9-618ddd3d2fb0",
+    "store_id_guid": "{51750F4E-21A6-40F3-8DC9-618DDD3D2FB0}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/netherby"
+  },
+  {
+    "name": "Four Square New \u014cpunake",
+    "slug": "four-square-new-punake",
+    "api_store_id": "3c9adffc-5df7-4971-a198-6d56741aec07",
+    "store_id_guid": "{3C9ADFFC-5DF7-4971-A198-6D56741AEC07}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/new-opunake"
+  },
+  {
+    "name": "Four Square Newfield",
+    "slug": "four-square-newfield",
+    "api_store_id": "3b0c2179-a933-401b-afc1-da728e06291f",
+    "store_id_guid": "{3B0C2179-A933-401B-AFC1-DA728E06291F}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/newfield"
+  },
+  {
+    "name": "Four Square Ngongotah\u0101",
+    "slug": "four-square-ngongotah",
+    "api_store_id": "ef50a874-23d3-433f-b1d0-d88fad9e04f5",
+    "store_id_guid": "{EF50A874-23D3-433F-B1D0-D88FAD9E04F5}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/ngongotaha"
+  },
+  {
+    "name": "Four Square Ng\u0101tea",
+    "slug": "four-square-ng-tea",
+    "api_store_id": "5b388781-939d-47de-8709-faca216fc7d3",
+    "store_id_guid": "{5B388781-939D-47DE-8709-FACA216FC7D3}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/ngatea"
+  },
+  {
+    "name": "Four Square Ohauiti",
+    "slug": "four-square-ohauiti",
+    "api_store_id": "03e13379-6aa5-4035-9ee0-e60f52e7295b",
+    "store_id_guid": "{03E13379-6AA5-4035-9EE0-E60F52E7295B}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/ohauiti"
+  },
+  {
+    "name": "Four Square Omarama",
+    "slug": "four-square-omarama",
+    "api_store_id": "906b17fc-9c5d-46a0-a524-c12a2afb324c",
+    "store_id_guid": "{906B17FC-9C5D-46A0-A524-C12A2AFB324C}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/omarama"
+  },
+  {
+    "name": "Four Square Onehunga",
+    "slug": "four-square-onehunga",
+    "api_store_id": "8d84325d-fb12-4e1e-9153-91150bf93be6",
+    "store_id_guid": "{8D84325D-FB12-4E1E-9153-91150BF93BE6}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/onehunga"
+  },
+  {
+    "name": "Four Square Oneroa",
+    "slug": "four-square-oneroa",
+    "api_store_id": "5ed19d57-b947-4ffd-a1bb-660770df96e9",
+    "store_id_guid": "{5ED19D57-B947-4FFD-A1BB-660770DF96E9}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/oneroa"
+  },
+  {
+    "name": "Four Square Onetangi",
+    "slug": "four-square-onetangi",
+    "api_store_id": "ac72f9a1-4472-41b4-8845-d8a67e26cfc1",
+    "store_id_guid": "{AC72F9A1-4472-41B4-8845-D8A67E26CFC1}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/onetangi"
+  },
+  {
+    "name": "Four Square Opononi",
+    "slug": "four-square-opononi",
+    "api_store_id": "6b6ece14-bc73-4638-98ce-b009a10bdc69",
+    "store_id_guid": "{6B6ECE14-BC73-4638-98CE-B009A10BDC69}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/opononi"
+  },
+  {
+    "name": "Four Square Otatara",
+    "slug": "four-square-otatara",
+    "api_store_id": "b7a426b3-e6d9-4985-a9cb-da6ca385fbc6",
+    "store_id_guid": "{B7A426B3-E6D9-4985-A9CB-DA6CA385FBC6}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/otatara"
+  },
+  {
+    "name": "Four Square Outram",
+    "slug": "four-square-outram",
+    "api_store_id": "301648d8-4bcd-4680-824f-a9c1e061222b",
+    "store_id_guid": "{301648D8-4BCD-4680-824F-A9C1E061222B}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/outram"
+  },
+  {
+    "name": "Four Square Owaka",
+    "slug": "four-square-owaka",
+    "api_store_id": "7e9b7b01-1654-4f68-8fa3-24937c7f5582",
+    "store_id_guid": "{7E9B7B01-1654-4F68-8FA3-24937C7F5582}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/owaka"
+  },
+  {
+    "name": "Four Square Paeroa",
+    "slug": "four-square-paeroa",
+    "api_store_id": "01cd7d92-b3d8-40aa-a344-ee48d903088a",
+    "store_id_guid": "{01CD7D92-B3D8-40AA-A344-EE48D903088A}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/paeroa"
+  },
+  {
+    "name": "Four Square Paihia",
+    "slug": "four-square-paihia",
+    "api_store_id": "70291bd4-3ccc-4c49-89d2-ccc072767c50",
+    "store_id_guid": "{70291BD4-3CCC-4C49-89D2-CCC072767C50}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/paihia"
+  },
+  {
+    "name": "Four Square Pakuranga Heights",
+    "slug": "four-square-pakuranga-heights",
+    "api_store_id": "974cda3b-dc5d-4f7b-868e-3e9d5c63b0e8",
+    "store_id_guid": "{974CDA3B-DC5D-4F7B-868E-3E9D5C63B0E8}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/pakuranga-heights"
+  },
+  {
+    "name": "Four Square Palmerston",
+    "slug": "four-square-palmerston",
+    "api_store_id": "b4fd6757-8fb4-4ba4-9998-4678c465eb7f",
+    "store_id_guid": "{B4FD6757-8FB4-4BA4-9998-4678C465EB7F}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/palmerston"
+  },
+  {
+    "name": "Four Square Papamoa",
+    "slug": "four-square-papamoa",
+    "api_store_id": "147b3722-8ea1-4824-a36c-d1c261a68457",
+    "store_id_guid": "{147B3722-8EA1-4824-A36C-D1C261A68457}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/papamoa"
+  },
+  {
+    "name": "Four Square Parakai",
+    "slug": "four-square-parakai",
+    "api_store_id": "e54e4f45-5dc7-4b05-8ae1-34494d6ca6cc",
+    "store_id_guid": "{E54E4F45-5DC7-4B05-8AE1-34494D6CA6CC}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/parakai"
+  },
+  {
+    "name": "Four Square Paraparaumu",
+    "slug": "four-square-paraparaumu",
+    "api_store_id": "359338c0-04ab-471b-bd80-f2eeb41deda4",
+    "store_id_guid": "{359338C0-04AB-471B-BD80-F2EEB41DEDA4}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/paraparaumu"
+  },
+  {
+    "name": "Four Square Paraparaumu Beach",
+    "slug": "four-square-paraparaumu-beach",
+    "api_store_id": "cf03cd27-19fe-47e9-bcde-7af12b12983f",
+    "store_id_guid": "{CF03CD27-19FE-47E9-BCDE-7AF12B12983F}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/paraparaumu-beach"
+  },
+  {
+    "name": "Four Square Parua Bay",
+    "slug": "four-square-parua-bay",
+    "api_store_id": "2c3f687e-97c7-4f63-b600-865d090bdf71",
+    "store_id_guid": "{2C3F687E-97C7-4F63-B600-865D090BDF71}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/parua-bay"
+  },
+  {
+    "name": "Four Square Patumahoe",
+    "slug": "four-square-patumahoe",
+    "api_store_id": "cb13b8ee-e0fb-43ef-9ca4-a7341778d5a4",
+    "store_id_guid": "{CB13B8EE-E0FB-43EF-9CA4-A7341778D5A4}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/patumahoe"
+  },
+  {
+    "name": "Four Square Picton",
+    "slug": "four-square-picton",
+    "api_store_id": "8b207e54-8de4-474f-b8c7-92eb4e529e6b",
+    "store_id_guid": "{8B207E54-8DE4-474F-B8C7-92EB4E529E6B}",
+    "url": "https://www.foursquare.co.nz/south-island/marlborough/picton"
+  },
+  {
+    "name": "Four Square Pirongia",
+    "slug": "four-square-pirongia",
+    "api_store_id": "7b1e7535-b2e5-4359-bd65-9cafbf04c942",
+    "store_id_guid": "{7B1E7535-B2E5-4359-BD65-9CAFBF04C942}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/pirongia"
+  },
+  {
+    "name": "Four Square Pleasant Point",
+    "slug": "four-square-pleasant-point",
+    "api_store_id": "991d7c49-2e0d-44fa-afd3-fcb65cb544e3",
+    "store_id_guid": "{991D7C49-2E0D-44FA-AFD3-FCB65CB544E3}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/pleasant-point"
+  },
+  {
+    "name": "Four Square Port Chalmers",
+    "slug": "four-square-port-chalmers",
+    "api_store_id": "91d82e59-3ad7-41ab-8e47-0f16d460d60b",
+    "store_id_guid": "{91D82E59-3AD7-41AB-8E47-0F16D460D60B}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/port-chalmers"
+  },
+  {
+    "name": "Four Square Put\u0101ruru",
+    "slug": "four-square-put-ruru",
+    "api_store_id": "4f5dc960-8b89-4449-9438-6569cdd1e3e2",
+    "store_id_guid": "{4F5DC960-8B89-4449-9438-6569CDD1E3E2}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/putaruru"
+  },
+  {
+    "name": "Four Square P\u0101tea",
+    "slug": "four-square-p-tea",
+    "api_store_id": "3a16229a-ceab-4a38-b4ca-45872bd62f3f",
+    "store_id_guid": "{3A16229A-CEAB-4A38-B4CA-45872BD62F3F}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/patea"
+  },
+  {
+    "name": "Four Square Queenstown",
+    "slug": "four-square-queenstown",
+    "api_store_id": "14a3cbae-0d0f-44f7-baf5-7dc7de78ba90",
+    "store_id_guid": "{14A3CBAE-0D0F-44F7-BAF5-7DC7DE78BA90}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/queenstown"
+  },
+  {
+    "name": "Four Square Raetihi",
+    "slug": "four-square-raetihi",
+    "api_store_id": "6ce39971-32f8-41eb-8e76-49ac91cbba50",
+    "store_id_guid": "{6CE39971-32F8-41EB-8E76-49AC91CBBA50}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/raetihi"
+  },
+  {
+    "name": "Four Square Raglan",
+    "slug": "four-square-raglan",
+    "api_store_id": "b6ce6441-b419-4389-ab92-0ce1b7e632d7",
+    "store_id_guid": "{B6CE6441-B419-4389-AB92-0CE1B7E632D7}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/raglan"
+  },
+  {
+    "name": "Four Square Rakaia",
+    "slug": "four-square-rakaia",
+    "api_store_id": "73041282-636d-4870-9ad9-383d3684879f",
+    "store_id_guid": "{73041282-636D-4870-9AD9-383D3684879F}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/rakaia"
+  },
+  {
+    "name": "Four Square Raumati South",
+    "slug": "four-square-raumati-south",
+    "api_store_id": "9545c21c-45be-478c-aea6-1e2cd048473e",
+    "store_id_guid": "{9545C21C-45BE-478C-AEA6-1E2CD048473E}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/raumati-south"
+  },
+  {
+    "name": "Four Square Red Beach",
+    "slug": "four-square-red-beach",
+    "api_store_id": "e18accfc-1efa-422c-8135-3523a8973545",
+    "store_id_guid": "{E18ACCFC-1EFA-422C-8135-3523A8973545}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/red-beach"
+  },
+  {
+    "name": "Four Square Reefton",
+    "slug": "four-square-reefton",
+    "api_store_id": "41314556-6cb7-4d3f-9b84-941314c3fc8a",
+    "store_id_guid": "{41314556-6CB7-4D3F-9B84-941314C3FC8A}",
+    "url": "https://www.foursquare.co.nz/south-island/west-coast/reefton"
+  },
+  {
+    "name": "Four Square Remuera",
+    "slug": "four-square-remuera",
+    "api_store_id": "13334012-8847-4aba-aa73-feb414c3c28e",
+    "store_id_guid": "{13334012-8847-4ABA-AA73-FEB414C3C28E}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/remuera"
+  },
+  {
+    "name": "Four Square Rifle Range Road",
+    "slug": "four-square-rifle-range-road",
+    "api_store_id": "f3823bcc-e5de-4248-9fb5-1ee49eeb44b6",
+    "store_id_guid": "{F3823BCC-E5DE-4248-9FB5-1EE49EEB44B6}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/central-plateau/rifle-range-road"
+  },
+  {
+    "name": "Four Square Riverview",
+    "slug": "four-square-riverview",
+    "api_store_id": "f8a33990-a63c-4429-a405-37e9ffc61bc0",
+    "store_id_guid": "{F8A33990-A63C-4429-A405-37E9FFC61BC0}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/riverview"
+  },
+  {
+    "name": "Four Square Rodney",
+    "slug": "four-square-rodney",
+    "api_store_id": "d4d4a211-0f60-4a0f-9ab0-3aec1c857f59",
+    "store_id_guid": "{D4D4A211-0F60-4A0F-9AB0-3AEC1C857F59}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/rodney"
+  },
+  {
+    "name": "Four Square Rosebank",
+    "slug": "four-square-rosebank",
+    "api_store_id": "6b7075c3-59e8-41b4-bc01-bd1a6edcb7f4",
+    "store_id_guid": "{6B7075C3-59E8-41B4-BC01-BD1A6EDCB7F4}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/rosebank"
+  },
+  {
+    "name": "Four Square Ruat\u014dria",
+    "slug": "four-square-ruat-ria",
+    "api_store_id": "15538bc5-bc3d-40d2-9dec-6966a1bc0edc",
+    "store_id_guid": "{15538BC5-BC3D-40D2-9DEC-6966A1BC0EDC}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/east-cape/ruatoria"
+  },
+  {
+    "name": "Four Square Ruawai",
+    "slug": "four-square-ruawai",
+    "api_store_id": "ee0e4212-f923-4adb-8765-a9158623d228",
+    "store_id_guid": "{EE0E4212-F923-4ADB-8765-A9158623D228}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/ruawai"
+  },
+  {
+    "name": "Four Square Russell",
+    "slug": "four-square-russell",
+    "api_store_id": "af00c0bd-4cfe-495f-a72c-db5a30576887",
+    "store_id_guid": "{AF00C0BD-4CFE-495F-A72C-DB5A30576887}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/russell"
+  },
+  {
+    "name": "Four Square Scott Drive",
+    "slug": "four-square-scott-drive",
+    "api_store_id": "6d5256eb-3e6a-469c-b3fc-fdf6512e0173",
+    "store_id_guid": "{6D5256EB-3E6A-469C-B3FC-FDF6512E0173}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/scott-drive"
+  },
+  {
+    "name": "Four Square Selwyn Heights",
+    "slug": "four-square-selwyn-heights",
+    "api_store_id": "c18befc1-96db-4a6b-9eb5-eae01448cbec",
+    "store_id_guid": "{C18BEFC1-96DB-4A6B-9EB5-EAE01448CBEC}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/central-plateau/selwyn-heights"
+  },
+  {
+    "name": "Four Square Shannon",
+    "slug": "four-square-shannon",
+    "api_store_id": "e5d5a380-a684-46e4-8edc-7c8f79e2205f",
+    "store_id_guid": "{E5D5A380-A684-46E4-8EDC-7C8F79E2205F}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/shannon"
+  },
+  {
+    "name": "Four Square Silverdale",
+    "slug": "four-square-silverdale",
+    "api_store_id": "964b74e4-1980-45d4-8d24-c3eccd09fb69",
+    "store_id_guid": "{964B74E4-1980-45D4-8D24-C3ECCD09FB69}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/silverdale"
+  },
+  {
+    "name": "Four Square Snells Beach",
+    "slug": "four-square-snells-beach",
+    "api_store_id": "4f5dc960-8b89-4449-9438-6569cdd1e3eb",
+    "store_id_guid": "{4F5DC960-8B89-4449-9438-6569CDD1E3EB}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/snells-beach"
+  },
+  {
+    "name": "Four Square Spring Creek",
+    "slug": "four-square-spring-creek",
+    "api_store_id": "6ffbd6a0-6b06-4dbb-93e2-67c60a61d6dc",
+    "store_id_guid": "{6FFBD6A0-6B06-4DBB-93E2-67C60A61D6DC}",
+    "url": "https://www.foursquare.co.nz/south-island/marlborough/spring-creek"
+  },
+  {
+    "name": "Four Square St Clair",
+    "slug": "four-square-st-clair",
+    "api_store_id": "fe66df2f-c393-4e55-8e4f-e5e1113eb2fa",
+    "store_id_guid": "{FE66DF2F-C393-4E55-8E4F-E5E1113EB2FA}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/st-clair"
+  },
+  {
+    "name": "Four Square St Heliers",
+    "slug": "four-square-st-heliers",
+    "api_store_id": "d5641a0d-91a8-4c1a-ab82-ece6333654e1",
+    "store_id_guid": "{D5641A0D-91A8-4C1A-AB82-ECE6333654E1}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/st-heliers"
+  },
+  {
+    "name": "Four Square St Johns",
+    "slug": "four-square-st-johns",
+    "api_store_id": "8df00252-b004-4538-ad87-925ff775047b",
+    "store_id_guid": "{8DF00252-B004-4538-AD87-925FF775047B}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/st-johns"
+  },
+  {
+    "name": "Four Square Stafford Street",
+    "slug": "four-square-stafford-street",
+    "api_store_id": "53e2e904-6816-45ad-92fc-1a5f7a563682",
+    "store_id_guid": "{53E2E904-6816-45AD-92FC-1A5F7A563682}",
+    "url": "https://www.foursquare.co.nz/south-island/west-coast/stafford-street"
+  },
+  {
+    "name": "Four Square Stewart Island",
+    "slug": "four-square-stewart-island",
+    "api_store_id": "e39377d3-a32b-43b9-836c-4798003b7659",
+    "store_id_guid": "{E39377D3-A32B-43B9-836C-4798003B7659}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/stewart-island"
+  },
+  {
+    "name": "Four Square Stratford",
+    "slug": "four-square-stratford",
+    "api_store_id": "ae30041d-f060-4d5a-948b-13b118a2943e",
+    "store_id_guid": "{AE30041D-F060-4D5A-948B-13B118A2943E}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/stratford"
+  },
+  {
+    "name": "Four Square Tairua",
+    "slug": "four-square-tairua",
+    "api_store_id": "d9139d47-6481-441b-8798-8d546562ce6c",
+    "store_id_guid": "{D9139D47-6481-441B-8798-8D546562CE6C}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/coromandel/tairua"
+  },
+  {
+    "name": "Four Square Tait\u0101",
+    "slug": "four-square-tait",
+    "api_store_id": "af448969-518d-43ed-bca9-137fefec7a71",
+    "store_id_guid": "{AF448969-518D-43ED-BCA9-137FEFEC7A71}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/taita"
+  },
+  {
+    "name": "Four Square Takapau",
+    "slug": "four-square-takapau",
+    "api_store_id": "b1035d8f-83f8-40cd-beee-fb66a8cc01d2",
+    "store_id_guid": "{B1035D8F-83F8-40CD-BEEE-FB66A8CC01D2}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/takapau"
+  },
+  {
+    "name": "Four Square Tamahere",
+    "slug": "four-square-tamahere",
+    "api_store_id": "f1312a24-0249-4117-9b11-ad023fe29721",
+    "store_id_guid": "{F1312A24-0249-4117-9B11-AD023FE29721}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/tamahere"
+  },
+  {
+    "name": "Four Square Tapanui",
+    "slug": "four-square-tapanui",
+    "api_store_id": "fcbd5f09-2f3c-4277-aae1-62915b4f7e79",
+    "store_id_guid": "{FCBD5F09-2F3C-4277-AAE1-62915B4F7E79}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/tapanui"
+  },
+  {
+    "name": "Four Square Tapawera",
+    "slug": "four-square-tapawera",
+    "api_store_id": "184c3ce0-3645-492d-988a-0b2a46a6cb34",
+    "store_id_guid": "{184C3CE0-3645-492D-988A-0B2A46A6CB34}",
+    "url": "https://www.foursquare.co.nz/south-island/nelson/tapawera"
+  },
+  {
+    "name": "Four Square Taradale",
+    "slug": "four-square-taradale",
+    "api_store_id": "4e92b776-4ff4-4914-a3c5-b75cbb928c39",
+    "store_id_guid": "{4E92B776-4FF4-4914-A3C5-B75CBB928C39}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/taradale"
+  },
+  {
+    "name": "Four Square Te Anau",
+    "slug": "four-square-te-anau",
+    "api_store_id": "1aa8078d-168e-4438-a95a-6eaac7caa2df",
+    "store_id_guid": "{1AA8078D-168E-4438-A95A-6EAAC7CAA2DF}",
+    "url": "https://www.foursquare.co.nz/south-island/fiordland/te-anau"
+  },
+  {
+    "name": "Four Square Te Aroha",
+    "slug": "four-square-te-aroha",
+    "api_store_id": "61e2d301-ab1f-42ff-bf23-8f8a306a4c58",
+    "store_id_guid": "{61E2D301-AB1F-42FF-BF23-8F8A306A4C58}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/te-aroha"
+  },
+  {
+    "name": "Four Square Te K\u014dwhai",
+    "slug": "four-square-te-k-whai",
+    "api_store_id": "ef676f39-e310-48c9-a398-597eaf2b798a",
+    "store_id_guid": "{EF676F39-E310-48C9-A398-597EAF2B798A}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/waikato/te-kowhai"
+  },
+  {
+    "name": "Four Square Te Mata",
+    "slug": "four-square-te-mata",
+    "api_store_id": "ba8bbe6b-1089-4437-8745-b042c452dbb5",
+    "store_id_guid": "{BA8BBE6B-1089-4437-8745-B042C452DBB5}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/te-mata"
+  },
+  {
+    "name": "Four Square Te Ngae",
+    "slug": "four-square-te-ngae",
+    "api_store_id": "1bd978f9-e09f-48a8-b8b4-3a35ecfdbbb6",
+    "store_id_guid": "{1BD978F9-E09F-48A8-B8B4-3A35ECFDBBB6}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/central-plateau/te-ngae"
+  },
+  {
+    "name": "Four Square Te Puke",
+    "slug": "four-square-te-puke",
+    "api_store_id": "c9444eaa-7388-4cae-8441-140a9e05b6ba",
+    "store_id_guid": "{C9444EAA-7388-4CAE-8441-140A9E05B6BA}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/te-puke"
+  },
+  {
+    "name": "Four Square Te Puna",
+    "slug": "four-square-te-puna",
+    "api_store_id": "4fc42844-adcb-4cdd-89e9-663fc5226053",
+    "store_id_guid": "{4FC42844-ADCB-4CDD-89E9-663FC5226053}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/te-puna"
+  },
+  {
+    "name": "Four Square Tekapo",
+    "slug": "four-square-tekapo",
+    "api_store_id": "d8aa4eef-5b03-4a91-8b29-3073bb4c8665",
+    "store_id_guid": "{D8AA4EEF-5B03-4A91-8B29-3073BB4C8665}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/tekapo"
+  },
+  {
+    "name": "Four Square Thames",
+    "slug": "four-square-thames",
+    "api_store_id": "50f6d33e-94e8-4f40-afbf-e817ee629180",
+    "store_id_guid": "{50F6D33E-94E8-4F40-AFBF-E817EE629180}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/coromandel/thames"
+  },
+  {
+    "name": "Four Square The Lakes",
+    "slug": "four-square-the-lakes",
+    "api_store_id": "c9e3fca7-f106-4c53-8a60-ecf7232e4220",
+    "store_id_guid": "{C9E3FCA7-F106-4C53-8A60-ECF7232E4220}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/the-lakes"
+  },
+  {
+    "name": "Four Square Tokomairiro Milton",
+    "slug": "four-square-tokomairiro-milton",
+    "api_store_id": "743b4beb-44ca-4784-882a-a2858f991032",
+    "store_id_guid": "{743B4BEB-44CA-4784-882A-A2858F991032}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/tokomairiro-milton"
+  },
+  {
+    "name": "Four Square Tokomaru Bay",
+    "slug": "four-square-tokomaru-bay",
+    "api_store_id": "8d31d773-3d6f-43e7-988e-63984b4c09d8",
+    "store_id_guid": "{8D31D773-3D6F-43E7-988E-63984B4C09D8}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/east-cape/tokomaru-bay"
+  },
+  {
+    "name": "Four Square Torbay",
+    "slug": "four-square-torbay",
+    "api_store_id": "4fd59576-eb32-4d85-9d83-214937047238",
+    "store_id_guid": "{4FD59576-EB32-4D85-9D83-214937047238}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/torbay"
+  },
+  {
+    "name": "Four Square Tuatapere",
+    "slug": "four-square-tuatapere",
+    "api_store_id": "112ea58e-27e5-401d-8f47-13583dc852a6",
+    "store_id_guid": "{112EA58E-27E5-401D-8F47-13583DC852A6}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/tuatapere"
+  },
+  {
+    "name": "Four Square Twizel",
+    "slug": "four-square-twizel",
+    "api_store_id": "70283c8b-5023-433e-b32e-2bde2e682adc",
+    "store_id_guid": "{70283C8B-5023-433E-B32E-2BDE2E682ADC}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/twizel"
+  },
+  {
+    "name": "Four Square Urenui",
+    "slug": "four-square-urenui",
+    "api_store_id": "bd559ab9-5c61-46e1-b302-968c5df5c81a",
+    "store_id_guid": "{BD559AB9-5C61-46E1-B302-968C5DF5C81A}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/urenui"
+  },
+  {
+    "name": "Four Square Waiau Pa",
+    "slug": "four-square-waiau-pa",
+    "api_store_id": "9ad22cb4-d6f7-49fc-852d-d23c91e40937",
+    "store_id_guid": "{9AD22CB4-D6F7-49FC-852D-D23C91E40937}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/waiau-pa"
+  },
+  {
+    "name": "Four Square Waihi Beach",
+    "slug": "four-square-waihi-beach",
+    "api_store_id": "f7364265-bbed-443f-89b4-0041968f1cd6",
+    "store_id_guid": "{F7364265-BBED-443F-89B4-0041968F1CD6}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/waihi-beach"
+  },
+  {
+    "name": "Four Square Waikanae Beach",
+    "slug": "four-square-waikanae-beach",
+    "api_store_id": "c8d93ba7-e614-4127-9617-3a6df8078f79",
+    "store_id_guid": "{C8D93BA7-E614-4127-9617-3A6DF8078F79}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/wellington/waikanae-beach"
+  },
+  {
+    "name": "Four Square Waimamaku",
+    "slug": "four-square-waimamaku",
+    "api_store_id": "49c6b3e6-ee50-40b5-916a-aeadacb15f74",
+    "store_id_guid": "{49C6B3E6-EE50-40B5-916A-AEADACB15F74}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/waimamaku"
+  },
+  {
+    "name": "Four Square Wainui Road",
+    "slug": "four-square-wainui-road",
+    "api_store_id": "93c7d397-22a7-4886-8072-f562094a487f",
+    "store_id_guid": "{93C7D397-22A7-4886-8072-F562094A487F}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/east-cape/wainui-road"
+  },
+  {
+    "name": "Four Square Waipapa",
+    "slug": "four-square-waipapa",
+    "api_store_id": "02d65524-61ec-44c5-ae80-ce5177649f82",
+    "store_id_guid": "{02D65524-61EC-44C5-AE80-CE5177649F82}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/waipapa"
+  },
+  {
+    "name": "Four Square Waipawa",
+    "slug": "four-square-waipawa",
+    "api_store_id": "307c52fe-e9f1-464e-9475-be8479903ad6",
+    "store_id_guid": "{307C52FE-E9F1-464E-9475-BE8479903AD6}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/hawkes-bay/waipawa"
+  },
+  {
+    "name": "Four Square Waip\u016b",
+    "slug": "four-square-waip",
+    "api_store_id": "789dc6d6-5715-45d4-9c88-d79eda66c795",
+    "store_id_guid": "{789DC6D6-5715-45D4-9C88-D79EDA66C795}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/waipu"
+  },
+  {
+    "name": "Four Square Waitara",
+    "slug": "four-square-waitara",
+    "api_store_id": "d50189bb-600f-475c-a214-85e9453ec11a",
+    "store_id_guid": "{D50189BB-600F-475C-A214-85E9453EC11A}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/waitara"
+  },
+  {
+    "name": "Four Square Wait\u0101rere",
+    "slug": "four-square-wait-rere",
+    "api_store_id": "19a669f6-e91b-4330-a2db-6aa26d4f248b",
+    "store_id_guid": "{19A669F6-E91B-4330-A2DB-6AA26D4F248B}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/waitarere"
+  },
+  {
+    "name": "Four Square Wakefield",
+    "slug": "four-square-wakefield",
+    "api_store_id": "0bce4aff-5875-4d9b-823b-d69258a86aab",
+    "store_id_guid": "{0BCE4AFF-5875-4D9B-823B-D69258A86AAB}",
+    "url": "https://www.foursquare.co.nz/south-island/nelson/wakefield"
+  },
+  {
+    "name": "Four Square Waverley",
+    "slug": "four-square-waverley",
+    "api_store_id": "e93480c2-5931-405a-baa8-ad2c4918377e",
+    "store_id_guid": "{E93480C2-5931-405A-BAA8-AD2C4918377E}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/waverley"
+  },
+  {
+    "name": "Four Square Welcome Bay",
+    "slug": "four-square-welcome-bay",
+    "api_store_id": "5c1cc817-4a0a-4ee2-afc4-f300f0eea803",
+    "store_id_guid": "{5C1CC817-4A0A-4EE2-AFC4-F300F0EEA803}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/welcome-bay"
+  },
+  {
+    "name": "Four Square Wellsford",
+    "slug": "four-square-wellsford",
+    "api_store_id": "d9d2bd66-9692-45b5-a95e-111846193e56",
+    "store_id_guid": "{D9D2BD66-9692-45B5-A95E-111846193E56}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/auckland/wellsford"
+  },
+  {
+    "name": "Four Square West Melton",
+    "slug": "four-square-west-melton",
+    "api_store_id": "7c56f341-ee04-40d0-9ffd-ecb60b0b97dd",
+    "store_id_guid": "{7C56F341-EE04-40D0-9FFD-ECB60B0B97DD}",
+    "url": "https://www.foursquare.co.nz/south-island/canterbury/west-melton"
+  },
+  {
+    "name": "Four Square Western Heights",
+    "slug": "four-square-western-heights",
+    "api_store_id": "09f332d3-b190-4d01-b663-5cb04172fe6f",
+    "store_id_guid": "{09F332D3-B190-4D01-B663-5CB04172FE6F}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/central-plateau/western-heights"
+  },
+  {
+    "name": "Four Square Weston",
+    "slug": "four-square-weston",
+    "api_store_id": "b0637805-cb39-48e9-a928-ae0526492007",
+    "store_id_guid": "{B0637805-CB39-48E9-A928-AE0526492007}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/weston"
+  },
+  {
+    "name": "Four Square Whanganui East",
+    "slug": "four-square-whanganui-east",
+    "api_store_id": "5db6e94c-cae7-49e3-bdb1-5486bdb59ef7",
+    "store_id_guid": "{5DB6E94C-CAE7-49E3-BDB1-5486BDB59EF7}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/whanganui-east"
+  },
+  {
+    "name": "Four Square Woodville",
+    "slug": "four-square-woodville",
+    "api_store_id": "59dd3199-8757-408c-9022-53395328a719",
+    "store_id_guid": "{59DD3199-8757-408C-9022-53395328A719}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/manawatu-whanganui/woodville"
+  },
+  {
+    "name": "Four Square Wyndham",
+    "slug": "four-square-wyndham",
+    "api_store_id": "601f1531-5e54-4f7e-978d-8bd6e1d2ab2d",
+    "store_id_guid": "{601F1531-5E54-4F7E-978D-8BD6E1D2AB2D}",
+    "url": "https://www.foursquare.co.nz/south-island/southland-and-stewart-island/wyndham"
+  },
+  {
+    "name": "Four Square W\u0101naka",
+    "slug": "four-square-w-naka",
+    "api_store_id": "d69afc1b-f64d-420f-97d2-fbfe3b0a4171",
+    "store_id_guid": "{D69AFC1B-F64D-420F-97D2-FBFE3B0A4171}",
+    "url": "https://www.foursquare.co.nz/south-island/otago/wanaka"
+  },
+  {
+    "name": "Four Square \u014cakura",
+    "slug": "four-square-akura",
+    "api_store_id": "d49c177e-25f6-45da-8f78-f934226b236f",
+    "store_id_guid": "{D49C177E-25F6-45DA-8F78-F934226B236F}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/oakura"
+  },
+  {
+    "name": "Four Square \u014chope Beach",
+    "slug": "four-square-hope-beach",
+    "api_store_id": "f40fb202-c429-4078-b3b9-080e1b43ae4d",
+    "store_id_guid": "{F40FB202-C429-4078-B3B9-080E1B43AE4D}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/ohope-beach"
+  },
+  {
+    "name": "Four Square \u014ckato",
+    "slug": "four-square-kato",
+    "api_store_id": "af49140f-089d-45b2-b571-857ddf6fa489",
+    "store_id_guid": "{AF49140F-089D-45B2-B571-857DDF6FA489}",
+    "url": "https://www.foursquare.co.nz/lower-north-island/taranaki/okato"
+  },
+  {
+    "name": "Four Square \u014cp\u014dtiki",
+    "slug": "four-square-p-tiki",
+    "api_store_id": "419f9182-44ef-44ed-a4f6-3647069d5922",
+    "store_id_guid": "{419F9182-44EF-44ED-A4F6-3647069D5922}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/bay-of-plenty/opotiki"
+  },
+  {
+    "name": "Four Square \u014ctaika",
+    "slug": "four-square-taika",
+    "api_store_id": "f1bad6be-ab8b-437e-b7cf-5befffa5718f",
+    "store_id_guid": "{F1BAD6BE-AB8B-437E-B7CF-5BEFFFA5718F}",
+    "url": "https://www.foursquare.co.nz/upper-north-island/northland/otaika"
+  }
+]

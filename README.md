@@ -68,6 +68,19 @@ Freelancer-Projects-Web-Scraper/
     ├── test_scraper_parsers.py # Unit test suite
     ├── exports/                # Verified branch JSONL datasets
     └── README.md               # Detailed technical documentation
+│
+└── foursquare_scraper/         # Four Square NZ Supermarket Scraper & Data Pipeline
+    ├── foursquare_scraper.py   # Main high-speed scraping engine (HTTPX + Patchright fallback)
+    ├── catalog_branches.py     # 210-branch PICO catalog resolver & store registry
+    ├── jsonl_exporter.py       # PICO contract JSONL exporter (integer cents, atomic writes)
+    ├── normalize.py            # GS1 Modulo-10 algorithm, brand/size extractors, promo parser
+    ├── validate_export.py      # Contract & schema compliance auditor with GS1 check
+    ├── import_products.py      # Pico branch DB importer (pooler-optimized bulk SQL)
+    ├── import_all_branches.py  # Multi-branch batch importer orchestrator
+    ├── test_suite.py           # Comprehensive pytest suite (GS1, normalization, contract)
+    ├── branches.json           # Authoritative 210-branch registry with Foodstuffs GUIDs
+    ├── exports/                # Verified branch JSONL datasets
+    └── README.md               # Detailed technical documentation
 ```
 
 ---
@@ -124,6 +137,16 @@ Freelancer-Projects-Web-Scraper/
   * **Taxonomy & Sitemap Recovery**: Automatically discovers and traverses the complete 606-category catalog hierarchy via sitemap.xml and department routes.
   * **GS1 Modulo-10 Barcode Validation**: Mathematically verifies GTIN-8, 12, 13, and 14 check digits while isolating produce PLUs.
   * **Multi-Branch Isolation**: Registry and lookup for SuperValue branches (Milton online shopping hub, Mangawhai, Te Kuiti) with batch ingestion into PostgreSQL/Supabase.
+
+### 6. [Four Square NZ Supermarket Scraper](./foursquare_scraper/)
+* **Client / Target**: Four Square Supermarkets New Zealand (`https://www.foursquare.co.nz/`) — Major community supermarket chain under Foodstuffs NZ.
+* **Architecture**: Direct high-speed asynchronous engine (`HTTPX`) with cookie store GUID isolation (`brands_store_id`) and browser-based Turnstile/CapSolver bypass fallback.
+* **Key Capabilities**:
+  * **PICO Scraper Data Contract Compliant**: 100% compliant observation schema with integer cents (`current_price_cents`, `unit_price_cents`).
+  * **GS1 Modulo-10 Barcode Validation**: Mathematical validation of all GTIN-8, 12, 13, and 14 barcodes, strictly isolating produce PLUs.
+  * **210 Authentic Branches Registry**: Pre-compiled registry of all 210 Four Square locations across North and South Islands (`branches.json`) with Foodstuffs GUIDs.
+  * **Foodstuffs Detail Enrichment**: Comprehensive product detail cards with nutrition panels, allergens, ingredients, and country of origin statements.
+  * **Multi-Branch Workflow & Import Pipeline**: Full batch exporter and database ingestion runner via `import_products.py` and `import_all_branches.py`.
 
 ---
 

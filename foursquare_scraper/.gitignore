@@ -1,0 +1,18 @@
+# Security & Credentials
+.env
+*.env
+*.session.json
+*.cookies.json
+
+# Cache Backups & Temporary files
+*.bak
+*.tmp
+*.lock
+
+# Python runtime artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Logs
+logs/*.log
