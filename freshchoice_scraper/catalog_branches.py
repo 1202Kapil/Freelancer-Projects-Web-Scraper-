@@ -11,7 +11,15 @@ import logging
 import os
 from pathlib import Path
 import re
+import sys
 from typing import Any, Optional
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +44,16 @@ KNOWN_FRESHCHOICE_STORES: list[dict[str, Any]] = [
         "retailer": "FreshChoice",
         "postcode": "8024",
         "phone": "03-943-9222",
+    },
+    {
+        "id": "bellblock",
+        "name": "Bell Block (SuperValue)",
+        "url": "https://bellblock.store.supervalue.co.nz",
+        "address": "Parklands Shopping Centre, 188 Parklands Avenue, Bell Block, New Plymouth 4312",
+        "shopping_online": True,
+        "retailer": "SuperValue",
+        "postcode": "4312",
+        "phone": "06-755-1963",
     },
     {
         "id": "bormanroad",
@@ -76,6 +94,16 @@ KNOWN_FRESHCHOICE_STORES: list[dict[str, Any]] = [
         "retailer": "FreshChoice",
         "postcode": "1170",
         "phone": "07-343-6753",
+    },
+    {
+        "id": "citymarket",
+        "name": "City Market",
+        "url": "https://citymarket.store.freshchoice.co.nz",
+        "address": "71 Lichfield Street, Christchurch Central, Christchurch Canterbury 8011",
+        "shopping_online": True,
+        "retailer": "FreshChoice",
+        "postcode": "8011",
+        "phone": "03-595-5123",
     },
     {
         "id": "cromwell",
@@ -228,6 +256,16 @@ KNOWN_FRESHCHOICE_STORES: list[dict[str, Any]] = [
         "retailer": "FreshChoice",
         "postcode": "2012",
         "phone": "09-538-0086",
+    },
+    {
+        "id": "haurakicorner",
+        "name": "Hauraki Corner",
+        "url": "https://haurakicorner.store.freshchoice.co.nz",
+        "address": "367 Lake Road, Hauraki, Auckland 0627",
+        "shopping_online": False,
+        "retailer": "FreshChoice",
+        "postcode": "0627",
+        "phone": "09-486-3186",
     },
     {
         "id": "huntly",
@@ -807,10 +845,36 @@ def list_branches(online_only: bool = False) -> list[dict[str, Any]]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="FreshChoice Branch Catalog Resolver")
     parser.add_argument("--online-only", action="store_true", help="Show only stores with online shopping")
+    parser.add_argument("--live", action="store_true", help="Fetch and count live branches from store.freshchoice.co.nz")
+    parser.add_argument("--count-only", action="store_true", help="Show only total counts")
     args = parser.parse_args()
 
     branches = list_branches(online_only=args.online_only)
-    print(f"Total FreshChoice branches resolved: {len(branches)}")
-    for b in branches:
-        online = "✅ Online" if b.get("shopping_online") else "🏢 In-store"
-        print(f" - [{b['id']}] {b['name']} ({online}) -> {b['url']}")
+    total_all = len(KNOWN_FRESHCHOICE_STORES)
+    total_online = len(list_branches(online_only=True))
+    total_instore = total_all - total_online
+
+    print("=" * 60)
+    print("🛒 FreshChoice NZ Branch Registry")
+    print("=" * 60)
+    print(f"Total Branches:        {total_all}")
+    print(f"Online Stores:         {total_online}")
+    print(f"Physical/In-Store:     {total_instore}")
+
+    if args.live:
+        try:
+            from urllib.request import Request, urlopen
+            req = Request("https://store.freshchoice.co.nz/", headers={"User-Agent": "Mozilla/5.0"})
+            with urlopen(req, timeout=10) as r:
+                html = r.read().decode("utf-8", errors="ignore")
+            shop_now = len(re.findall(r"Shop\s+Now", html, re.IGNORECASE))
+            print(f"Live 'Shop Now' Stores: {shop_now} (store.freshchoice.co.nz)")
+        except Exception as e:
+            print(f"Live fetch error: {e}")
+
+    print("=" * 60)
+
+    if not args.count_only:
+        for b in branches:
+            online = "✅ Online" if b.get("shopping_online") else "🏢 In-store"
+            print(f" - [{b['id']}] {b['name']} ({online}) -> {b['url']}")

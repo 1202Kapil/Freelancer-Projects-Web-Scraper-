@@ -67,6 +67,7 @@ class FreshChoiceScraper:
         enrich_details: bool = False,
         max_details: Optional[int] = None,
         timeout: float = REQUEST_TIMEOUT_SECONDS,
+        categories: Optional[list[str]] = None,
     ):
         self.branch_info = get_branch(branch_id)
         if not self.branch_info:
@@ -78,6 +79,7 @@ class FreshChoiceScraper:
         self.enrich_details = enrich_details
         self.max_details = max_details
         self.timeout = timeout
+        self.categories = categories
 
         self.client: Optional[httpx.AsyncClient] = None
         self.rate_limiter = asyncio.Semaphore(PER_HOST_CONCURRENCY)
@@ -102,6 +104,12 @@ class FreshChoiceScraper:
         if not self.client:
             await self._init_client()
 
+        fallback_uas = [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:128.0) Gecko/20100101 Firefox/128.0",
+        ]
+
         for attempt in range(1, RETRY_ATTEMPTS + 1):
             async with self.rate_limiter:
                 # Polite request delay
@@ -115,6 +123,11 @@ class FreshChoiceScraper:
                     elif resp.status_code == 404:
                         logger.debug(f"[404] Resource not found: {url}")
                         return None
+                    elif resp.status_code == 403:
+                        logger.warning(f"[HTTP 403] Access blocked on {url}, rotating User-Agent (attempt {attempt}/{RETRY_ATTEMPTS})")
+                        next_ua = fallback_uas[attempt % len(fallback_uas)]
+                        self.client.headers["User-Agent"] = next_ua
+                        await asyncio.sleep(2.0)
                     elif resp.status_code in (429, 500, 502, 503, 504):
                         backoff = (BACKOFF_FACTOR ** attempt) + random.uniform(0.5, 1.5)
                         logger.warning(f"[HTTP {resp.status_code}] Retrying {url} in {backoff:.2f}s (attempt {attempt}/{RETRY_ATTEMPTS})")
@@ -146,20 +159,36 @@ class FreshChoiceScraper:
                 break
 
             soup = BeautifulSoup(html, "html.parser")
-            # MyFoodLink product cards
-            cards = soup.find_all(
-                ["div", "article", "li"],
-                class_=re.compile(r"product|line-item|card", re.I),
-            )
+            # MyFoodLink product cards (talker elements or elements with id starting with line_)
+            cards = [
+                el for el in soup.find_all(["div", "article", "li"])
+                if el.get("data-talker") is not None
+                or (el.get("id") and str(el.get("id")).startswith("line_"))
+                or (el.get("class") and any(c == "talker" or c.startswith("talker--") for c in el.get("class")) and "section" not in str(el.get("class")))
+            ]
 
-            # If no class matched, find any elements containing /lines/
+            # If no talker matched, fallback to general card/product classes
             if not cards:
-                line_links = soup.find_all("a", href=re.compile(r"/lines/"))
-                cards = [l.parent for l in line_links]
+                cards = soup.find_all(
+                    ["div", "article", "li"],
+                    class_=re.compile(r"product|line-item|card", re.I),
+                )
+
+            # Extract GTM dataLayer for complete Department, Category, Subcategory & Brand taxonomy
+            gtm_items = []
+            gtm_match = re.search(r"window\.gtmDataLayer\s*=\s*(\[.*?\]);\s*//", html, re.DOTALL)
+            if gtm_match:
+                try:
+                    gtm_payload = json.loads(gtm_match.group(1))
+                    if gtm_payload and isinstance(gtm_payload, list):
+                        gtm_items = gtm_payload[0].get("ecommerce", {}).get("items", [])
+                except Exception:
+                    gtm_items = []
 
             page_products = 0
-            for card in cards:
-                parsed = parse_product_card(card, self.branch_id, category_path=display_name)
+            for idx, card in enumerate(cards):
+                gtm_item = gtm_items[idx] if idx < len(gtm_items) else None
+                parsed = parse_product_card(card, self.branch_id, category_path=display_name, gtm_item=gtm_item)
                 if parsed and parsed.get("source_product_id"):
                     pid = parsed["source_product_id"]
                     if pid not in products_by_id:
@@ -237,7 +266,8 @@ class FreshChoiceScraper:
         all_products: dict[str, dict[str, Any]] = {}
 
         # 1. Scrape standard categories
-        for cat_slug in CATEGORIES:
+        target_cats = self.categories if self.categories else CATEGORIES
+        for cat_slug in target_cats:
             # Handle aliases for delicate routes like Deli 404
             aliases = CATEGORY_ALIASES.get(cat_slug, [cat_slug])
             cat_products = []
@@ -251,8 +281,9 @@ class FreshChoiceScraper:
                 if pid not in all_products:
                     all_products[pid] = p
 
-        # 2. Recover Groceries taxonomy beyond 50-page cap
-        all_products = await self.recover_groceries(all_products)
+        # 2. Recover Groceries taxonomy beyond 50-page cap (only if scraping all categories)
+        if not self.categories:
+            all_products = await self.recover_groceries(all_products)
 
         final_records = list(all_products.values())
 
@@ -287,14 +318,17 @@ async def run_scraper(
     branches: list[str],
     enrich_details: bool = False,
     max_details: Optional[int] = None,
+    category: Optional[str] = None,
 ) -> list[dict[str, Any]]:
     """Run scraper across selected branches."""
     results = []
+    categories = [category.strip()] if category else None
     for branch_id in branches:
         scraper = FreshChoiceScraper(
             branch_id=branch_id,
             enrich_details=enrich_details,
             max_details=max_details,
+            categories=categories,
         )
         res = await scraper.scrape_branch()
         results.append(res)
@@ -313,6 +347,12 @@ def main():
         "--all-branches",
         action="store_true",
         help="Scrape all discovered FreshChoice branches with online capability",
+    )
+    parser.add_argument(
+        "--category",
+        type=str,
+        default=None,
+        help="Optional single category to scrape (e.g. bakery, fruit-vegetables)",
     )
     parser.add_argument(
         "--enrich-details",
@@ -339,6 +379,7 @@ def main():
         branches=target_branches,
         enrich_details=args.enrich_details,
         max_details=args.max_details,
+        category=args.category,
     ))
 
 

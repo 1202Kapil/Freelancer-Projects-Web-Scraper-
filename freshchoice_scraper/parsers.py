@@ -19,7 +19,8 @@ from typing import Any, Optional
 from bs4 import BeautifulSoup
 
 from config import VALID_GTIN_LENGTHS, VALID_STOCK_STATUSES, VALID_PROMO_TYPES
-from jsonl_exporter import to_cents
+from jsonl_exporter import to_cents, _slug
+from catalog_branches import get_branch
 from models import Branch, Product, Promotion, PageResult
 
 logger = logging.getLogger(__name__)
@@ -456,7 +457,12 @@ def enrich_from_detail(html_content: str, branch: Branch, item: Product) -> None
             pass
 
 
-def parse_product_card(card_elem, branch_slug: str, category_path: Optional[str] = None) -> Optional[dict[str, Any]]:
+def parse_product_card(
+    card_elem,
+    branch_slug: str,
+    category_path: Optional[str] = None,
+    gtm_item: Optional[dict[str, Any]] = None,
+) -> Optional[dict[str, Any]]:
     """Legacy dict-based card extractor for compatibility with jsonl exporter."""
     link = card_elem.find("a", href=re.compile(r"/lines/"))
     if not link and card_elem.name == "a" and "/lines/" in card_elem.get("href", ""):
@@ -471,23 +477,32 @@ def parse_product_card(card_elem, branch_slug: str, category_path: Optional[str]
     slug = slug_match.group(1).strip()
     product_url = f"https://{branch_slug}.store.freshchoice.co.nz/lines/{slug}"
 
-    title_elem = card_elem.find(class_=re.compile(r"title|name|heading", re.I)) or link
+    title_elem = card_elem.find(class_=re.compile(r"talker__product-name|product-name|title|heading", re.I))
+    if not title_elem:
+        title_elem = card_elem.find(class_=re.compile(r"name", re.I)) or link
     raw_name = title_elem.get_text(separator=" ", strip=True) if title_elem else ""
+    if raw_name.lower().startswith("photo of"):
+        raw_name = re.sub(r"^photo of\s+", "", raw_name, flags=re.I).strip()
     if not raw_name or QUANTITY_ONLY_RE.match(raw_name):
         img = card_elem.find("img")
         if img and img.get("alt"):
-            raw_name = img["alt"].strip()
+            raw_name = re.sub(r"^photo of\s+", "", img["alt"].strip(), flags=re.I).strip()
 
     if not raw_name or QUANTITY_ONLY_RE.match(raw_name):
         return None
 
     clean_name = clean_product_name(raw_name)
-    size = extract_size_from_name(raw_name)
+    size_elem = card_elem.find(class_=re.compile(r"talker__name__size|size", re.I))
+    size = size_elem.get_text(strip=True) if size_elem else extract_size_from_name(raw_name)
 
     card_text = card_elem.get_text(" ", strip=True)
     mb_qty, mb_price_cents, mb_text = parse_multibuy(card_text)
 
-    price_elem = card_elem.find(class_=re.compile(r"price|amount|cost", re.I))
+    price_elem = card_elem.find(class_=re.compile(r"price__sell|talker__prices__sell", re.I))
+    if not price_elem:
+        price_elem = card_elem.find("strong", class_=re.compile(r"price", re.I))
+    if not price_elem:
+        price_elem = card_elem.find(class_=re.compile(r"amount|cost", re.I))
     current_price_cents = None
     if price_elem:
         pm = PRICE_RE.search(price_elem.get_text(strip=True))
@@ -501,9 +516,21 @@ def parse_product_card(card_elem, branch_slug: str, category_path: Optional[str]
             current_price_cents = candidates[0]
 
     comparison_price_cents = None
-    was_m = WAS_PRICE_RE.search(card_text)
-    if was_m:
-        comparison_price_cents = to_cents(was_m.group(1))
+    was_elem = card_elem.find(class_=re.compile(r"talker__prices__was|was", re.I))
+    if was_elem:
+        wm = PRICE_RE.search(was_elem.get_text(strip=True))
+        if wm:
+            comparison_price_cents = to_cents(wm.group(1))
+    if not comparison_price_cents:
+        was_m = WAS_PRICE_RE.search(card_text)
+        if was_m:
+            comparison_price_cents = to_cents(was_m.group(1))
+
+    # Promotion badge / sticker
+    promo_badge = None
+    sticker_elem = card_elem.find(class_=re.compile(r"talker__sticker__label|talker__sticker|sticker|badge|ribbon", re.I))
+    if sticker_elem:
+        promo_badge = re.sub(r"\s+", " ", sticker_elem.get_text(separator=" ", strip=True)).strip()
 
     promo_type = None
     promo_text = None
@@ -512,7 +539,10 @@ def parse_product_card(card_elem, branch_slug: str, category_path: Optional[str]
         promo_text = mb_text
     elif comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents:
         promo_type = "special"
-        promo_text = f"Save ${(comparison_price_cents - current_price_cents)/100:.2f}"
+        savings_cents = comparison_price_cents - current_price_cents
+        promo_text = f"Save ${(savings_cents)/100:.2f}"
+        if promo_badge and promo_badge not in promo_text:
+            promo_text = f"{promo_badge} | {promo_text}"
 
     unit_price_cents = None
     unit_label = None
@@ -532,28 +562,112 @@ def parse_product_card(card_elem, branch_slug: str, category_path: Optional[str]
         branch_base_url = f"https://{branch_slug}.store.freshchoice.co.nz"
         image_url = normalize_image_url(src, branch_base_url)
 
+    # Department & Category Taxonomy from GTM layer or category_path
+    department = gtm_item.get("item_category") if gtm_item else None
+    category = gtm_item.get("item_category2") if gtm_item else None
+    sub_category = gtm_item.get("item_category3") if gtm_item else None
+    brand = gtm_item.get("item_brand") if gtm_item else None
+
+    category_hierarchy = [c for c in [department, category, sub_category] if c]
+    if category_hierarchy:
+        category_path = " > ".join(category_hierarchy)
+    elif category_path:
+        category_hierarchy = [category_path]
+
+    is_promo = bool(promo_type or promo_badge or (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents))
+    sale_price_cents = current_price_cents if is_promo else None
+    list_price_cents = comparison_price_cents or current_price_cents
+    leaf_category = sub_category or category or department or (category_hierarchy[-1] if category_hierarchy else None)
+    lead_category = leaf_category
+
+    # Canonical Store & Category URLs
+    branch_info = get_branch(branch_slug)
+    store_base_url = branch_info["url"] if branch_info else f"https://{branch_slug}.store.freshchoice.co.nz"
+    product_url = f"{store_base_url}/lines/{slug}"
+
+    cat_slug_for_url = None
+    if leaf_category:
+        cat_slug_for_url = _slug(leaf_category)
+    elif category:
+        cat_slug_for_url = _slug(category)
+    elif department:
+        cat_slug_for_url = _slug(department)
+    category_url = f"{store_base_url}/category/{cat_slug_for_url}" if cat_slug_for_url else None
+
+    price_per_unit = round(unit_price_cents / 100, 2) if unit_price_cents is not None else None
+    price_by_unit = unit_label if unit_label else None
+
     return {
+        # Store & Item Identifiers
+        "store_id": branch_slug,
+        "branch_id": branch_slug,
+        "product_id": slug,
         "source_product_id": slug,
+        "sku": slug,
         "retailer_sku": slug,
+        "gtin": None,
         "barcode": None,
+        "mpn": None,
+        "group_id": None,
+
+        # Titles & Taxonomy
         "raw_name": raw_name,
         "clean_name": clean_name,
-        "brand": None,
+        "brand": brand,
+        "department": department or (category_hierarchy[0] if category_hierarchy else None),
+        "category": category or (category_hierarchy[1] if len(category_hierarchy) > 1 else None),
+        "sub_category": sub_category or (category_hierarchy[2] if len(category_hierarchy) > 2 else None),
+        "leaf_category": leaf_category,
+        "lead_category": lead_category,
+        "breadcrumbs": category_hierarchy,
+        "category_hierarchy": category_hierarchy,
         "category_path": category_path,
+        "category_tree": category_path,
+        "category_url": category_url,
         "size": size,
+        "description": None,
+
+        # Pricing & Promotion
+        "currency": "NZD",
+        "price": round(current_price_cents / 100, 2) if current_price_cents is not None else None,
         "current_price_cents": current_price_cents,
+        "sale_price": round(sale_price_cents / 100, 2) if sale_price_cents is not None else None,
+        "sale_price_cents": sale_price_cents,
+        "list_price": round(list_price_cents / 100, 2) if list_price_cents is not None else None,
+        "list_price_cents": list_price_cents,
         "comparison_price_cents": comparison_price_cents,
+        "savings": round((comparison_price_cents - current_price_cents) / 100, 2) if (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents) else None,
+        "savings_cents": (comparison_price_cents - current_price_cents) if (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents) else None,
+        "price_per_unit": price_per_unit,
+        "price_by_unit": price_by_unit,
         "unit_price_cents": unit_price_cents,
         "unit_label": unit_label,
-        "stock_status": stock_status,
+        "is_promo": is_promo,
+        "promo_badge": promo_badge,
         "promo_text": promo_text,
         "promo_type": promo_type,
         "multibuy_quantity": mb_qty,
         "multibuy_price_cents": mb_price_cents,
+
+        # Stock, URLs, Media & Recommendations
+        "availability": stock_status,
+        "stock_status": stock_status,
+        "url": product_url,
         "product_url": product_url,
         "image_url": image_url,
+        "recommended_products": [],
         "observed_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "raw_row": {"branch_id": branch_slug},
+        "raw_row": {
+            "branch_id": branch_slug,
+            "department": department,
+            "category": category,
+            "sub_category": sub_category,
+            "leaf_category": leaf_category,
+            "category_url": category_url,
+            "category_tree": category_path,
+            "price_per_unit": price_per_unit,
+            "price_by_unit": price_by_unit,
+        },
     }
 
 

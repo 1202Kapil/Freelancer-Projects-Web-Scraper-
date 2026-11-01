@@ -53,23 +53,37 @@ def to_cents(value: Any) -> Optional[int]:
         return None
 
 
+PRESERVED_SCHEMA_KEYS = {
+    # Store & Product Identifiers
+    "store_id", "branch_id", "product_id", "source_product_id", "sku", "retailer_sku",
+    "gtin", "barcode", "mpn", "group_id",
+    # Titles & Taxonomy
+    "raw_name", "clean_name", "brand", "description",
+    "department", "category", "sub_category", "lead_category", "leaf_category",
+    "breadcrumbs", "category_hierarchy", "category_path", "category_tree", "category_url",
+    "size",
+    # Pricing & Promotion
+    "currency", "price", "current_price_cents",
+    "sale_price", "sale_price_cents",
+    "list_price", "list_price_cents", "comparison_price_cents",
+    "savings", "savings_cents",
+    "price_per_unit", "price_by_unit", "unit_price_cents", "unit_label",
+    "is_promo", "promo_badge", "promo_text", "promo_type",
+    "multibuy_quantity", "multibuy_price_cents",
+    # Stock, Media & Meta
+    "availability", "stock_status",
+    "url", "product_url", "image_url",
+    "recommended_products", "observed_at", "raw_row",
+}
+
+
 def clean_record(rec: dict) -> dict:
-    """Drop keys whose value is None or empty at the top level so the file
-    uses nulls only where specifically meaningful inside raw_row; top-level
-    absent keys are omitted as required by the client contract.
-    """
+    """Ensure consistent schema fields are preserved while dropping unwanted noise."""
     out = {}
     for k, v in rec.items():
-        if v is None:
-            continue
-        if v == "" and k != "raw_row":
-            continue
-        if isinstance(v, dict):
-            # If a nested object is empty (e.g. {}), drop it if it's metadata
-            cleaned_sub = {sk: sv for sk, sv in v.items() if sv is not None and sv != ""}
-            if cleaned_sub or k == "raw_row":
-                out[k] = v
-        else:
+        if k in PRESERVED_SCHEMA_KEYS:
+            out[k] = v
+        elif v is not None and v != "":
             out[k] = v
     return out
 
