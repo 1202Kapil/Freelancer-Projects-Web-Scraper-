@@ -1,0 +1,80 @@
+Index,ID,Name,Online Shopping,Website URL,Address,Phone,Retailer
+1,avondale,Avondale,NO (Store Info),https://avondale.store.freshchoice.co.nz,"2021 Great North Road, Avondale, Auckland Auckland 1026",09-820-9189,FreshChoice
+2,barrington,Barrington,YES (Shop Now),https://barrington.store.freshchoice.co.nz,"256 Barrington Street, Christchurch 8024",03-943-9222,FreshChoice
+3,bellblock,Bell Block (SuperValue),YES (Shop Now),https://bellblock.store.supervalue.co.nz,"Parklands Shopping Centre, 188 Parklands Avenue, Bell Block, New Plymouth 4312",06-755-1963,SuperValue
+4,bormanroad,Borman Road,NO (Store Info),https://bormanroad.store.freshchoice.co.nz,"2/66 Hare Puke Drive, Flagstaff, Hamilton 3210",07-974-3392,FreshChoice
+5,cambridge,Cambridge,NO (Store Info),https://cambridge.store.freshchoice.co.nz,"97 Swayne Road, Cambridge 3493",07-282-0092,FreshChoice
+6,cannonscreek,Cannons Creek,YES (Shop Now),https://cannonscreek.store.freshchoice.co.nz,"16 Warspite Avenue, Cannons Creek Porirua 5024",04-237-6159,FreshChoice
+7,central-mall,Central Mall,YES (Shop Now),https://central-mall.store.freshchoice.co.nz,"Retail 3, 1170 Amohau Street, Rotorua Bay of Plenty 3010",07-343-6753,FreshChoice
+8,citymarket,City Market,YES (Shop Now),https://citymarket.store.freshchoice.co.nz,"71 Lichfield Street, Christchurch Central, Christchurch Canterbury 8011",03-595-5123,FreshChoice
+9,cromwell,Cromwell,YES (Shop Now),https://cromwell.store.freshchoice.co.nz,"1-3 Iles Street, Cromwell Cromwell 9310",03-445-3488,FreshChoice
+10,cubastreet,Cuba Street,NO (Store Info),https://cubastreet.store.freshchoice.co.nz,"250 Cuba Street, Te Aro Wellington 6011",04-242-0550,FreshChoice
+11,edgeware,Edgeware,YES (Shop Now),https://edgeware.store.freshchoice.co.nz,"61 Edgeware Road, Christchurch 8014",03-366-1918,FreshChoice
+12,epsom,Epsom,YES (Shop Now),https://epsom.store.freshchoice.co.nz,"233A Green Lane West, Auckland 1051",09-526-1922,FreshChoice
+13,featherston,Featherston,YES (Shop Now),https://featherston.store.freshchoice.co.nz,"42 Fitzherbert Street, Rimutaka Hill, Featherston 5710",06-826-0114,FreshChoice
+14,fendalton,Fendalton,NO (Store Info),https://fendalton.store.freshchoice.co.nz,"376 Ilam Road, Bryndwr, Fendalton 8053",03-351-9075,FreshChoice
+15,fitzroy,Fitzroy,NO (Store Info),https://fitzroy.store.freshchoice.co.nz,"531 Devon Street East, Fitzroy Taranaki 4312",06-777-1049,FreshChoice
+16,flagstaff,Flagstaff,NO (Store Info),https://flagstaff.store.freshchoice.co.nz,"Unit 6, Flagstaff Shopping Centre, 1158 River Road, Hamilton 3120",07-854-0588,FreshChoice
+17,flatbush,Flat Bush,NO (Store Info),https://flatbush.store.freshchoice.co.nz,"8/130 Dawson Road, Flat Bush Auckland 2023",09-274-4060,FreshChoice
+18,geraldine,Geraldine,YES (Shop Now),https://geraldine.store.freshchoice.co.nz,"7 Peel Street, Geraldine 7930",03-693-8529,FreshChoice
+19,gleneden,Glen Eden,YES (Shop Now),https://gleneden.store.freshchoice.co.nz,"142 West Coast Road, Auckland 0602",09-813-9030,FreshChoice
+20,greenisland,Green Island,YES (Shop Now),https://greenisland.store.freshchoice.co.nz,"230 Main South Road, Dunedin 9018",03-488-2317,FreshChoice
+21,greerton,Greerton,YES (Shop Now),https://greerton.store.freshchoice.co.nz,"1368 Cameron Road Gate Pa, Tauranga Bay of Plenty 3112",075412244,FreshChoice
+22,greytown,Greytown,YES (Shop Now),https://greytown.store.freshchoice.co.nz,"12 Hastwell Street, Greytown 5712",06-304-7237,FreshChoice
+23,halfmoonbay,Half Moon Bay,NO (Store Info),https://halfmoonbay.store.freshchoice.co.nz,"1 Ara-Tai Road, Auckland 2012",09-538-0086,FreshChoice
+24,haurakicorner,Hauraki Corner,NO (Store Info),https://haurakicorner.store.freshchoice.co.nz,"367 Lake Road, Hauraki, Auckland 0627",09-486-3186,FreshChoice
+25,huntly,Huntly,NO (Store Info),https://huntly.store.freshchoice.co.nz,"107 Main Street, Huntly 3700",072145151,FreshChoice
+26,kaikohe,Kaikohe,NO (Store Info),https://kaikohe.store.freshchoice.co.nz,"37 Station Road East, Kaikohe Northland 0405",094009010,FreshChoice
+27,kaiti,Kaiti,NO (Store Info),https://kaiti.store.freshchoice.co.nz,"Kaiti Mall, 504 Wainui Road, Kaiti, Gisborne Gisborne 4010",06-868-8027,FreshChoice
+28,kellyroad,Kelly Road,YES (Shop Now),https://kellyroad.store.freshchoice.co.nz,"1913 Cambridge Road, Cambridge Waikato 3434",072600140,FreshChoice
+29,kumeu,Kumeu,NO (Store Info),https://kumeu.store.freshchoice.co.nz,"Village Shopping Centre, Kumeu 0810",09-412-9709,FreshChoice
+30,lakehawea,Lake Hawea,NO (Store Info),https://lakehawea.store.freshchoice.co.nz,"5 Bodkin Street, Lake Hāwea Otago 9382",,FreshChoice
+31,leamington,Leamington,YES (Shop Now),https://leamington.store.freshchoice.co.nz,"46 Burns Street, Cambridge, Waikato 3432",07-823-7144,FreshChoice
+32,leeston,Leeston,NO (Store Info),https://leeston.store.freshchoice.co.nz,"78 High Street, Leeston 7632",03-324-3788,FreshChoice
+33,lyttelton,Lyttelton,YES (Shop Now),https://lyttelton.store.freshchoice.co.nz,"17 London Street, Lyttleton, Christchurch 8082",03-328-7368,FreshChoice
+34,mandeville,Mandeville,NO (Store Info),https://mandeville.store.freshchoice.co.nz,"1/468 Mandeville Road, Ohoka, Christchurch 7692",03-312-0000,FreshChoice
+35,mangerebridge,Mangere Bridge,YES (Shop Now),https://mangerebridge.store.freshchoice.co.nz,"40 Coronation Road, Auckland AKL 2022",,FreshChoice
+36,marton,Marton,YES (Shop Now),https://marton.store.freshchoice.co.nz,"280 Broadway, Marton Manawatū 4710",06-327-0007,FreshChoice
+37,merivale,Merivale,YES (Shop Now),https://merivale.store.freshchoice.co.nz,"189 Papanui Road, Merivale 8014",03-355-4432,FreshChoice
+38,methven,Methven,YES (Shop Now),https://methven.store.freshchoice.co.nz,"34 The Mall, Methven 7730",03-302-8050,FreshChoice
+39,nelsoncity,Nelson City,YES (Shop Now),https://nelsoncity.store.freshchoice.co.nz,"69 Collingwood Street, Nelson, Nelson City Tasman 7010",03-548-0191-726,FreshChoice
+40,ngaruawahia,Ngaruawahia,NO (Store Info),https://ngaruawahia.store.freshchoice.co.nz,"150 Great South Road, Ngaruawahia 3720",07-824-7800,FreshChoice
+41,omokoroa,Omokoroa,YES (Shop Now),https://omokoroa.store.freshchoice.co.nz,"160 Omokoroa Road, Omokoroa 3114",07-2811-577-0,FreshChoice
+42,otahuhu,Otahuhu,NO (Store Info),https://otahuhu.store.freshchoice.co.nz,"29 Hall Avenue, Auckland 1062",092766161,FreshChoice
+43,otaki,Otaki,NO (Store Info),https://otaki.store.freshchoice.co.nz,"Cnr Mill Road & WGN NZ, Aotaki Street, Ōtaki Wellington 5512",06-364-9001,FreshChoice
+44,otautau,Otautau,YES (Shop Now),https://otautau.store.freshchoice.co.nz,"157 Main Street, Otautau 9610",03-225-8029,FreshChoice
+45,oxford,Oxford,YES (Shop Now),https://oxford.store.freshchoice.co.nz,"52 Main Street, Oxford 7430",03-312-4305,FreshChoice
+46,paetiki,Paetiki,NO (Store Info),https://paetiki.store.freshchoice.co.nz,"222 Taharepa Road, Taupo, Waikato 3330, New Zealand",07-378-7206,FreshChoice
+47,palomino,Palomino,YES (Shop Now),https://palomino.store.freshchoice.co.nz,"4/138 Sturges Road, Henderson, Auckland 0612",09-837-2921,FreshChoice
+48,papakura,Papakura,NO (Store Info),https://papakura.store.freshchoice.co.nz,"54 Settlement Road, Auckland 2110",09-298-1500,FreshChoice
+49,papamoa,Papamoa,YES (Shop Now),https://papamoa.store.freshchoice.co.nz,"20 Coast Boulevard, Papamoa Beach, Papamoa 3175",,FreshChoice
+50,parklands,Parklands,YES (Shop Now),https://parklands.store.freshchoice.co.nz,"60 Queenspark Drive, Parklands Christchurch 8083",03-3831004,FreshChoice
+51,parkwood,Parkwood,NO (Store Info),https://parkwood.store.freshchoice.co.nz,"4 Gordonton Road, Waikato Hamilton 3210",07-974-4748,FreshChoice
+52,pauanui,Pauanui,YES (Shop Now),https://pauanui.store.freshchoice.co.nz,"Pauanui Shopping Centre, 1 Jubilee Drive, Pauanui 3579",07-864-7692,FreshChoice
+53,picton,Picton,YES (Shop Now),https://picton.store.freshchoice.co.nz,"100 High Street, Picton 7220",03-573-6463,FreshChoice
+54,plaza,Plaza,YES (Shop Now),https://plaza.store.freshchoice.co.nz,"103 Yarrow Street, Invercargill 9810",03-218-2205-221,FreshChoice
+55,prebbleton,Prebbleton,YES (Shop Now),https://prebbleton.store.freshchoice.co.nz,"9 Tosswill Road, Prebbleton Canterbury 7604",03-349-5566,FreshChoice
+56,pyespa,Pyes Pa,YES (Shop Now),https://pyespa.store.freshchoice.co.nz,"Unit 6, 83 Pyes Pa Road, Tauranga, New Zealand",07-543-0623,FreshChoice
+57,queenstown,Queenstown,YES (Shop Now),https://queenstown.store.freshchoice.co.nz,"64 Gorge Road, Otago 9300",03-441-1252,FreshChoice
+58,raglan,Raglan,NO (Store Info),https://raglan.store.freshchoice.co.nz,"16-18 Bow Street, Raglan 3225",07-825-8300,FreshChoice
+59,ranui,Ranui,YES (Shop Now),https://ranui.store.freshchoice.co.nz,"433 Swanson Road,, Auckland 0612",09-833-8420,FreshChoice
+60,reefton,Reefton,YES (Shop Now),https://reefton.store.freshchoice.co.nz,"65 Broadway, Reefton 7830",03-7328-313,FreshChoice
+61,renwick,Renwick,YES (Shop Now),https://renwick.store.freshchoice.co.nz,"78 High Street, Renwick 7204",03-572-8259,FreshChoice
+62,riverton,Riverton,YES (Shop Now),https://riverton.store.freshchoice.co.nz,"163 Palmerston Street, Riverton 9822",03-2348-541,FreshChoice
+63,roslyn,Roslyn,YES (Shop Now),https://roslyn.store.freshchoice.co.nz,"279 Highgate, Dunedin Otago 9010",03-474-0983,FreshChoice
+64,roxburgh,Roxburgh,YES (Shop Now),https://roxburgh.store.freshchoice.co.nz,"93 Scotland Street, Roxburgh 9500",03-446-8118,FreshChoice
+65,ruakaka,Ruakaka,YES (Shop Now),https://ruakaka.store.freshchoice.co.nz,"Shop 24, Ruakaka Town Centre, 378 Marsden Point Road, Ruakaka 0116",09-432-7400,FreshChoice
+66,sumner,Sumner,YES (Shop Now),https://sumner.store.freshchoice.co.nz,"43 Nayland Street, Sumner, Christchurch 8081",03-326-5688,FreshChoice
+67,takaka,Takaka,YES (Shop Now),https://takaka.store.freshchoice.co.nz,"13 Willow Street,, Takaka 7110",03-525-9383,FreshChoice
+68,teanau,Te Anau,YES (Shop Now),https://teanau.store.freshchoice.co.nz,"5 Milford Crescent, Te Anau 9600",03-249-9330,FreshChoice
+69,teawamutu,Te Awamutu,YES (Shop Now),https://teawamutu.store.freshchoice.co.nz,"39 Rewi Street, Te Awamutu 3800",07-871-3086,FreshChoice
+70,tengae,Te Ngae,YES (Shop Now),https://tengae.store.freshchoice.co.nz,"554 Te Ngae Road, Owhata, Rotorua 3010",07-345-4742,FreshChoice
+71,tinwald,Tinwald,NO (Store Info),https://tinwald.store.freshchoice.co.nz,"124 McMurdo Street, Ashburton 7700",03-308-7446,FreshChoice
+72,titirangi,Titirangi,YES (Shop Now),https://titirangi.store.freshchoice.co.nz,"429 Titirangi Road, Auckland 0604",,FreshChoice
+73,tuakau,Tuakau,NO (Store Info),https://tuakau.store.freshchoice.co.nz,"2-4 George Street, Tuakau 2121",09-236-8128,FreshChoice
+74,waihi,Waihi,NO (Store Info),https://waihi.store.freshchoice.co.nz,"6 Consols Street, Waihi Hauraki 3610",078633519,FreshChoice
+75,waimauku,Waimauku,YES (Shop Now),https://waimauku.store.freshchoice.co.nz,"2/5-19 Factory Road, Huapai, Waimauku 0812",09-411-7890,FreshChoice
+76,waiuku,Waiuku,NO (Store Info),https://waiuku.store.freshchoice.co.nz,"67-69 Queen Street, Waiuku, Auckland 2123",09-235-9704,FreshChoice
+77,westport,Westport,YES (Shop Now),https://westport.store.freshchoice.co.nz,"18 Fonblanque Street, Westport 7825",03-789-8546,FreshChoice
+78,whanganui,Whanganui,YES (Shop Now),https://whanganui.store.freshchoice.co.nz,"47 Abbot St, Gonville, Whanganui 4501",06-344-3002,FreshChoice
+79,woburn,Woburn,YES (Shop Now),https://woburn.store.freshchoice.co.nz,"1/5 Cambridge Terrace, Waiwhetu, Lower Hutt 5010",04-570-1790,FreshChoice
