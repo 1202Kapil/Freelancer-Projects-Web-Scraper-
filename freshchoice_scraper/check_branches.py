@@ -109,6 +109,51 @@ def ping_branches(branches: list[dict[str, Any]], limit: int = 10) -> None:
         print(f"  {i:2d}. [{b['id']:<15}] {b['name']:<20} -> {status} ({url})")
 
 
+def check_coverage(online_stores: list[dict[str, Any]]) -> None:
+    """Audit exports directory to report branch coverage across all 51 Shop Now branches."""
+    exports_dir = BASE_DIR / "exports"
+    print("=" * 85)
+    print("🎯 FRESHCHOICE NZ — SHOP NOW BRANCH DATA COVERAGE AUDIT")
+    print("=" * 85)
+    
+    covered = []
+    missing = []
+    
+    for i, b in enumerate(online_stores, 1):
+        b_id = b["id"]
+        matches = [p for p in exports_dir.glob(f"freshchoice_{b_id}*.jsonl") if "merged" not in p.name]
+        if matches:
+            latest = max(matches, key=lambda p: p.stat().st_mtime)
+            line_count = 0
+            specials_count = 0
+            with open(latest, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        line_count += 1
+                        if '"is_promo": true' in line or '"is_promo":true' in line:
+                            specials_count += 1
+            covered.append((b, line_count, specials_count, latest.name))
+            print(f"  {i:2d}. [{b_id:<16}] {b['name']:<22} | ✅ {line_count:5d} items | {specials_count:4d} specials | {latest.name}")
+        else:
+            missing.append(b)
+            print(f"  {i:2d}. [{b_id:<16}] {b['name']:<22} | ❌ Missing export")
+
+    total_online = len(online_stores)
+    cov_pct = (len(covered) / total_online) * 100 if total_online else 0
+    total_items = sum(c[1] for c in covered)
+    total_specs = sum(c[2] for c in covered)
+    
+    print("=" * 85)
+    print(f"📊 COVERAGE VERDICT: {len(covered)} / {total_online} Shop Now Branches ({cov_pct:.1f}% Coverage)")
+    print(f"📦 Total Scraped Products: {total_items:,} SKUs across active branches")
+    print(f"🏷️  Total Scraped Specials: {total_specs:,} Promotional items")
+    if cov_pct == 100.0:
+        print("🎉 STATUS: 100% PRODUCTION READY — ALL 51 SHOP NOW BRANCHES COVERED!")
+    else:
+        print(f"⚠️  STATUS: {len(missing)} branch(es) pending crawl completion.")
+    print("=" * 85)
+
+
 def search_branches(query: str) -> list[dict[str, Any]]:
     """Search branches by name, id, or address."""
     q = query.strip().lower()
@@ -136,6 +181,7 @@ def main():
   python check_branches.py --live              # Fetch live count from store.freshchoice.co.nz
   python check_branches.py --ping --limit 5    # Ping first 5 branches
   python check_branches.py --export            # Export to freshchoice_branches.csv and .json
+  python check_branches.py --coverage          # Check scraper coverage across all 51 Shop Now branches
 """,
     )
     parser.add_argument("--online", "-o", action="store_true", help="List all 51 online shopping branches (Shop Now)")
@@ -146,6 +192,7 @@ def main():
     parser.add_argument("--ping", "-p", action="store_true", help="Ping branch URLs to verify connectivity")
     parser.add_argument("--limit", type=int, default=10, help="Limit for ping check (default: 10, use 0 for all)")
     parser.add_argument("--export", "-e", action="store_true", help="Export all branches to CSV and JSON")
+    parser.add_argument("--coverage", "-c", action="store_true", help="Show data coverage percentage across all 51 Shop Now branches")
 
     args = parser.parse_args()
 
@@ -194,6 +241,11 @@ def main():
         print("=" * 65)
         return
 
+    # If --coverage was requested
+    if args.coverage:
+        check_coverage(online_stores)
+        return
+
     # If --ping was requested
     if args.ping:
         target_list = online_stores if not args.all else KNOWN_FRESHCHOICE_STORES
@@ -240,6 +292,7 @@ def main():
     print("  5. Verify live count from website:  python check_branches.py --live")
     print("  6. Test branch URLs connectivity:   python check_branches.py --ping --limit 5")
     print("  7. Export to Excel (CSV file):      python check_branches.py --export")
+    print("  8. Check 51-Branch Data Coverage:   python check_branches.py --coverage")
     print("=" * 70)
 
 

@@ -83,6 +83,7 @@ class FreshChoiceScraper:
 
         self.client: Optional[httpx.AsyncClient] = None
         self.rate_limiter = asyncio.Semaphore(PER_HOST_CONCURRENCY)
+        self.category_completeness: dict[str, dict[str, Any]] = {}
 
     async def _init_client(self) -> None:
         headers = dict(EXTRA_HEADERS)
@@ -143,12 +144,71 @@ class FreshChoiceScraper:
         logger.error(f"[Failed] All {RETRY_ATTEMPTS} attempts failed for: {url}")
         return None
 
+    async def scrape_specials(self) -> list[dict[str, Any]]:
+        """Scrape dedicated /specials route to capture all live store promotions."""
+        specials_by_id: dict[str, dict[str, Any]] = {}
+        page = 1
+        logger.info(f"[{self.branch_id}] Scraping dedicated Specials (/specials)...")
+
+        while True:
+            url = f"{self.base_store_url}/specials?page={page}"
+            html = await self._fetch_html(url)
+            if not html:
+                break
+
+            soup = BeautifulSoup(html, "html.parser")
+            cards = [
+                el for el in soup.find_all(["div", "article", "li"])
+                if el.get("data-talker") is not None
+                or (el.get("id") and str(el.get("id")).startswith("line_"))
+                or (el.get("class") and any(c == "talker" or c.startswith("talker--") for c in el.get("class")) and "section" not in str(el.get("class")))
+            ]
+            if not cards:
+                break
+
+            gtm_items = []
+            gtm_match = re.search(r"window\.gtmDataLayer\s*=\s*(\[.*?\]);\s*//", html, re.DOTALL)
+            if gtm_match:
+                try:
+                    gtm_payload = json.loads(gtm_match.group(1))
+                    if gtm_payload and isinstance(gtm_payload, list):
+                        gtm_items = gtm_payload[0].get("ecommerce", {}).get("items", [])
+                except Exception:
+                    gtm_items = []
+
+            page_items = 0
+            for idx, card in enumerate(cards):
+                gtm_item = gtm_items[idx] if idx < len(gtm_items) else None
+                parsed = parse_product_card(card, self.branch_id, category_path="Specials", gtm_item=gtm_item)
+                if parsed and parsed.get("source_product_id"):
+                    parsed["is_promo"] = True
+                    parsed["sale_price"] = parsed.get("price")
+                    parsed["sale_price_cents"] = parsed.get("current_price_cents")
+                    if not parsed.get("promo_type"):
+                        parsed["promo_type"] = "special"
+                    if not parsed.get("promo_badge"):
+                        parsed["promo_badge"] = "SPECIAL"
+                    if not parsed.get("promo_text"):
+                        parsed["promo_text"] = parsed.get("promo_badge")
+
+                    pid = parsed["source_product_id"]
+                    specials_by_id[pid] = parsed
+                    page_items += 1
+
+            if page_items == 0 or page >= 50:
+                break
+            page += 1
+
+        logger.info(f"[{self.branch_id}] Finished Specials: {len(specials_by_id)} promotional products across {page} pages")
+        return list(specials_by_id.values())
+
     async def scrape_category(self, category_slug: str, category_name: Optional[str] = None) -> list[dict[str, Any]]:
         """Scrape all paginated pages of a category."""
         display_name = category_name or category_slug.replace("-", " ").title()
         products_by_id: dict[str, dict[str, Any]] = {}
         page = 1
         consecutive_empty = 0
+        reported_count = None
 
         logger.info(f"[{self.branch_id}] Scraping category: {display_name} (/category/{category_slug})")
 
@@ -159,6 +219,11 @@ class FreshChoiceScraper:
                 break
 
             soup = BeautifulSoup(html, "html.parser")
+            if page == 1:
+                count_match = re.search(r"Refine\s+(\d+)\s+results", html, re.I) or re.search(r"(\d+)\s+products?", html, re.I)
+                if count_match:
+                    reported_count = int(count_match.group(1))
+
             # MyFoodLink product cards (talker elements or elements with id starting with line_)
             cards = [
                 el for el in soup.find_all(["div", "article", "li"])
@@ -209,7 +274,14 @@ class FreshChoiceScraper:
 
             page += 1
 
-        logger.info(f"[{self.branch_id}] Finished {display_name}: {len(products_by_id)} unique products across {page} pages")
+        actual_count = len(products_by_id)
+        completeness_pct = round((actual_count / reported_count * 100), 1) if (reported_count and reported_count > 0) else 100.0
+        self.category_completeness[display_name] = {
+            "reported_count": reported_count,
+            "scraped_count": actual_count,
+            "completeness_pct": completeness_pct,
+        }
+        logger.info(f"[{self.branch_id}] Finished {display_name}: {actual_count} unique products across {page} pages (Completeness: {completeness_pct}%)")
         return list(products_by_id.values())
 
     async def recover_groceries(self, existing_products: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -265,9 +337,17 @@ class FreshChoiceScraper:
 
         all_products: dict[str, dict[str, Any]] = {}
 
-        # 1. Scrape standard categories
+        # 1. Scrape dedicated /specials route first to ensure all promotional specials are locked in
+        if not self.categories or "specials" in self.categories:
+            specials = await self.scrape_specials()
+            for p in specials:
+                all_products[p["source_product_id"]] = p
+
+        # 2. Scrape standard categories
         target_cats = self.categories if self.categories else CATEGORIES
         for cat_slug in target_cats:
+            if cat_slug == "specials":
+                continue
             # Handle aliases for delicate routes like Deli 404
             aliases = CATEGORY_ALIASES.get(cat_slug, [cat_slug])
             cat_products = []
@@ -281,17 +361,17 @@ class FreshChoiceScraper:
                 if pid not in all_products:
                     all_products[pid] = p
 
-        # 2. Recover Groceries taxonomy beyond 50-page cap (only if scraping all categories)
+        # 3. Recover Groceries taxonomy beyond 50-page cap (only if scraping all categories)
         if not self.categories:
             all_products = await self.recover_groceries(all_products)
 
         final_records = list(all_products.values())
 
-        # 3. Optional detail enrichment
+        # 4. Optional detail enrichment
         if self.enrich_details:
             final_records = await self.enrich_product_details(final_records)
 
-        # 4. Export JSONL
+        # 5. Export JSONL
         out_path = write_jsonl(
             records=final_records,
             branch_label=self.branch_id,
@@ -305,12 +385,15 @@ class FreshChoiceScraper:
             logger.info(f"Export saved to: {out_path}")
 
         await self._close_client()
+        total_rep = sum(r.get("reported_count") or 0 for r in self.category_completeness.values())
         return {
             "branch_id": self.branch_id,
             "branch_name": self.branch_name,
             "total_products": len(final_records),
             "export_file": str(out_path) if out_path else None,
             "elapsed_seconds": round(elapsed, 2),
+            "completeness": self.category_completeness,
+            "total_reported": total_rep,
         }
 
 

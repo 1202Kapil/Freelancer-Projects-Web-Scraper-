@@ -41,7 +41,7 @@ def find_latest_branch_exports(exports_dir: Path) -> dict[str, Path]:
     return {slug: path_ts[0] for slug, path_ts in branch_files.items()}
 
 
-def import_branch(export_path: Path, branch_slug: str, dry_run: bool = False, full_branch: bool = True) -> dict:
+def import_branch(export_path: Path, branch_slug: str, dry_run: bool = False, rollback_test: bool = False, full_branch: bool = True) -> dict:
     """Invoke import_products.py as a subprocess for one branch file."""
     cmd = [
         sys.executable,
@@ -54,6 +54,8 @@ def import_branch(export_path: Path, branch_slug: str, dry_run: bool = False, fu
 
     if dry_run:
         cmd.append("--dry-run")
+    elif rollback_test:
+        cmd.append("--rollback-test")
     if full_branch:
         cmd.append("--full-branch")
 
@@ -83,6 +85,7 @@ def import_branch(export_path: Path, branch_slug: str, dry_run: bool = False, fu
 def main():
     parser = argparse.ArgumentParser(description="FreshChoice All-Branch Batch Importer")
     parser.add_argument("--dry-run", action="store_true", help="Parse-only validation, no database writes")
+    parser.add_argument("--rollback-test", action="store_true", help="Test full DB transaction pipeline and rollback")
     parser.add_argument("--no-full-branch", action="store_true", help="Do not deactivate unseen products")
     parser.add_argument("--branch", type=str, help="Import a single branch by slug")
     args = parser.parse_args()
@@ -110,6 +113,7 @@ def main():
             export_path=p,
             branch_slug=slug,
             dry_run=args.dry_run,
+            rollback_test=args.rollback_test,
             full_branch=not args.no_full_branch,
         )
         results.append(res)

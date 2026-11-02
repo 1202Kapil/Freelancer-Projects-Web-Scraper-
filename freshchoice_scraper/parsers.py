@@ -527,22 +527,46 @@ def parse_product_card(
             comparison_price_cents = to_cents(was_m.group(1))
 
     # Promotion badge / sticker
+    # Promotion badge / sticker
     promo_badge = None
     sticker_elem = card_elem.find(class_=re.compile(r"talker__sticker__label|talker__sticker|sticker|badge|ribbon", re.I))
     if sticker_elem:
         promo_badge = re.sub(r"\s+", " ", sticker_elem.get_text(separator=" ", strip=True)).strip()
 
+    # Also detect promotion from card classes (e.g. talker--Special, special, talker--Discount)
+    card_classes = card_elem.get("class", [])
+    has_special_class = any("special" in str(c).lower() or "discount" in str(c).lower() for c in card_classes)
+    if not promo_badge and has_special_class:
+        if comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents:
+            promo_badge = f"Save ${(comparison_price_cents - current_price_cents)/100:.2f}"
+        else:
+            promo_badge = "SPECIAL"
+
     promo_type = None
     promo_text = None
+
+    # 1. Multibuy deals (e.g. 3 for $25)
     if mb_qty and mb_price_cents:
         promo_type = "multibuy_fixed_price"
         promo_text = mb_text
+        if not promo_badge:
+            promo_badge = "MULTIBUY"
+
+    # 2. Was-Price Specials (e.g. was $5.49, now $3.89 -> save $1.60)
     elif comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents:
         promo_type = "special"
         savings_cents = comparison_price_cents - current_price_cents
-        promo_text = f"Save ${(savings_cents)/100:.2f}"
-        if promo_badge and promo_badge not in promo_text:
-            promo_text = f"{promo_badge} | {promo_text}"
+        savings_str = f"Save ${(savings_cents)/100:.2f}"
+        if promo_badge:
+            promo_text = f"{promo_badge} | {savings_str}" if promo_badge.lower() not in savings_str.lower() else savings_str
+        else:
+            promo_badge = savings_str
+            promo_text = savings_str
+
+    # 3. Badge-only Specials (e.g. "SPECIAL", "SWEET SAVE")
+    elif promo_badge:
+        promo_type = "special"
+        promo_text = promo_badge
 
     unit_price_cents = None
     unit_label = None
@@ -577,6 +601,8 @@ def parse_product_card(
     is_promo = bool(promo_type or promo_badge or (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents))
     sale_price_cents = current_price_cents if is_promo else None
     list_price_cents = comparison_price_cents or current_price_cents
+    savings_cents = (list_price_cents - current_price_cents) if (list_price_cents and current_price_cents and list_price_cents > current_price_cents) else None
+    savings = round(savings_cents / 100, 2) if savings_cents is not None else None
     leaf_category = sub_category or category or department or (category_hierarchy[-1] if category_hierarchy else None)
     lead_category = leaf_category
 
