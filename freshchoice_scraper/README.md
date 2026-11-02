@@ -224,6 +224,20 @@ freshchoice_scraper/
 
 ## 🚀 All Commands Guide (Sabhi Commands)
 
+> [!IMPORTANT]
+> **Windows Terminal Execution Rule:** Hamesha har command ke shuru me **`python `** zaroor lagayein!
+> - ✅ **Sahi:** `python check_branches.py` (Script execute hogi aur terminal me output aayega)
+> - ❌ **Galat:** `check_branches.py` (Windows script ko run karne ke bajaye VS Code editor me open kar dega)
+
+### 0. Scraper Directory Me Jana
+Command Prompt ya PowerShell open karke pehle project folder me jayein:
+```powershell
+cd C:\Users\singh\.gemini\antigravity\scratch\freshchoice_scraper
+```
+*(Monorepo me check karne ke liye: `cd C:\Users\singh\.gemini\antigravity\scratch\Freelancer-Projects-Web-Scraper\freshchoice_scraper`)*
+
+---
+
 ### 1. Requirements Setup
 ```powershell
 pip install -r requirements.txt
