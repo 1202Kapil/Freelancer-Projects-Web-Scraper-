@@ -2,7 +2,7 @@
 
 **Audit Date:** November 6, 2026  
 **Auditor Engine:** Direct Storefront DOM Inspector (`data-line-control` attribute parser)  
-**Storefront Target:** FreshChoice Barrington (`https://barrington.store.freshchoice.co.nz/category/fruit-vegetables`)  
+**Storefront Target:** FreshChoice Barrington & SuperValue Bell Block  
 **Data Contract Principle:** Strict PICO Compliance & Zero Data Fabrication  
 
 ---
@@ -17,7 +17,7 @@ An auditor review raised two critical points:
 
 ---
 
-## 2. Live DOM `data-line-control` Extraction Matrix
+## 2. Live DOM `data-line-control` Extraction Matrix (Produce)
 
 Below are real produce listings captured directly from the live FreshChoice storefront DOM:
 
@@ -39,7 +39,30 @@ Below are real produce listings captured directly from the live FreshChoice stor
 
 ---
 
-## 3. Strict Packaged vs Weighted Product Separation
+## 3. Live DOM `data-line-control` Extraction Matrix (Meat & Butchery)
+
+To answer the auditor's specific check regarding meat & butchery weights, below is the side-by-side comparison of 10 real butchery listings captured directly from the live storefront DOM:
+
+| # | Butchery Listing | Pricing Basis | Unit | Default Order Weight (`kg`) | Quantity Increment (`kg`) | Raw Storefront `data-line-control` Payload |
+|---|---|:---:|:---:|:---:|:---:|:---|
+| 1 | **Beef Mince Prime** | `per kg` | `kg` | **0.1** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":0.1,"id":"61f86154f605cc37ac00499c","unit":"kg"}}` |
+| 2 | **Chicken Boneless Breast Fillets (Skin Off)** | `per kg` | `kg` | **0.5** | **0.1** | `{"quantity":{"minimum":0.5,"maximum":2.0,"quantum":0.1,"increments":0.1,"default":0.5,"id":"5e6ffbe1f605cc2506022faa","unit":"kg"}}` |
+| 3 | **Chicken Boneless Breast Fillets (Skin On)** | `per kg` | `kg` | **0.5** | **0.1** | `{"quantity":{"minimum":0.1,"maximum":2.0,"quantum":0.1,"increments":0.1,"default":0.5,"id":"5e6ffbe1f605cc2506022f93","unit":"kg"}}` |
+| 4 | **Chicken Drumsticks** | `per kg` | `kg` | **0.5** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":0.5,"id":"5e6ffbe0f605cc2506022ef2","unit":"kg"}}` |
+| 5 | **Chicken Tenderloins** | `per kg` | `kg` | **0.1** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":0.1,"id":"5e6ffbd8f605cc25060227d3","unit":"kg"}}` |
+| 6 | **Chicken Diced** | `per kg` | `kg` | **0.1** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":0.1,"id":"5e6ffbd9f605cc250602292c","unit":"kg"}}` |
+| 7 | **Pork Shoulder Chops** | `per kg` | `kg` | **0.1** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":0.1,"id":"5e6ffbdcf605cc2506022bb2","unit":"kg"}}` |
+| 8 | **Beef Blade Steak Kg** | `per kg` | `kg` | **0.5** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":0.5,"id":"5e6ffbe2f605cc2506022fb5","unit":"kg"}}` |
+| 9 | **Bacon Hocks Kg** | `per kg` | `kg` | **1.0** | **0.1** | `{"quantity":{"minimum":0.1,"quantum":0.1,"increments":0.1,"default":1.0,"id":"5e6ffbdff605cc2506022e31","unit":"kg"}}` |
+| 10 | **Hellers Middle Eye Bacon 250g** | `per item` | `item` | `None` | **1.0** | `{"quantity":{"minimum":1.0,"quantum":1.0,"increments":1.0,"default":1.0,"id":"5817dce7e1272f609203bc99","unit":null}}` |
+
+### Line Control Coverage in Dataset:
+- **575 meat listings (55.2%)** carry slugs directly present in `produce_line_controls.json`, taking their exact values from live DOM controls.
+- The remaining **466 meat listings** are local butchery branch cuts that map to empirical butchery rules (`0.5 kg` for retail steaks/chops, `1.0 kg` for whole roasts/hocks, `0.1 kg` for pieces).
+
+---
+
+## 4. Strict Packaged vs Weighted Product Separation
 
 | Product | Size | Selling Price Basis | Unit of Measure | Default Order Weight | Comparison Unit Price | Separation Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -53,9 +76,9 @@ Below are real produce listings captured directly from the live FreshChoice stor
 
 ---
 
-## 4. Pipeline Integration
+## 5. Pipeline Integration
 
-The pipeline (`merge_exports.py`) loads `produce_line_controls.json` at initialization. For any loose produce item, if its slug exists in `LINE_CONTROLS`, the pipeline assigns:
+The pipeline (`merge_exports.py`) loads `produce_line_controls.json` at initialization. For any loose produce or meat item, if its slug exists in `LINE_CONTROLS`, the pipeline assigns:
 ```python
 default_order_weight = ctrl.get("default", 0.1)
 quantity_increment = ctrl.get("increments", 0.1)
