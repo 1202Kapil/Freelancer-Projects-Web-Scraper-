@@ -1,0 +1,137 @@
+[
+  {
+    "store": "Barrington",
+    "url": "https://barrington.store.freshchoice.co.nz/lines/doritos-party-bag-sup-chse-300g",
+    "status": 200,
+    "title": "Doritos Corn Chips Party Bag Cheese Supreme 300g | Click & Collect | FreshChoice Barrington Shop Online",
+    "brand": "Doritos",
+    "has_description": false,
+    "gtin_in_jsonld": null,
+    "jsonld_keys": [
+      "@context",
+      "@type",
+      "name",
+      "brand",
+      "description",
+      "image",
+      "url",
+      "offers"
+    ],
+    "ingredients_in_html": false,
+    "nutrition_in_html": true,
+    "allergens_in_html": false
+  },
+  {
+    "store": "Barrington",
+    "url": "https://barrington.store.freshchoice.co.nz/lines/coca-cola-bottle-2-25l",
+    "status": 200,
+    "title": "Coca Cola Classic 2.25L | Click & Collect | FreshChoice Barrington Shop Online",
+    "brand": "Coca Cola",
+    "has_description": true,
+    "gtin_in_jsonld": null,
+    "jsonld_keys": [
+      "@context",
+      "@type",
+      "name",
+      "brand",
+      "description",
+      "image",
+      "url",
+      "offers"
+    ],
+    "ingredients_in_html": false,
+    "nutrition_in_html": true,
+    "allergens_in_html": false
+  },
+  {
+    "store": "Barrington",
+    "url": "https://barrington.store.freshchoice.co.nz/lines/tip-top-trumpet-choc-4-pack",
+    "status": 200,
+    "title": "Tip Top Trumpet Chocolate 4 Pack | Click & Collect | FreshChoice Barrington Shop Online",
+    "brand": "Tip Top",
+    "has_description": false,
+    "gtin_in_jsonld": null,
+    "jsonld_keys": [
+      "@context",
+      "@type",
+      "name",
+      "brand",
+      "description",
+      "image",
+      "url",
+      "offers"
+    ],
+    "ingredients_in_html": false,
+    "nutrition_in_html": true,
+    "allergens_in_html": false
+  },
+  {
+    "store": "Barrington",
+    "url": "https://barrington.store.freshchoice.co.nz/lines/chelsea-soft-brown-sugar-500g",
+    "status": 200,
+    "title": "Chelsea Sugar Soft Brown 500g | Click & Collect | FreshChoice Barrington Shop Online",
+    "brand": "Chelsea",
+    "has_description": false,
+    "gtin_in_jsonld": null,
+    "jsonld_keys": [
+      "@context",
+      "@type",
+      "name",
+      "brand",
+      "description",
+      "image",
+      "url",
+      "offers"
+    ],
+    "ingredients_in_html": false,
+    "nutrition_in_html": true,
+    "allergens_in_html": false
+  },
+  {
+    "store": "Bellblock",
+    "url": "https://bellblock.store.supervalue.co.nz/lines/kellogg-s-special-k-300g",
+    "status": 200,
+    "title": "Kellogg's Special K 300g | Shop Online at FreshChoice Bell Block",
+    "brand": "Kelloggs",
+    "has_description": true,
+    "gtin_in_jsonld": null,
+    "jsonld_keys": [
+      "@context",
+      "@type",
+      "name",
+      "brand",
+      "description",
+      "image",
+      "url",
+      "offers"
+    ],
+    "ingredients_in_html": false,
+    "nutrition_in_html": true,
+    "allergens_in_html": false
+  },
+  {
+    "store": "Bellblock",
+    "url": "https://bellblock.store.supervalue.co.nz/lines/watties-baked-beans-in-tomato-sauce-420g",
+    "status": "HTTP Error 404: Not Found"
+  },
+  {
+    "store": "Bellblock",
+    "url": "https://bellblock.store.supervalue.co.nz/lines/anchor-blue-milk-standard-2l",
+    "status": "HTTP Error 404: Not Found"
+  },
+  {
+    "store": "Cromwell",
+    "url": "https://cromwell.store.freshchoice.co.nz/lines/arnott-shape-orig-pizza-190g",
+    "status": "HTTP Error 404: Not Found"
+  },
+  {
+    "store": "Merivale",
+    "url": "https://merivale.store.freshchoice.co.nz/lines/sanitarium-weet-bix-original-cereal-375g",
+    "status": "HTTP Error 404: Not Found"
+  },
+  {
+    "store": "Nelson City",
+    "url": "https://nelsoncity.store.freshchoice.co.nz/lines/maggi-2-minute-noodles-chicken-5-pack",
+    "status": "HTTP Error 404: Not Found"
+  }
+]

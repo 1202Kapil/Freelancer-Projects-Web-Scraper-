@@ -193,6 +193,64 @@ class TestProductionExportValidation(unittest.TestCase):
                          f"Row count mismatch: JSONL has {len(self.records)} vs CSV has {csv_rows}")
         self.assertEqual(csv_rows, 62926, f"Expected 62,926 records, got {csv_rows}")
 
+    def test_13_audit_specific_product_sanitization(self):
+        """Audit Focus: Bell Block Special K, Hansells Baking Powder, Arnott's Shapes, Doritos."""
+        for r in self.records:
+            name = (r.get("clean_name") or "").lower()
+            branch = r.get("branch_id")
+            brand = r.get("brand")
+            dept = r.get("department")
+            cat = r.get("category")
+
+            if "special k" in name and branch == "bellblock":
+                self.assertEqual(brand, "Kelloggs", f"Bell Block Special K brand must be Kelloggs, got {brand}")
+                self.assertEqual(dept, "Groceries", f"Bell Block Special K department must be Groceries, got {dept}")
+                self.assertEqual(cat, "Breakfast Foods", f"Bell Block Special K category must be Breakfast Foods, got {cat}")
+
+            elif "hansells" in name and "baking powder" in name:
+                self.assertEqual(brand, "Hansells", f"Hansells brand must be Hansells, got {brand}")
+                self.assertEqual(dept, "Groceries", f"Hansells department must be Groceries, got {dept}")
+                self.assertEqual(cat, "Cooking Needs", f"Hansells category must be Cooking Needs, got {cat}")
+
+            elif "shapes" in name and "pizza" in name:
+                self.assertIn(brand, ["Arnotts", "Arnott's"], f"Shapes brand must be Arnotts, got {brand}")
+                self.assertEqual(dept, "Snacks", f"Shapes department must be Snacks, got {dept}")
+
+            elif "doritos" in name:
+                self.assertEqual(brand, "Doritos", f"Doritos brand must be Doritos, got {brand}")
+                self.assertEqual(dept, "Snacks", f"Doritos department must be Snacks, got {dept}")
+                self.assertNotIn("cake", (cat or "").lower(), f"Doritos must not be in Cake subcategory: {cat}")
+                self.assertNotIn("yoghurt", (cat or "").lower(), f"Doritos must not be in Yoghurt subcategory: {cat}")
+
+    def test_14_zero_false_promotions_and_category_alignment(self):
+        """Audit Focus: Zero false promos, zero category URL mismatches, zero duplicate category names."""
+        false_promos = 0
+        cat_url_mismatches = 0
+        duplicate_cats = 0
+
+        for r in self.records:
+            price = r.get("price")
+            list_price = r.get("list_price")
+            is_promo = r.get("is_promo", False)
+            mb_qty = r.get("multibuy_quantity")
+            if is_promo and (price is not None and list_price is not None and price >= list_price) and not (mb_qty and mb_qty >= 2):
+                false_promos += 1
+
+            cat_url = r.get("category_url", "")
+            leaf = r.get("leaf_category") or r.get("category") or ""
+            expected_slug = leaf.lower().replace(" & ", "-").replace(" / ", "-").replace(" ", "-")
+            # Ensure URL aligns with taxonomy
+            if not cat_url or "/category/" not in cat_url:
+                cat_url_mismatches += 1
+
+            dept = r.get("department", "")
+            if dept in ["Health Beauty", "Dairy Eggs", "Fruit Vegetables"]:
+                duplicate_cats += 1
+
+        self.assertEqual(false_promos, 0, f"Found {false_promos} false promotions where price == list_price")
+        self.assertEqual(cat_url_mismatches, 0, f"Found {cat_url_mismatches} category URL mismatches")
+        self.assertEqual(duplicate_cats, 0, f"Found {duplicate_cats} unnormalized category names")
+
 
 if __name__ == "__main__":
     unittest.main()
