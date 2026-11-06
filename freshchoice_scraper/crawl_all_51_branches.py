@@ -86,11 +86,13 @@ class BranchWorker:
                 break
 
             soup = BeautifulSoup(html, "html.parser")
+            # Strict product card filter (Requirement 1): must contain a product /lines/ link
             cards = [
                 el for el in soup.find_all(["div", "article", "li"])
-                if el.get("data-talker") is not None
-                or (el.get("id") and str(el.get("id")).startswith("line_"))
-                or (el.get("class") and any(c == "talker" or c.startswith("talker--") for c in el.get("class")) and "section" not in str(el.get("class")))
+                if (el.get("data-talker") is not None
+                    or (el.get("id") and str(el.get("id")).startswith("line_"))
+                    or (el.get("class") and any(c == "talker" or c.startswith("talker--") for c in el.get("class")) and "section" not in str(el.get("class"))))
+                and el.find("a", href=re.compile(r"/lines/"))
             ]
             if not cards:
                 break
@@ -106,8 +108,8 @@ class BranchWorker:
                     gtm_items = []
 
             for idx, card in enumerate(cards):
-                gtm_item = gtm_items[idx] if idx < len(gtm_items) else None
-                parsed = parse_product_card(card, self.branch_id, category_path="Specials", gtm_item=gtm_item)
+                # Pass full gtm_items and card_index for intelligent token-based joining
+                parsed = parse_product_card(card, self.branch_id, category_path="Specials", gtm_items=gtm_items, card_index=idx)
                 if parsed and parsed.get("source_product_id"):
                     pid = parsed["source_product_id"]
                     parsed["is_promo"] = True
@@ -149,11 +151,13 @@ class BranchWorker:
                 if m:
                     reported = int(m.group(1))
 
+            # Strict product card filter (Requirement 1): must contain a product /lines/ link
             cards = [
                 el for el in soup.find_all(["div", "article", "li"])
-                if el.get("data-talker") is not None
-                or (el.get("id") and str(el.get("id")).startswith("line_"))
-                or (el.get("class") and any(c == "talker" or c.startswith("talker--") for c in el.get("class")) and "section" not in str(el.get("class")))
+                if (el.get("data-talker") is not None
+                    or (el.get("id") and str(el.get("id")).startswith("line_"))
+                    or (el.get("class") and any(c == "talker" or c.startswith("talker--") for c in el.get("class")) and "section" not in str(el.get("class"))))
+                and el.find("a", href=re.compile(r"/lines/"))
             ]
             if not cards:
                 break
@@ -169,8 +173,8 @@ class BranchWorker:
                     gtm_items = []
 
             for idx, card in enumerate(cards):
-                gtm_item = gtm_items[idx] if idx < len(gtm_items) else None
-                parsed = parse_product_card(card, self.branch_id, category_path=cat_name, gtm_item=gtm_item)
+                # Pass full gtm_items and card_index for intelligent token-based joining
+                parsed = parse_product_card(card, self.branch_id, category_path=cat_name, gtm_items=gtm_items, card_index=idx)
                 if parsed and parsed.get("source_product_id"):
                     pid = parsed["source_product_id"]
                     if pid not in self.products:

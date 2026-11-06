@@ -417,9 +417,13 @@ python merge_exports.py
 
 ---
 
-### 5. Schema & Quality Audit Validation (`validate_export.py`)
+### 5. Schema & Quality Audit Validation (`validate_export.py` & `validate_production_export.py`)
 
-Contract errors, price sanity, stock status, aur promo structure verify karne ke liye:
+* **Automated Production Validation Suite (12 Client Requirements):**
+  ```powershell
+  python validate_production_export.py
+  ```
+  *(Runs 12 comprehensive automated tests verifying Coke brands, 100% schema uniformity, SuperValue mapping, price basis, multibuys, Special K promo guardrail, and CSV/JSONL parity)*
 
 * **Merged Master Dataset Validate Karna:**
   ```powershell

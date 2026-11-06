@@ -18,6 +18,7 @@ EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Retailer & Endpoints
+SCRAPER_VERSION = "1.0.0"
 RETAILER = "freshchoice"
 BASE_URL = "https://www.freshchoice.co.nz"
 STORE_URL_TEMPLATE = "https://{branch}.store.freshchoice.co.nz"

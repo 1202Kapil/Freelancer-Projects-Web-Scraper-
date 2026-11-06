@@ -146,8 +146,11 @@ def _text_stream_products(soup: BeautifulSoup, branch: Branch, category_path: li
         pm = PRICE_RE.search(line)
         if pm and len(line) < 100 and not QUANTITY_ONLY_RE.match(line):
             name = PRICE_RE.sub("", line).strip()
-            on_special = bool(re.search(r"special|save", line, re.I))
-            name = re.sub(r"\b(special|save)\b", "", name, flags=re.I).strip()
+            # Requirement 10: Do NOT strip "special" or "save" from product names,
+            # and require actual offer evidence before setting promotion flag.
+            save_m = SAVE_RE.search(line)
+            was_m = WAS_PRICE_RE.search(line)
+            on_special = bool(save_m or was_m)
             if name:
                 promo = Promotion(on_special=on_special) if on_special else None
                 p = Product(
@@ -338,7 +341,9 @@ def parse_listing(html: str, branch: Branch, category_path: list[str], request_u
             stock_status = "out_of_stock"
 
         promo = None
-        on_special = bool(prev_price_nzd or savings_nzd or "special" in lower_card)
+        sticker_elem = card.find(class_=re.compile(r"talker__sticker|sticker|badge|ribbon", re.I))
+        has_promo_badge = bool(sticker_elem and sticker_elem.get_text(strip=True))
+        on_special = bool(prev_price_nzd or savings_nzd or has_promo_badge)
         if on_special or mb_qty:
             mb_dec = Decimal(f"{mb_price_cents/100:.2f}") if mb_price_cents else None
             promo = Promotion(
@@ -457,13 +462,78 @@ def enrich_from_detail(html_content: str, branch: Branch, item: Product) -> None
             pass
 
 
+def normalize_name_for_match(text: str) -> set[str]:
+    """Normalize text into distinct significant token set for fuzzy joining."""
+    tokens = re.findall(r"[a-z0-9]+", (text or "").lower())
+    stop = {"the", "and", "or", "in", "of", "with", "a", "an", "per", "kg", "g", "ml", "l"}
+    return {t for t in tokens if t not in stop and len(t) > 1}
+
+
+def match_gtm_item(
+    card_name: str,
+    card_slug: str,
+    control_id: Optional[str],
+    gtm_items: list[dict[str, Any]],
+    card_index: int = -1,
+) -> Optional[dict[str, Any]]:
+    """Intelligently match a DOM card to its corresponding Google Tag Manager item.
+    
+    Prevents off-by-one misalignment caused by promo banners or mailer tiles.
+    Prioritizes:
+    1. Exact ID match (control_id == item_id).
+    2. Name token overlap between card name/slug and gtm item_name.
+    3. Positional fallback index ONLY IF tokens share significant overlap.
+    Returns None if no confident match is found to avoid cross-contaminating brands.
+    """
+    if not gtm_items:
+        return None
+
+    # 1. Exact ID match
+    if control_id:
+        for it in gtm_items:
+            if it.get("item_id") == control_id:
+                return it
+
+    # 2. Token overlap matching
+    card_tokens = normalize_name_for_match(f"{card_name} {card_slug}")
+    if not card_tokens:
+        return None
+
+    best_match = None
+    best_overlap = 0
+
+    for it in gtm_items:
+        it_name = it.get("item_name") or ""
+        it_tokens = normalize_name_for_match(it_name)
+        overlap = len(card_tokens.intersection(it_tokens))
+        if overlap > best_overlap:
+            best_overlap = overlap
+            best_match = it
+
+    # Require at least 2 matching tokens, or 1 if card_tokens is short
+    min_required = 1 if len(card_tokens) <= 2 else 2
+    if best_overlap >= min_required:
+        return best_match
+
+    # 3. Positional fallback ONLY IF candidate at index shares at least one token
+    if 0 <= card_index < len(gtm_items):
+        cand = gtm_items[card_index]
+        cand_tokens = normalize_name_for_match(cand.get("item_name", ""))
+        if card_tokens.intersection(cand_tokens):
+            return cand
+
+    return None
+
+
 def parse_product_card(
     card_elem,
     branch_slug: str,
     category_path: Optional[str] = None,
     gtm_item: Optional[dict[str, Any]] = None,
+    gtm_items: Optional[list[dict[str, Any]]] = None,
+    card_index: int = -1,
 ) -> Optional[dict[str, Any]]:
-    """Legacy dict-based card extractor for compatibility with jsonl exporter."""
+    """Dict-based card extractor with structured pricing, weights, and GTM verification."""
     link = card_elem.find("a", href=re.compile(r"/lines/"))
     if not link and card_elem.name == "a" and "/lines/" in card_elem.get("href", ""):
         link = card_elem
@@ -475,7 +545,6 @@ def parse_product_card(
     if not slug_match:
         return None
     slug = slug_match.group(1).strip()
-    product_url = f"https://{branch_slug}.store.freshchoice.co.nz/lines/{slug}"
 
     title_elem = card_elem.find(class_=re.compile(r"talker__product-name|product-name|title|heading", re.I))
     if not title_elem:
@@ -527,20 +596,17 @@ def parse_product_card(
             comparison_price_cents = to_cents(was_m.group(1))
 
     # Promotion badge / sticker
-    # Promotion badge / sticker
     promo_badge = None
     sticker_elem = card_elem.find(class_=re.compile(r"talker__sticker__label|talker__sticker|sticker|badge|ribbon", re.I))
     if sticker_elem:
         promo_badge = re.sub(r"\s+", " ", sticker_elem.get_text(separator=" ", strip=True)).strip()
 
-    # Also detect promotion from card classes (e.g. talker--Special, special, talker--Discount)
+    # Detect promotion from card classes only if verified by price or badge
     card_classes = card_elem.get("class", [])
     has_special_class = any("special" in str(c).lower() or "discount" in str(c).lower() for c in card_classes)
     if not promo_badge and has_special_class:
         if comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents:
             promo_badge = f"Save ${(comparison_price_cents - current_price_cents)/100:.2f}"
-        else:
-            promo_badge = "SPECIAL"
 
     promo_type = None
     promo_text = None
@@ -568,17 +634,66 @@ def parse_product_card(
         promo_type = "special"
         promo_text = promo_badge
 
+    # Control ID, Weights, Increments, and Selling Price Basis (Requirement 4)
+    ctrl_attr = card_elem.get("data-line-control", "")
+    control_data = {}
+    control_id = None
+    unit_type = None
+    default_order_weight = None
+    quantity_increment = 1.0
+
+    if ctrl_attr:
+        try:
+            control_data = json.loads(ctrl_attr)
+            qty_data = control_data.get("quantity", {}) if isinstance(control_data, dict) else {}
+            control_id = qty_data.get("id")
+            unit_type = qty_data.get("unit")
+            if unit_type == "kg":
+                default_order_weight = qty_data.get("default", 0.1)
+                quantity_increment = qty_data.get("increments", 0.1)
+            else:
+                quantity_increment = qty_data.get("increments", 1.0)
+        except Exception:
+            pass
+
+    # DOM line id fallback
+    card_id_attr = str(card_elem.get("id", ""))
+    dom_id = card_id_attr.removeprefix("line_") if card_id_attr.startswith("line_") else card_elem.get("data-id")
+    line_id = control_id or dom_id or slug
+
+    # Units and Selling Price Basis
+    units_elem = card_elem.find(class_=re.compile(r"price__units|units", re.I))
+    units_text = units_elem.get_text(strip=True).lower() if units_elem else ""
+
+    if unit_type == "kg" or "per kg" in units_text or "/kg" in units_text or "per kg" in card_text.lower():
+        selling_price_basis = "per kg"
+        unit_of_measure = "kg"
+    elif "pack" in clean_name.lower() or " pk" in clean_name.lower() or "pack" in (size or "").lower():
+        selling_price_basis = "per pack"
+        unit_of_measure = "pack"
+    elif "each" in units_text or "each" in card_text.lower():
+        selling_price_basis = "each"
+        unit_of_measure = "each"
+    else:
+        selling_price_basis = "per item"
+        unit_of_measure = "item"
+
+    # Comparison Unit Price & Measure
     unit_price_cents = None
     unit_label = None
     up_m = UNIT_PRICE_RE.search(card_text)
     if up_m:
         unit_price_cents = to_cents(up_m.group(1))
-        unit_label = up_m.group(2).strip()
+        unit_label = f"per {up_m.group(2).strip()}"
+
+    comparison_unit_price = round(unit_price_cents / 100, 2) if unit_price_cents is not None else None
+    comparison_unit_measure = unit_label
 
     stock_status = "in_stock"
     if "out of stock" in card_text.lower():
         stock_status = "out_of_stock"
 
+    # Image URL
     image_url = None
     img_elem = card_elem.find("img")
     if img_elem:
@@ -586,17 +701,29 @@ def parse_product_card(
         branch_base_url = f"https://{branch_slug}.store.freshchoice.co.nz"
         image_url = normalize_image_url(src, branch_base_url)
 
-    # Department & Category Taxonomy from GTM layer or category_path
-    department = gtm_item.get("item_category") if gtm_item else None
-    category = gtm_item.get("item_category2") if gtm_item else None
-    sub_category = gtm_item.get("item_category3") if gtm_item else None
-    brand = gtm_item.get("item_brand") if gtm_item else None
+    # Intelligent GTM Item Matcher (Requirement 1)
+    matched_gtm = None
+    if gtm_items:
+        matched_gtm = match_gtm_item(clean_name, slug, control_id or dom_id, gtm_items, card_index)
+    elif gtm_item:
+        # Validate that single passed gtm_item is not misaligned
+        card_tokens = normalize_name_for_match(f"{clean_name} {slug}")
+        gtm_tokens = normalize_name_for_match(gtm_item.get("item_name", ""))
+        if card_tokens.intersection(gtm_tokens):
+            matched_gtm = gtm_item
+
+    department = matched_gtm.get("item_category") if matched_gtm else None
+    category = matched_gtm.get("item_category2") if matched_gtm else None
+    sub_category = matched_gtm.get("item_category3") if matched_gtm else None
+    brand = matched_gtm.get("item_brand") if matched_gtm else None
 
     category_hierarchy = [c for c in [department, category, sub_category] if c]
     if category_hierarchy:
         category_path = " > ".join(category_hierarchy)
-    elif category_path:
+    elif category_path and category_path != "Specials":
         category_hierarchy = [category_path]
+    else:
+        category_hierarchy = []
 
     is_promo = bool(promo_type or promo_badge or (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents))
     sale_price_cents = current_price_cents if is_promo else None
@@ -606,9 +733,14 @@ def parse_product_card(
     leaf_category = sub_category or category or department or (category_hierarchy[-1] if category_hierarchy else None)
     lead_category = leaf_category
 
-    # Canonical Store & Category URLs
+    # Canonical Retailer & Branch Store URLs (Requirement 7)
     branch_info = get_branch(branch_slug)
     store_base_url = branch_info["url"] if branch_info else f"https://{branch_slug}.store.freshchoice.co.nz"
+    is_supervalue = branch_slug == "bellblock" or "supervalue.co.nz" in store_base_url
+    retailer = "supervalue" if is_supervalue else "freshchoice"
+    retailer_name = "SuperValue" if is_supervalue else "FreshChoice"
+    brand_family = "FreshChoice / SuperValue (Woolworths NZ)"
+
     product_url = f"{store_base_url}/lines/{slug}"
 
     cat_slug_for_url = None
@@ -620,15 +752,25 @@ def parse_product_card(
         cat_slug_for_url = _slug(department)
     category_url = f"{store_base_url}/category/{cat_slug_for_url}" if cat_slug_for_url else None
 
-    price_per_unit = round(unit_price_cents / 100, 2) if unit_price_cents is not None else None
-    price_by_unit = unit_label if unit_label else None
+    price_per_unit = comparison_unit_price
+    price_by_unit = comparison_unit_measure
+
+    mb_total_nzd = f"${mb_price_cents / 100:.2f}" if mb_price_cents else None
 
     return {
-        # Store & Item Identifiers
-        "store_id": branch_slug,
+        # Store & Retailer Mapping (Requirement 7)
         "branch_id": branch_slug,
-        "product_id": slug,
-        "source_product_id": slug,
+        "branch_name": branch_info["name"] if branch_info else branch_slug.title(),
+        "store_id": branch_slug,
+        "retailer": retailer,
+        "retailer_name": retailer_name,
+        "brand_family": brand_family,
+        "storefront_url": store_base_url,
+
+        # Product Identifiers (Requirement 3)
+        "product_id": line_id,
+        "source_product_id": line_id,
+        "product_slug": slug,
         "sku": slug,
         "retailer_sku": slug,
         "gtin": None,
@@ -636,7 +778,7 @@ def parse_product_card(
         "mpn": None,
         "group_id": None,
 
-        # Titles & Taxonomy
+        # Titles & Taxonomy (Requirement 1)
         "raw_name": raw_name,
         "clean_name": clean_name,
         "brand": brand,
@@ -647,42 +789,62 @@ def parse_product_card(
         "lead_category": lead_category,
         "breadcrumbs": category_hierarchy,
         "category_hierarchy": category_hierarchy,
-        "category_path": category_path,
-        "category_tree": category_path,
+        "category_path": category_path or (category_hierarchy[0] if category_hierarchy else None),
+        "category_tree": category_path or (category_hierarchy[0] if category_hierarchy else None),
         "category_url": category_url,
         "size": size,
         "description": None,
 
-        # Pricing & Promotion
+        # Selling Price Basis & Weights (Requirement 4)
         "currency": "NZD",
         "price": round(current_price_cents / 100, 2) if current_price_cents is not None else None,
         "current_price_cents": current_price_cents,
+        "current_price_nzd": f"${current_price_cents / 100:.2f}" if current_price_cents is not None else None,
+        "selling_price_basis": selling_price_basis,
+        "unit_of_measure": unit_of_measure,
+        "default_order_weight": default_order_weight,
+        "quantity_increment": quantity_increment,
+        "comparison_unit_price": comparison_unit_price,
+        "comparison_unit_measure": comparison_unit_measure,
+        "price_per_unit": price_per_unit,
+        "price_by_unit": price_by_unit,
+        "unit_price_cents": unit_price_cents,
+        "unit_label": unit_label,
+
+        # Structured Promotion Details (Requirement 5 & 10)
+        "is_promo": is_promo,
+        "promo_type": promo_type,
+        "promo_badge": promo_badge,
+        "promo_text": promo_text,
         "sale_price": round(sale_price_cents / 100, 2) if sale_price_cents is not None else None,
         "sale_price_cents": sale_price_cents,
         "list_price": round(list_price_cents / 100, 2) if list_price_cents is not None else None,
         "list_price_cents": list_price_cents,
         "comparison_price_cents": comparison_price_cents,
-        "savings": round((comparison_price_cents - current_price_cents) / 100, 2) if (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents) else None,
-        "savings_cents": (comparison_price_cents - current_price_cents) if (comparison_price_cents and current_price_cents and comparison_price_cents > current_price_cents) else None,
-        "price_per_unit": price_per_unit,
-        "price_by_unit": price_by_unit,
-        "unit_price_cents": unit_price_cents,
-        "unit_label": unit_label,
-        "is_promo": is_promo,
-        "promo_badge": promo_badge,
-        "promo_text": promo_text,
-        "promo_type": promo_type,
+        "savings": savings,
+        "savings_cents": savings_cents,
         "multibuy_quantity": mb_qty,
         "multibuy_price_cents": mb_price_cents,
+        "multibuy_total_nzd": mb_total_nzd,
+        "loyalty_requirement": None,
+        "offer_start_date": None,
+        "offer_end_date": None,
 
-        # Stock, URLs, Media & Recommendations
+        # Stock, URLs, Media & Enrichment (Requirement 6 & 8)
         "availability": stock_status,
         "stock_status": stock_status,
         "url": product_url,
         "product_url": product_url,
         "image_url": image_url,
-        "recommended_products": [],
+        "source_url": product_url,
         "observed_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "scrape_run_id": None,
+        "enriched_at": None,
+        "enrichment_source": None,
+        "ingredients": None,
+        "nutrition": None,
+        "allergens": None,
+        "recommended_products": [],
         "raw_row": {
             "branch_id": branch_slug,
             "department": department,
@@ -693,38 +855,118 @@ def parse_product_card(
             "category_tree": category_path,
             "price_per_unit": price_per_unit,
             "price_by_unit": price_by_unit,
+            "selling_price_basis": selling_price_basis,
+            "default_order_weight": default_order_weight,
+            "quantity_increment": quantity_increment,
         },
     }
 
 
 def parse_product_detail_page(html_content: str, base_record: dict) -> dict[str, Any]:
-    """Enrich record dictionary from PDP HTML."""
-    dummy_item = Product(branch_id="", branch_name="", name="")
-    dummy_branch = Branch(id="", name="", url="")
-    enrich_from_detail(html_content, dummy_branch, dummy_item)
-
+    """Enrich record dictionary from PDP HTML (Requirement 3, 6, 8)."""
     updated = dict(base_record)
-    if dummy_item.brand:
-        updated["brand"] = dummy_item.brand
-    if dummy_item.gtin:
-        updated["gtin"] = dummy_item.gtin
-        updated["barcode"] = dummy_item.gtin
-    if dummy_item.sku:
-        updated["sku"] = dummy_item.sku
-        updated["retailer_sku"] = dummy_item.sku
-    if dummy_item.description:
-        updated["description"] = dummy_item.description
-        raw = dict(updated.get("raw_row") or {})
-        raw["description"] = dummy_item.description
-        updated["raw_row"] = raw
-    if dummy_item.image_url and not updated.get("image_url"):
-        updated["image_url"] = dummy_item.image_url
-
     soup = BeautifulSoup(html_content, "html.parser")
-    ing = soup.find(class_=re.compile(r"ingredients?", re.I))
-    if ing:
-        raw = dict(updated.get("raw_row") or {})
-        raw["ingredients"] = ing.get_text(" ", strip=True)
-        updated["raw_row"] = raw
+
+    # 1. JSON-LD Breadcrumbs & Product
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            data = json.loads(script.string or "")
+            items = data if isinstance(data, list) else [data]
+            for item in items:
+                if item.get("@type") == "Product":
+                    if item.get("brand"):
+                        b = item["brand"]
+                        updated["brand"] = b.get("name") if isinstance(b, dict) else str(b).strip()
+                    if item.get("description") and not updated.get("description"):
+                        updated["description"] = item["description"].strip()
+                    gtin = item.get("gtin13") or item.get("gtin") or item.get("gtin14") or item.get("gtin8")
+                    if gtin and str(gtin).isdigit():
+                        gtin_str = str(gtin).strip()
+                        if len(gtin_str) in VALID_GTIN_LENGTHS and is_valid_gtin_checksum(gtin_str):
+                            updated["gtin"] = gtin_str
+                            updated["barcode"] = gtin_str
+                    if item.get("sku"):
+                        updated["sku"] = str(item["sku"]).strip()
+                        updated["retailer_sku"] = str(item["sku"]).strip()
+                    if item.get("image") and not updated.get("image_url"):
+                        updated["image_url"] = str(item["image"]).strip()
+                elif item.get("@type") == "BreadcrumbList":
+                    elements = item.get("itemListElement", [])
+                    elements = sorted(elements, key=lambda x: x.get("position", 0))
+                    names = [el.get("item", {}).get("name") or el.get("name") for el in elements]
+                    names = [n.strip() for n in names if n and "home" not in n.lower() and "all products" not in n.lower()]
+                    if names:
+                        updated["breadcrumbs"] = names
+                        updated["category_hierarchy"] = names
+                        updated["category_path"] = " > ".join(names)
+                        updated["category_tree"] = " > ".join(names)
+                        if len(names) >= 1:
+                            updated["department"] = names[0]
+                        if len(names) >= 2:
+                            updated["category"] = names[1]
+                        if len(names) >= 3:
+                            updated["sub_category"] = names[2]
+                        updated["leaf_category"] = names[-1]
+                        updated["lead_category"] = names[-1]
+        except Exception:
+            pass
+
+    # 2. Description section
+    desc_sec = soup.find(class_=re.compile(r"ProductDetail__MoreInfo__Section--Description|description", re.I))
+    if desc_sec and not updated.get("description"):
+        d_text = desc_sec.get_text(" ", strip=True)
+        d_text = re.sub(r"^Description\s*", "", d_text, flags=re.I).strip()
+        if d_text:
+            updated["description"] = d_text
+
+    # 3. Ingredients section
+    ing_sec = soup.find(class_=re.compile(r"ProductDetail__MoreInfo__Section--Ingredients|ingredients?", re.I))
+    if ing_sec:
+        ing_text = ing_sec.get_text(" ", strip=True)
+        ing_text = re.sub(r"^Ingredients?\s*", "", ing_text, flags=re.I).strip()
+        updated["ingredients"] = ing_text
+
+    # 4. Nutrition section
+    nut_sec = soup.find(class_=re.compile(r"ProductDetail__MoreInfo__Section--Nutrition|nutrition", re.I))
+    if nut_sec:
+        nut_text = nut_sec.get_text(" ", strip=True)
+        nut_text = re.sub(r"^Nutritional?\s*(?:Information|Table)?\s*", "", nut_text, flags=re.I).strip()
+        updated["nutrition"] = nut_text
+
+    # 5. Allergens section
+    all_sec = soup.find(class_=re.compile(r"ProductDetail__MoreInfo__Section--Allergens|allergens?", re.I))
+    if all_sec:
+        all_text = all_sec.get_text(" ", strip=True)
+        all_text = re.sub(r"^Allergens?\s*", "", all_text, flags=re.I).strip()
+        updated["allergens"] = all_text
+
+    # 6. PDP GTM layer
+    gtm_match = re.search(r"window\.gtmDataLayer\s*=\s*(\[.*?\]);\s*//", html_content, re.DOTALL)
+    if gtm_match:
+        try:
+            gtm_payload = json.loads(gtm_match.group(1))
+            if gtm_payload and isinstance(gtm_payload, list):
+                items = gtm_payload[0].get("ecommerce", {}).get("items", [])
+                if items:
+                    pdp_item = items[0]
+                    if pdp_item.get("item_brand"):
+                        updated["brand"] = pdp_item["item_brand"]
+                    if pdp_item.get("item_category"):
+                        updated["department"] = pdp_item["item_category"]
+                    if pdp_item.get("item_category2"):
+                        updated["category"] = pdp_item["item_category2"]
+                    if pdp_item.get("item_category3"):
+                        updated["sub_category"] = pdp_item["item_category3"]
+        except Exception:
+            pass
+
+    updated["enrichment_source"] = "pdp_html"
+    updated["enriched_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    raw = dict(updated.get("raw_row") or {})
+    for k in ["description", "ingredients", "nutrition", "allergens"]:
+        if updated.get(k):
+            raw[k] = updated[k]
+    updated["raw_row"] = raw
 
     return updated
