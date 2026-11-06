@@ -108,6 +108,18 @@ if _cache_path.exists():
     except Exception:
         pass
 
+# Load live line controls if available (empirical data-line-control from live storefronts)
+LINE_CONTROLS_FILE = BASE_DIR / "produce_line_controls.json"
+LINE_CONTROLS: dict[str, dict[str, Any]] = {}
+if LINE_CONTROLS_FILE.exists():
+    try:
+        with open(LINE_CONTROLS_FILE, "r", encoding="utf-8") as _lf:
+            _loaded_ctrl = json.load(_lf)
+            if isinstance(_loaded_ctrl, dict):
+                LINE_CONTROLS.update(_loaded_ctrl)
+    except Exception:
+        pass
+
 
 def determine_selling_price_and_weight(
     rec: dict[str, Any],
@@ -115,56 +127,72 @@ def determine_selling_price_and_weight(
     clean_name: str,
     raw_name: str,
     size: str,
+    slug: str = "",
 ) -> tuple[str, str, float | None, float]:
     """Determine accurate selling_price_basis, unit_of_measure, default_order_weight, and quantity_increment."""
     clean_lower = (clean_name or "").lower()
     raw_lower = (raw_name or "").lower()
-    units_text = (rec.get("price_by_unit") or rec.get("unit_label") or "").lower()
+    size_lower = (size or "").strip().lower()
 
-    # 1. False 'loose' exceptions (Tea, Bakery buns/croissants, single items sold each)
+    # 1. False 'loose' exceptions (Tea, in-store bakery buns/croissants/rolls sold individually)
     if any(k in clean_lower for k in ["leaf tea", "tea original", "tea bag", "loose leaf"]):
         return "per item", "item", None, 1.0
 
-    if any(k in clean_lower for k in ["loose each", "pizza bun", "custard loose", "croissant loose", "muffin loose", "donut loose", "roll loose"]):
+    if any(k in clean_lower for k in ["bun", "croissant", "muffin", "donut", "roll", "pastry", "scone", "cookie", "bread", "bagel", "ciabatta", "tart", "slice", "danish", "eclair"]) and "loose" in clean_lower:
         return "each", "each", None, 1.0
 
-    if any(k in clean_lower for k in ["broccoli", "avocado", "lettuce", "cucumber", "cabbage", "cauliflower", "celery", "pineapple", "mango", "capsicum"]) and "per kg" not in units_text and "/kg" not in units_text and "per kg" not in clean_lower:
+    if any(k in clean_lower for k in ["broccoli", "avocado", "lettuce", "cucumber", "cabbage", "cauliflower", "celery", "pineapple", "mango", "capsicum", "corn cob", "garlic bulb"]) and "per kg" not in clean_lower and "/kg" not in clean_lower and "per kg" not in raw_lower:
         return "each", "each", None, 1.0
 
-    # 2. Check if genuinely sold per kg
+    # 2. Package size detection (Packaged groceries: e.g. 900g, 425g, 1kg, 200g, 100g, 1.5l, 6 pack)
+    has_pkg_size = bool(size_lower and re.search(r"\b\d+(?:\.\d+)?\s*(?:g|gm|ml|l|ltr|pk|pack|sachets?|piece)\b", size_lower)) or \
+                   bool(re.search(r"\b\d+(?:\.\d+)?\s*(?:g|gm|ml|l|ltr|pk|pack|sachets?)\b", clean_lower))
+
+    if has_pkg_size and not ("per kg" in clean_lower or "/kg" in clean_lower or "units per kg" in clean_lower or "unit per kg" in clean_lower):
+        if "pack" in clean_lower or " pk" in clean_lower or "pack" in size_lower or "pk" in size_lower:
+            return "per pack", "pack", None, 1.0
+        if "each" in clean_lower or " ea" in clean_lower or size_lower == "each":
+            return "each", "each", None, 1.0
+        return "per item", "item", None, 1.0
+
+    # 3. Genuinely sold per kg (from live data-line-control OR loose/per kg in title)
+    ctrl = LINE_CONTROLS.get(slug)
+    ctrl_is_kg = bool(ctrl and ctrl.get("unit") == "kg")
+
     is_per_kg = (
-        units_text == "kg"
-        or "per kg" in units_text
-        or "/kg" in units_text
+        ctrl_is_kg
         or "per kg" in clean_lower
-        or "per kg" in raw_lower
+        or "/kg" in clean_lower
         or " loose" in clean_lower
         or " loose" in raw_lower
-        or " kg" in clean_lower
+        or clean_lower.endswith(" kg")
+        or "units per kg" in clean_lower
+        or "unit per kg" in clean_lower
     )
 
-    if is_per_kg:
-        # Determine empirical default_order_weight based on FreshChoice live data-line-control:
-        # 1.0 kg Default: Mandarins, Potatoes, Watermelon, Pumpkin, Large Butchery Roasts & Bones
-        if any(k in clean_lower for k in ["mandarin", "potato", "potatoes", "watermelon", "pumpkin", "roast", "bone", "brisket", "whole chicken"]):
-            return "per kg", "kg", 1.0, 0.1
+    if is_per_kg and not has_pkg_size:
+        if ctrl_is_kg:
+            def_wt = ctrl.get("default", 0.1)
+            inc = ctrl.get("increments", 0.1)
+        else:
+            if any(k in clean_lower for k in ["mandarin", "potato", "potatoes", "watermelon", "pumpkin", "roast", "bone", "brisket"]):
+                def_wt = 1.0
+            elif any(k in clean_lower for k in ["ambrosia", "orange", "oranges", "kumara", "lemon", "lime", "tangelo", "grape", "mince", "steak", "chop"]):
+                def_wt = 0.5
+            else:
+                def_wt = 0.1
+            inc = 0.1
+        return "per kg", "kg", def_wt, inc
 
-        # 0.5 kg Default: Ambrosia Apples, Oranges, Kumara, Lemons, Limes, Tangelos, Grapes, Retail Butchery Cuts
-        if any(k in clean_lower for k in ["ambrosia", "orange", "oranges", "kumara", "lemon", "lime", "tangelo", "grape", "mince", "steak", "chop", "fillet", "breast", "tenderloin", "strip", "diced", "sausage", "saveloy", "rib"]):
-            return "per kg", "kg", 0.5, 0.1
-
-        # 0.1 kg Default: Bananas, Carrots, Royal Gala / Granny Smith / Jazz / Braeburn Apples, Tomatoes, Onions, Garlic, Pears, Mushrooms, Yams, Parsnips, Courgettes, Beans, Beetroot
-        return "per kg", "kg", 0.1, 0.1
-
-    # 3. Packs
-    if "pack" in clean_lower or " pk" in clean_lower or "pack" in (size or "").lower() or "pk" in (size or "").lower():
+    # 4. Packaged packs
+    if "pack" in clean_lower or " pk" in clean_lower or "pack" in size_lower or "pk" in size_lower:
         return "per pack", "pack", None, 1.0
 
-    # 4. Each
-    if "each" in units_text or "each" in clean_lower or " ea" in clean_lower:
+    # 5. Each
+    if "each" in clean_lower or " ea" in clean_lower or size_lower == "each":
         return "each", "each", None, 1.0
 
-    # 5. Fallback per item
+    # 6. Fallback per item
     return "per item", "item", None, 1.0
 
 
@@ -196,6 +224,82 @@ def extract_and_validate_brand(clean_name: str, candidate_brand: str | None) -> 
 
     # 3. If brand contradicts title or cannot be validated, return None (do not fabricate or keep shifted brand)
     return None
+
+
+def resolve_fallback_category(dept: str, name: str) -> tuple[str, str]:
+    """Assign genuine supermarket category when source category is missing or identical to department."""
+    nl = (name or "").lower()
+    
+    if dept == 'Bakery':
+        if any(k in nl for k in ['bread', 'loaf', 'buns', 'bun', 'bagel', 'ciabatta', 'croissant', 'wrap', 'pita', 'focaccia', 'rolls', 'roll']):
+            return 'Bakery', 'Bread & Bakery'
+        elif any(k in nl for k in ['pie', 'savoury', 'pastry', 'quiche', 'sandwich', 'sausage roll']):
+            return 'Bakery', 'Pies & Savouries'
+        elif any(k in nl for k in ['cake', 'slice', 'muffin', 'cookie', 'biscuit', 'danish', 'donut', 'brownie', 'eclair', 'tart', 'sponge', 'lamington', 'scone']):
+            return 'Bakery', 'Cakes, Slices & Biscuits'
+        return 'Bakery', 'In-Store Bakery'
+
+    elif dept in ['Meat', 'Butchery']:
+        if any(k in nl for k in ['beef', 'steak', 'mince', 'brisket', 'roast', 'rump', 'sirloin', 'ox', 'veal', 'bone']):
+            return 'Meat', 'Beef'
+        elif any(k in nl for k in ['pork', 'bacon', 'ham', 'chop', 'ribs', 'belly', 'loin']):
+            return 'Meat', 'Pork & Ham'
+        elif any(k in nl for k in ['chicken', 'poultry', 'thigh', 'breast', 'drumstick', 'wing', 'tenderloin']):
+            return 'Meat', 'Chicken & Poultry'
+        elif any(k in nl for k in ['lamb', 'shank', 'cutlet', 'hogget', 'mutton']):
+            return 'Meat', 'Lamb'
+        elif any(k in nl for k in ['sausage', 'saveloy', 'frankfurter', 'cheerios']):
+            return 'Meat', 'Sausages & Smallgoods'
+        return 'Meat', 'Fresh Butchery'
+
+    elif dept == 'Frozen Foods':
+        if any(k in nl for k in ['dumpling', 'dumplings', 'pie', 'meal', 'pizza', 'lasagne', 'snack meal', 'chips', 'fries', 'wedges', 'potato']):
+            return 'Frozen Foods', 'Frozen Meals & Sides'
+        elif any(k in nl for k in ['veg', 'vegetable', 'peas', 'corn', 'beans', 'spinach', 'broccoli', 'berries', 'fruit']):
+            return 'Frozen Foods', 'Frozen Vegetables & Fruit'
+        elif any(k in nl for k in ['ice cream', 'dessert', 'tub', 'cone', 'pops']):
+            return 'Frozen Foods', 'Ice Cream & Desserts'
+        elif any(k in nl for k in ['fish', 'seafood', 'prawn', 'fillet', 'squid', 'salmon']):
+            return 'Frozen Foods', 'Frozen Seafood'
+        return 'Frozen Foods', 'Frozen Groceries'
+
+    elif dept in ['Fruit & Vegetables', 'Produce']:
+        if any(k in nl for k in ['apple', 'banana', 'orange', 'mandarin', 'grape', 'berry', 'avocado', 'lemon', 'lime', 'pear', 'peach', 'plum', 'melon', 'watermelon', 'kiwifruit', 'nectarine']):
+            return 'Fruit & Vegetables', 'Fresh Fruit'
+        return 'Fruit & Vegetables', 'Fresh Vegetables'
+
+    elif dept == 'Household':
+        if any(k in nl for k in ['mop', 'clean', 'wipe', 'spray', 'bleach', 'refill', 'sponge', 'cloth']):
+            return 'Household', 'Cleaning & Hardware'
+        return 'Household', 'Household Essentials'
+
+    elif dept in ['Health & Beauty', 'Health Beauty']:
+        if any(k in nl for k in ['band aid', 'plaster', 'strip', 'medicine', 'paracetamol', 'cough', 'first aid']):
+            return 'Health & Beauty', 'First Aid & Health'
+        return 'Health & Beauty', 'Personal Care'
+
+    elif dept == 'Seafood':
+        return 'Seafood', 'Fresh Fish & Seafood'
+
+    elif dept in ['Deli - Kitchen', 'Deli']:
+        return 'Deli', 'Deli & Prepared Meals'
+
+    elif dept in ['Specials', 'Seasonal']:
+        if any(k in nl for k in ['dumpling', 'pork', 'meat', 'pie']):
+            return 'Groceries', 'Specialty Foods'
+        elif any(k in nl for k in ['calendar', 'easter', 'xmas', 'christmas', 'advent', 'chocolate']):
+            return 'Seasonal', 'Seasonal Treats'
+        elif any(k in nl for k in ['avocado', 'grape', 'fruit', 'veg']):
+            return 'Fruit & Vegetables', 'Fresh Fruit'
+        return 'Specials', 'Special Buys'
+
+    elif dept == 'Drinks':
+        return 'Drinks', 'Beverages'
+
+    elif dept == 'Dairy & Eggs':
+        return 'Dairy & Eggs', 'Chilled Dairy'
+
+    return dept or 'Groceries', 'Pantry Essentials'
 
 
 def clean_taxonomy(
@@ -293,6 +397,10 @@ def clean_taxonomy(
             cur_cat = maj_cat
             if not cur_sub and maj_sub:
                 cur_sub = maj_sub
+
+    # If category is still missing or duplicate of department, assign genuine supermarket category
+    if not cur_cat or cur_cat == dept:
+        dept, cur_cat = resolve_fallback_category(dept, clean_name)
 
     cat = cur_cat
     sub = cur_sub
@@ -432,7 +540,7 @@ def normalize_record(rec: dict[str, Any], source_file: str, global_taxonomy: dic
 
     # 6. Selling Price Basis & Weights (Requirement 4 & Audit Fix)
     selling_price_basis, unit_of_measure, default_order_weight, quantity_increment = determine_selling_price_and_weight(
-        rec, raw_row, clean_name, raw_name, size
+        rec, raw_row, clean_name, raw_name, size, slug
     )
 
     unit_price_cents = rec.get("unit_price_cents")
