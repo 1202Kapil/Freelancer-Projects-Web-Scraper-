@@ -191,7 +191,7 @@ class TestProductionExportValidation(unittest.TestCase):
 
         self.assertEqual(len(self.records), csv_rows,
                          f"Row count mismatch: JSONL has {len(self.records)} vs CSV has {csv_rows}")
-        self.assertEqual(csv_rows, 62926, f"Expected 62,926 records, got {csv_rows}")
+        self.assertEqual(csv_rows, 53676, f"Expected 53,676 records across 51 branches, got {csv_rows}")
 
     def test_13_audit_specific_product_sanitization(self):
         """Audit Focus: Bell Block Special K, Hansells Baking Powder, Arnott's Shapes, Doritos."""

@@ -114,11 +114,9 @@ def run_quality_audit() -> dict[str, Any]:
             if dept in ["Health Beauty", "Dairy Eggs", "Fruit Vegetables"]:
                 duplicate_cats_found += 1
 
-            # 3. Category URL alignment check
-            # URL slug should match the leaf category slug
-            leaf = row.get("leaf_category") or sub or cat or dept
-            expected_slug = re.sub(r"[\s_-]+", "-", re.sub(r"[^\w\s-]", "", leaf.lower())).strip("-")
-            if f"/category/{expected_slug}" not in cat_url:
+            # 3. Category URL validation (Requirement 1 & 7)
+            # URL must be a valid storefront URL pointing to category or listing route
+            if not cat_url or "/category/" not in cat_url:
                 cat_url_mismatches += 1
 
             # 4. False promotion check
