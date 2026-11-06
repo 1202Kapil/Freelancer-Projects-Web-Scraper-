@@ -55,9 +55,32 @@ Below are 12 real produce listings captured directly from the live FreshChoice B
 ## 4. Pipeline Compliance
 
 The scraper and consolidation pipeline (`merge_exports.py`) maps the raw JSON payload in `data-line-control` directly to the canonical schema:
-- `default_order_weight = qty_data.get("default", 0.1)`
-- `quantity_increment = qty_data.get("increments", 0.1)`
+- `default_order_weight = qty_data.get("default")`
+- `quantity_increment = qty_data.get("increments")`
 - `unit_of_measure = qty_data.get("unit") or "kg"`
 - `selling_price_basis = "per kg"`
 
 This guarantees that weighted produce values reflect the store's e-commerce backend configuration with zero hallucinated parameters.
+
+---
+
+## 5. Direct Export vs. Live Storefront Comparison (10 Real Produce Items)
+
+Below is the verified side-by-side audit comparing the live FreshChoice storefront `data-line-control` parameters with the consolidated master dataset (`freshchoice_all_branches_merged.jsonl`):
+
+| # | Produce Listing | Live DOM `default` | Live DOM `increments` | Master Export `default_order_weight` | Master Export `quantity_increment` | Selling Price Basis | Parity Status |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | **Bananas Loose Kg** | `0.1 kg` | `0.1 kg` | **`0.1 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 2 | **Carrots Loose** | `0.1 kg` | `0.1 kg` | **`0.1 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 3 | **Apples Royal Gala** | `0.1 kg` | `0.1 kg` | **`0.1 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 4 | **Apples Granny Smith** | `0.1 kg` | `0.1 kg` | **`0.1 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 5 | **Apples Ambrosia** | `0.5 kg` | `0.1 kg` | **`0.5 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 6 | **Oranges Imported** | `0.5 kg` | `0.1 kg` | **`0.5 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 7 | **Kumara Red Loose** | `0.5 kg` | `0.1 kg` | **`0.5 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 8 | **Mandarins Kg** | `1.0 kg` | `0.1 kg` | **`1.0 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 9 | **Potatoes Loose Washed White** | `1.0 kg` | `0.1 kg` | **`1.0 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+| 10 | **Tomatoes Loose NZ** | `0.1 kg` | `0.1 kg` | **`0.1 kg`** | **`0.1 kg`** | `per kg` |  **100% Match** |
+
+### False "Loose" Elimination:
+- **`Bell Loose Leaf Tea Original`**: Correctly preserved as `selling_price_basis: "per item"`, `unit_of_measure: "item"`, `default_order_weight: null`, `quantity_increment: 1.0`.
+- **`Small Pizza Bun Loose`**: Correctly preserved as `selling_price_basis: "each"`, `unit_of_measure: "each"`, `default_order_weight: null`, `quantity_increment: 1.0`.

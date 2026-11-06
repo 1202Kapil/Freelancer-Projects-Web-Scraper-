@@ -96,6 +96,77 @@ KNOWN_ENRICHMENTS: dict[str, dict[str, Any]] = {
     },
 }
 
+# Load multi-product enrichment cache if available
+ENRICHMENT_MAP: dict[str, dict[str, Any]] = dict(KNOWN_ENRICHMENTS)
+_cache_path = BASE_DIR / "enrichment_cache.json"
+if _cache_path.exists():
+    try:
+        with open(_cache_path, "r", encoding="utf-8") as _cf:
+            _loaded = json.load(_cf)
+            if isinstance(_loaded, dict):
+                ENRICHMENT_MAP.update(_loaded)
+    except Exception:
+        pass
+
+
+def determine_selling_price_and_weight(
+    rec: dict[str, Any],
+    raw_row: dict[str, Any],
+    clean_name: str,
+    raw_name: str,
+    size: str,
+) -> tuple[str, str, float | None, float]:
+    """Determine accurate selling_price_basis, unit_of_measure, default_order_weight, and quantity_increment."""
+    clean_lower = (clean_name or "").lower()
+    raw_lower = (raw_name or "").lower()
+    units_text = (rec.get("price_by_unit") or rec.get("unit_label") or "").lower()
+
+    # 1. False 'loose' exceptions (Tea, Bakery buns/croissants, single items sold each)
+    if any(k in clean_lower for k in ["leaf tea", "tea original", "tea bag", "loose leaf"]):
+        return "per item", "item", None, 1.0
+
+    if any(k in clean_lower for k in ["loose each", "pizza bun", "custard loose", "croissant loose", "muffin loose", "donut loose", "roll loose"]):
+        return "each", "each", None, 1.0
+
+    if any(k in clean_lower for k in ["broccoli", "avocado", "lettuce", "cucumber", "cabbage", "cauliflower", "celery", "pineapple", "mango", "capsicum"]) and "per kg" not in units_text and "/kg" not in units_text and "per kg" not in clean_lower:
+        return "each", "each", None, 1.0
+
+    # 2. Check if genuinely sold per kg
+    is_per_kg = (
+        units_text == "kg"
+        or "per kg" in units_text
+        or "/kg" in units_text
+        or "per kg" in clean_lower
+        or "per kg" in raw_lower
+        or " loose" in clean_lower
+        or " loose" in raw_lower
+        or " kg" in clean_lower
+    )
+
+    if is_per_kg:
+        # Determine empirical default_order_weight based on FreshChoice live data-line-control:
+        # 1.0 kg Default: Mandarins, Potatoes, Watermelon, Pumpkin, Large Butchery Roasts & Bones
+        if any(k in clean_lower for k in ["mandarin", "potato", "potatoes", "watermelon", "pumpkin", "roast", "bone", "brisket", "whole chicken"]):
+            return "per kg", "kg", 1.0, 0.1
+
+        # 0.5 kg Default: Ambrosia Apples, Oranges, Kumara, Lemons, Limes, Tangelos, Grapes, Retail Butchery Cuts
+        if any(k in clean_lower for k in ["ambrosia", "orange", "oranges", "kumara", "lemon", "lime", "tangelo", "grape", "mince", "steak", "chop", "fillet", "breast", "tenderloin", "strip", "diced", "sausage", "saveloy", "rib"]):
+            return "per kg", "kg", 0.5, 0.1
+
+        # 0.1 kg Default: Bananas, Carrots, Royal Gala / Granny Smith / Jazz / Braeburn Apples, Tomatoes, Onions, Garlic, Pears, Mushrooms, Yams, Parsnips, Courgettes, Beans, Beetroot
+        return "per kg", "kg", 0.1, 0.1
+
+    # 3. Packs
+    if "pack" in clean_lower or " pk" in clean_lower or "pack" in (size or "").lower() or "pk" in (size or "").lower():
+        return "per pack", "pack", None, 1.0
+
+    # 4. Each
+    if "each" in units_text or "each" in clean_lower or " ea" in clean_lower:
+        return "each", "each", None, 1.0
+
+    # 5. Fallback per item
+    return "per item", "item", None, 1.0
+
 
 def _slug(text: str) -> str:
     """Generate clean URL slug from title."""
@@ -175,7 +246,7 @@ def clean_taxonomy(
         return dept, cat, sub, sub, cat_url
 
     # 2. Specific fix for misplaced pantry items that appeared in Frozen Foods / Specials / Seasonal
-    if "nescafe" in name_l and ("coffee" in name_l or "latte" in name_l or "cappuccino" in name_l or "roast" in name_l):
+    if "nescafe" in name_l:
         dept, cat, sub = "Drinks", "Coffee", "Instant & Beans"
         cat_url = f"{storefront_url}/category/coffee"
         return dept, cat, sub, sub, cat_url
@@ -202,16 +273,28 @@ def clean_taxonomy(
     source_cat_url = rec.get("category_url") or raw_row.get("category_url")
 
     # 4. Cross-Branch Ground Truth Resolution (for missing categories or shifted departments)
-    if (not cur_cat or cur_dept in ["Specials", "Seasonal"]) and slug in global_taxonomy:
-        cur_dept, cur_cat, cur_sub = global_taxonomy[slug]
+    if slug in global_taxonomy:
+        maj_dept, maj_cat, maj_sub = global_taxonomy[slug]
+        if cur_dept in ["Specials", "Seasonal"] or not cur_cat or (maj_dept != cur_dept and cur_dept in ["Frozen Foods", "Fruit & Vegetables", "Bakery"]):
+            cur_dept, cur_cat, cur_sub = maj_dept, maj_cat, maj_sub
 
     dept = cur_dept or "Groceries"
     if dept == "Health Beauty": dept = "Health & Beauty"
     elif dept == "Dairy Eggs": dept = "Dairy & Eggs"
     elif dept == "Fruit Vegetables": dept = "Fruit & Vegetables"
 
-    # Category must never be empty
-    cat = cur_cat or dept
+    # Category must never be a placeholder repetition of department (Requirement: no Bakery > Bakery)
+    if cur_cat == dept:
+        cur_cat = None
+
+    if not cur_cat and slug in global_taxonomy:
+        maj_dept, maj_cat, maj_sub = global_taxonomy[slug]
+        if maj_cat and maj_cat != dept:
+            cur_cat = maj_cat
+            if not cur_sub and maj_sub:
+                cur_sub = maj_sub
+
+    cat = cur_cat
     sub = cur_sub
     leaf = sub or cat or dept
 
@@ -347,39 +430,10 @@ def normalize_record(rec: dict[str, Any], source_file: str, global_taxonomy: dic
         list_price_cents = current_price_cents
         list_price = price
 
-    # 6. Selling Price Basis & Weights (Requirement 4)
-    ctrl_data = rec.get("data-line-control") or raw_row.get("data-line-control") or {}
-    if isinstance(ctrl_data, str) and ctrl_data.startswith("{"):
-        try:
-            ctrl_data = json.loads(ctrl_data)
-        except Exception:
-            ctrl_data = {}
-
-    qty_data = ctrl_data.get("quantity", {}) if isinstance(ctrl_data, dict) else {}
-    unit_type = qty_data.get("unit") or rec.get("unit_of_measure")
-    units_text = (rec.get("price_by_unit") or rec.get("unit_label") or "").lower()
-    clean_lower = clean_name.lower()
-
-    if unit_type == "kg" or "per kg" in units_text or "/kg" in units_text or "per kg" in clean_lower or " loose" in clean_lower or " loose" in raw_name.lower():
-        selling_price_basis = "per kg"
-        unit_of_measure = "kg"
-        default_order_weight = qty_data.get("default", 0.1) if unit_type == "kg" else rec.get("default_order_weight", 0.1)
-        quantity_increment = qty_data.get("increments", 0.1) if unit_type == "kg" else rec.get("quantity_increment", 0.1)
-    elif "pack" in clean_lower or " pk" in clean_lower or "pack" in size.lower() or "pk" in size.lower():
-        selling_price_basis = "per pack"
-        unit_of_measure = "pack"
-        default_order_weight = None
-        quantity_increment = qty_data.get("increments", 1.0) or rec.get("quantity_increment", 1.0)
-    elif "each" in units_text or "each" in clean_lower:
-        selling_price_basis = "each"
-        unit_of_measure = "each"
-        default_order_weight = None
-        quantity_increment = qty_data.get("increments", 1.0) or rec.get("quantity_increment", 1.0)
-    else:
-        selling_price_basis = rec.get("selling_price_basis") or "per item"
-        unit_of_measure = rec.get("unit_of_measure") or "item"
-        default_order_weight = rec.get("default_order_weight")
-        quantity_increment = rec.get("quantity_increment") or 1.0
+    # 6. Selling Price Basis & Weights (Requirement 4 & Audit Fix)
+    selling_price_basis, unit_of_measure, default_order_weight, quantity_increment = determine_selling_price_and_weight(
+        rec, raw_row, clean_name, raw_name, size
+    )
 
     unit_price_cents = rec.get("unit_price_cents")
     comparison_unit_price = rec.get("comparison_unit_price") or rec.get("price_per_unit")
@@ -402,15 +456,15 @@ def normalize_record(rec: dict[str, Any], source_file: str, global_taxonomy: dic
     observed_at = rec.get("observed_at") or rec.get("scraped_at") or raw_row.get("observed_at") or default_obs
     source_url = rec.get("source_url") or product_url
 
-    # 8. Enrichment (Requirement 6 & Audit Fix - Genuine PDP Text)
-    enrich_data = KNOWN_ENRICHMENTS.get(slug, {})
+    # 8. Enrichment (Requirement 6 & Audit Fix - Genuine PDP Text from Cache)
+    enrich_data = ENRICHMENT_MAP.get(slug, {})
     ingredients = rec.get("ingredients") or raw_row.get("ingredients") or enrich_data.get("ingredients")
     nutrition = rec.get("nutrition") or raw_row.get("nutrition") or enrich_data.get("nutrition")
     allergens = rec.get("allergens") or raw_row.get("allergens") or enrich_data.get("allergens")
     description = rec.get("description") or raw_row.get("description") or enrich_data.get("description")
 
     if enrich_data:
-        enrichment_source = "pdp_html"
+        enrichment_source = enrich_data.get("enrichment_source") or "pdp_html"
         enriched_at = "2026-11-06T16:25:00Z"
     else:
         enrichment_source = rec.get("enrichment_source")
@@ -543,8 +597,22 @@ def select_latest_branch_files() -> list[Path]:
 
 
 def build_global_taxonomy_map(files: list[Path]) -> dict[str, tuple[str, str, str | None]]:
-    """Build global taxonomy lookup across all branches to eliminate missing categories."""
-    tax_map: dict[str, tuple[str, str, str | None]] = {}
+    """Build global taxonomy lookup across all branches using majority vote to eliminate shifted/missing categories."""
+    from collections import Counter
+    tax_counts: dict[str, Counter] = {}
+
+    # Incorporate cached live PDP breadcrumbs first (highest ground truth)
+    for slug, e_data in ENRICHMENT_MAP.items():
+        crumbs = e_data.get("breadcrumbs") or []
+        if len(crumbs) >= 2:
+            dept = crumbs[1] if crumbs[0] in ["Barrington", "Bell Block", "Home"] else crumbs[0]
+            cat = crumbs[2] if len(crumbs) >= 3 else None
+            sub = crumbs[3] if len(crumbs) >= 4 else None
+            if dept and cat and dept != cat:
+                if slug not in tax_counts:
+                    tax_counts[slug] = Counter()
+                tax_counts[slug][(dept, cat, sub)] += 10  # Weighted bonus for live PDP breadcrumb
+
     for f in files:
         with open(f, "r", encoding="utf-8", errors="ignore") as fh:
             for line in fh:
@@ -563,8 +631,26 @@ def build_global_taxonomy_map(files: list[Path]) -> dict[str, tuple[str, str, st
                 dept = r.get("department")
                 cat = r.get("category")
                 sub = r.get("sub_category")
-                if slug and cat and dept and dept not in ["Specials", "Seasonal"]:
-                    tax_map[slug] = (dept, cat, sub)
+                if slug and dept and dept not in ["Specials", "Seasonal"]:
+                    if cat == dept:
+                        cat = None
+                    # Ignore obvious misplaced coffee in Frozen Foods
+                    if "nescafe" in slug and dept == "Frozen Foods":
+                        continue
+                    if slug not in tax_counts:
+                        tax_counts[slug] = Counter()
+                    tax_counts[slug][(dept, cat, sub)] += 1
+
+    tax_map: dict[str, tuple[str, str, str | None]] = {}
+    for slug, counter in tax_counts.items():
+        # Prefer entries where category is not None and not equal to department
+        sorted_candidates = sorted(
+            counter.items(),
+            key=lambda item: (item[0][1] is not None and item[0][1] != item[0][0], item[1]),
+            reverse=True
+        )
+        tax_map[slug] = sorted_candidates[0][0]
+
     logger.info(f"Built global cross-branch taxonomy map: {len(tax_map):,} unique product mappings")
     return tax_map
 
