@@ -1,0 +1,15 @@
+Product Title,Department,Selling Price Basis,Default Order Weight,Order Increment,Unit of Measure,Source Verification
+Beef Mince Prime,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Chicken Boneless Breast Fillets Skinless,Meat,per kg,0.5 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Chicken Tenderloins,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Chicken Drumsticks,Meat,per kg,0.5 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Chicken Diced,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Chicken Stir Fry,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Beef Steak Eye Fillet Whole,Meat,per kg,1.2 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Chicken Nibbles,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Beef Mince Premium,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Pork Shoulder Chops,Meat,per kg,0.1 kg,0.1 kg,kg,Live Barrington DOM data-line-control
+Bananas Loose Kg,Fruit & Vegetables,per kg,0.1 kg,0.1 kg,kg,Live Produce data-line-control
+Mandarins Kg,Fruit & Vegetables,per kg,1.0 kg,0.1 kg,kg,Live Produce data-line-control
+Oranges Seville NZ Kg,Fruit & Vegetables,per kg,0.5 kg,0.1 kg,kg,Live Produce data-line-control
+Potatoes Loose Brushed,Fruit & Vegetables,per kg,1.0 kg,0.1 kg,kg,Live Produce data-line-control
