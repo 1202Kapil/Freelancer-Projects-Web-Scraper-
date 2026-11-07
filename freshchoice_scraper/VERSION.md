@@ -90,8 +90,8 @@ Every row exported in `freshchoice_all_branches_merged.jsonl` and `freshchoice_a
 60. `loyalty_requirement`: Loyalty card requirement if any.
 61. `offer_start_date`: ISO timestamp of promotion start.
 62. `offer_end_date`: ISO timestamp of promotion end.
-63. `availability`: Stock availability (`in_stock`, `out_of_stock`).
-64. `stock_status`: Stock status indicator.
+63. `availability`: Stock availability observed at scrape time; not re-verified per branch.
+64. `stock_status`: Listing availability observed at scrape time; not re-verified per branch.
 65. `product_url`: Full canonical product page URL.
 66. `image_url`: CloudFront CDN high-resolution image URL.
 67. `source_url`: URL where record was observed.

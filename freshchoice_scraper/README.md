@@ -131,8 +131,8 @@ Every product observation exported to JSONL and CSV conforms to the complete sch
 | **42** | **`promo_type`** | `string / null`| Conditional | Deal type (`"special"`, `"multibuy_fixed_price"`)| `"special"` |
 | **43** | **`multibuy_quantity`**| `integer / null`| Conditional | Multibuy bundle count (e.g. 3 in "3 for $25") | `null` |
 | **44** | **`multibuy_price_cents`**| `integer / null`| Conditional | Multibuy bundle price in integer cents | `null` |
-| **45** | **`availability`** | `string` | Mandatory | Availability status (`"in_stock"`, `"out_of_stock"`)| `"in_stock"` |
-| **46** | **`stock_status`** | `string` | Mandatory | Contract stock status standard | `"in_stock"` |
+| **45** | **`availability`** | `string` | Mandatory | Listing availability observed at scrape time; not re-verified per branch. | `"in_stock"` |
+| **46** | **`stock_status`** | `string` | Mandatory | Listing availability observed at scrape time; not re-verified per branch. | `"in_stock"` |
 | **47** | **`url`** | `string` | Mandatory | Full canonical product URL | `"https://bellblock.store.supervalue.co.nz/lines/ploughmans-sourdough-bread-750g"` |
 | **48** | **`product_url`** | `string` | Mandatory | Canonical product URL alias | `"https://bellblock.store.supervalue.co.nz/lines/ploughmans-sourdough-bread-750g"` |
 | **49** | **`image_url`** | `string / null`| Conditional | CloudFront CDN image link | `"https://dtgxwmigmg3gc.cloudfront.net/..."` |
