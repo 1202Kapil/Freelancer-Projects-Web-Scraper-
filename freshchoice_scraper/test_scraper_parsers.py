@@ -122,6 +122,35 @@ class TestFreshChoiceParsers(unittest.TestCase):
         self.assertEqual(enriched["retailer_sku"], "SKU-999")
         self.assertIn("Contains whole wheat", enriched["raw_row"].get("ingredients", ""))
 
+    def test_loyalty_requirement_parsing(self):
+        # Case A: Card with member / club pricing badge
+        html_club = """
+        <div class="product-item">
+            <a href="/lines/whittakers-chocolate-block-250g">
+                <h3 class="product-title">Whittaker's Chocolate Block 250g</h3>
+            </a>
+            <div class="price">$5.00 each</div>
+            <div class="loyalty-badge">Club Price $4.50</div>
+        </div>
+        """
+        soup_club = BeautifulSoup(html_club, "html.parser")
+        parsed_club = parse_product_card(soup_club.find("div"), branch_slug="merivale", category_path="Confectionery")
+        self.assertEqual(parsed_club["loyalty_requirement"], "Club Card Required")
+
+        # Case B: Standard supermarket item (open special, no loyalty card gating)
+        html_std = """
+        <div class="product-item">
+            <a href="/lines/bell-tea-bags-100pk">
+                <h3 class="product-title">Bell Tea Bags 100pk</h3>
+            </a>
+            <div class="price">$4.00 each</div>
+            <div class="promo-badge">Special</div>
+        </div>
+        """
+        soup_std = BeautifulSoup(html_std, "html.parser")
+        parsed_std = parse_product_card(soup_std.find("div"), branch_slug="merivale", category_path="Drinks")
+        self.assertIsNone(parsed_std["loyalty_requirement"])
+
 
 if __name__ == "__main__":
     unittest.main()
