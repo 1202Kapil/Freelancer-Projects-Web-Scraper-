@@ -1,0 +1,15 @@
+Test Method,Client Requirement,Test Assertion Description,Result,Duration
+test_01_coca_cola_metadata_integrity,Requirement 1,Verifies Coke brand='Coca Cola' and dept='Drinks' across all branches,PASS,0.28s
+test_02_schema_uniformity_and_legacy_rows_eliminated,Requirement 2,"Verifies branch_id, product_id, and price exist on 100% of rows",PASS,0.31s
+test_03_identifier_separation_and_gtin_cleanliness,Requirement 3,"Verifies distinct fields for product_id, slug, sku, and gtin with 0 fabrications",PASS,0.22s
+test_04_selling_price_basis_and_weighted_produce,Requirement 4,Verifies per-kg selling basis and default weights on weighted items,PASS,0.29s
+test_05_structured_promotions_and_multibuys,Requirement 5,"Verifies multibuys have quantity and cents, and is_promo=True",PASS,0.25s
+test_06_enrichment_fields_available,Requirement 6,"Verifies ingredients, nutrition, allergens, and description fields present",PASS,0.18s
+test_07_supervalue_retailer_mapping,Requirement 7,"Verifies exactly 5,655 SuperValue Bell Block rows mapped correctly",PASS,0.24s
+test_08_timestamps_and_scrape_run_ids,Requirement 8,Verifies full non-truncated run IDs and observed_at timestamps,PASS,0.22s
+test_09_catalogue_completeness_manifest,Requirement 9,Verifies completeness documentation across 51 branches,PASS,0.19s
+test_10_false_promotion_guardrail,Requirement 10,Verifies Special K is not marked as promo unless genuine discount,PASS,0.21s
+test_11_version_documentation_exists,Requirement 11,Verifies VERSION.md and release changelog match codebase,PASS,0.15s
+test_12_jsonl_csv_row_count_parity,Requirement 12,"Verifies exact 1-to-1 row count parity between JSONL and CSV (53,676)",PASS,0.45s
+test_13_brand_consistency_across_branches,Requirement 1,Verifies brand consistency for core benchmark products across branches,PASS,0.33s
+test_14_no_empty_core_fields,Requirement 2,Verifies 0 empty values in essential identifiers and pricing fields,PASS,0.43s
