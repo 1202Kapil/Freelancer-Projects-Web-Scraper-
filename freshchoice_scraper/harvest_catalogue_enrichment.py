@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent
 MERGED_FILE = BASE_DIR / "exports" / "freshchoice_all_branches_merged.jsonl"
 CACHE_FILE = BASE_DIR / "enrichment_cache.json"
 
-def select_target_products(limit: int = 1500) -> list[tuple[str, str, str]]:
+def select_target_products(limit: int = 4500) -> list[tuple[str, str, str]]:
     """Select core unique product slugs and URLs across categories ordered by branch frequency."""
     from collections import Counter
     slug_counts: Counter = Counter()
@@ -41,7 +41,7 @@ def select_target_products(limit: int = 1500) -> list[tuple[str, str, str]]:
                     slug_info[slug] = (name, u, dept)
 
     # Sort by branch frequency so products in the most branches are crawled first
-    sorted_slugs = [slug for slug, count in slug_counts.most_common() if count >= 6]
+    sorted_slugs = [slug for slug, count in slug_counts.most_common() if count >= 3]
     selected = [(slug, slug_info[slug][0], slug_info[slug][1]) for slug in sorted_slugs[:limit]]
     logger.info(f"Selected {len(selected)} unique products across departments for PDP enrichment harvest")
     return selected
@@ -114,7 +114,7 @@ async def fetch_and_parse_pdp(client: httpx.AsyncClient, slug: str, name: str, u
         return None
 
 async def main():
-    targets = select_target_products(limit=1500)
+    targets = select_target_products(limit=4500)
     cache = {}
     if CACHE_FILE.exists():
         try:
@@ -125,10 +125,10 @@ async def main():
             cache = {}
 
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-    limits = httpx.Limits(max_connections=20, max_keepalive_connections=12)
+    limits = httpx.Limits(max_connections=35, max_keepalive_connections=20)
     
     async with httpx.AsyncClient(headers=headers, limits=limits, timeout=12.0) as client:
-        sem = asyncio.Semaphore(15)
+        sem = asyncio.Semaphore(25)
         async def bound_fetch(slug, name, url):
             if slug in cache and cache[slug].get("description") and cache[slug].get("breadcrumbs"):
                 return cache[slug]

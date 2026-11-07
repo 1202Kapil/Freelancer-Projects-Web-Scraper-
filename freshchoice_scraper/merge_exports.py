@@ -428,6 +428,81 @@ def resolve_subcategory(dept: str, cat: str | None, name: str) -> str | None:
         if any(k in nl for k in ["cracker", "savory", "shapes", "salada", "cheddar"]): return "Savory Biscuits & Crackers"
         return "Sweet Biscuits"
 
+    if "confectionery" in d_lower or "confectionery" in c_lower or "chocolate" in c_lower:
+        if any(k in nl for k in ["block", "tablet"]): return "Chocolate Blocks"
+        if any(k in nl for k in ["bar", "roll", "bite", "twin"]): return "Chocolate Bars"
+        if any(k in nl for k in ["licorice", "all sorts", "twist"]): return "Licorice"
+        if any(k in nl for k in ["gummy", "jelly", "snake", "chew", "mint", "drops"]): return "Gummies & Chews"
+        if any(k in nl for k in ["favourite", "tray", "box", "gift", "roses"]): return "Boxed & Gifting"
+        return "Chocolate & Sweets"
+
+    if "oral" in c_lower:
+        if any(k in nl for k in ["paste", "whitening", "colgate", "macleans", "sensodyne"]): return "Toothpaste"
+        if any(k in nl for k in ["brush"]): return "Toothbrushes"
+        if any(k in nl for k in ["mouthwash", "rinse"]): return "Mouthwash"
+        if any(k in nl for k in ["denture", "polident", "steradent"]): return "Denture Care"
+        return "Dental Care"
+
+    if "wash" in c_lower or "soap" in c_lower or "personal care" in c_lower:
+        if any(k in nl for k in ["sanitizer", "sanitiser"]): return "Hand Sanitiser"
+        if any(k in nl for k in ["hand wash", "liquid soap"]): return "Hand Wash"
+        if any(k in nl for k in ["soap", "bar"]): return "Bar Soap"
+        if any(k in nl for k in ["body wash", "shower gel"]): return "Body Wash"
+        return "Body Wash & Soap"
+
+    if "hair" in c_lower:
+        if any(k in nl for k in ["shampoo"]): return "Shampoo"
+        if any(k in nl for k in ["conditioner"]): return "Conditioner"
+        if any(k in nl for k in ["spray", "gel", "wax", "mousse"]): return "Styling"
+        return "Hair Care"
+
+    if "medicinal" in c_lower or "first aid" in c_lower:
+        if any(k in nl for k in ["band aid", "plaster", "strip", "dressing"]): return "Bandages & Plasters"
+        if any(k in nl for k in ["paracetamol", "panadol", "nurofen", "pain"]): return "Pain Relief"
+        return "First Aid & Medicine"
+
+    if "tea" in c_lower:
+        if any(k in nl for k in ["herbal", "peppermint", "chamomile", "camomile", "green"]): return "Herbal & Green Tea"
+        if any(k in nl for k in ["black", "english", "earl grey", "tagless"]): return "Black Tea"
+        return "Tea Bags"
+
+    if "canned" in c_lower:
+        if any(k in nl for k in ["tuna"]): return "Tuna"
+        if any(k in nl for k in ["salmon"]): return "Salmon"
+        if any(k in nl for k in ["tomato", "crushed", "puree"]): return "Canned Tomatoes"
+        if any(k in nl for k in ["bean", "chickpea", "lentil"]): return "Canned Beans & Legumes"
+        return "Canned Goods"
+
+    if "cream" in c_lower:
+        if any(k in nl for k in ["sour"]): return "Sour Cream"
+        return "Fresh Cream"
+
+    if "pet" in d_lower or "pet" in c_lower:
+        if any(k in nl for k in ["cat"]):
+            if any(k in nl for k in ["dry", "kibble", "grill"]): return "Dry Cat Food"
+            return "Wet Cat Food"
+        if any(k in nl for k in ["dog"]):
+            if any(k in nl for k in ["treat", "chew", "bone", "rawhide", "marrobones"]): return "Dog Treats"
+            return "Dog Food"
+        return "Pet Supplies"
+
+    if "baby" in d_lower or "baby" in c_lower:
+        if any(k in nl for k in ["wipe"]): return "Baby Wipes"
+        if any(k in nl for k in ["napp", "pant", "diaper"]): return "Nappies"
+        return "Baby Essentials"
+
+    if "feminine" in c_lower:
+        if any(k in nl for k in ["liner"]): return "Liners"
+        if any(k in nl for k in ["pad"]): return "Pads"
+        if any(k in nl for k in ["tampon"]): return "Tampons"
+        return "Pads & Liners"
+
+    if "snack" in c_lower or "popcorn" in c_lower or "nut" in c_lower:
+        if any(k in nl for k in ["popcorn"]): return "Popcorn"
+        if any(k in nl for k in ["pretzel"]): return "Pretzels"
+        if any(k in nl for k in ["nut", "almond", "cashew", "peanut"]): return "Nuts & Seeds"
+        return "Snack Mixes"
+
     return None
 
 

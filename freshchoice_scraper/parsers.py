@@ -826,7 +826,7 @@ def parse_product_card(
         "multibuy_quantity": mb_qty,
         "multibuy_price_cents": mb_price_cents,
         "multibuy_total_nzd": mb_total_nzd,
-        "loyalty_requirement": None,
+        "loyalty_requirement": "Club Card Required" if any(t in (card_elem.get_text(" ", strip=True).lower() if hasattr(card_elem, "get_text") else "") for t in ["club price", "member price", "club card", "rewards card", "loyalty price"]) else None,
         "offer_start_date": None,
         "offer_end_date": None,
 
