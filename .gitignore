@@ -12,6 +12,8 @@
 *.bak
 *.tmp
 *.lock
+~$*
+*.xlsx.lock
 build_multi_branch.py
 populate_repo.py
 

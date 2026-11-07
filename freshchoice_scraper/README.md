@@ -277,7 +277,7 @@ freshchoice_scraper/
 │   └── freshchoice_{branch}_{stamp}.jsonl    # Per-branch individual datasets (51 branches)
 ├── BRANCH_COVERAGE_REPORT.md             # 100% Branch Coverage Audit Report
 ├── CROSS_BRANCH_PRICE_VARIANCE.md        # Branch Price Variance & Differentiation Report
-├── COMPLETENESS_AND_ACCURACY_AUDIT.md    # 100% SKU Capture Completeness Report
+├── COMPLETENESS_AND_ACCURACY_AUDIT.md    # Catalogue Scope & Completeness Audit Report
 ├── LIVE_SPOT_CHECK_VERIFICATION.md       # Live Side-by-Side Spot Check Report
 ├── DEPLOYMENT_VERIFICATION.md            # Database Ingestion & Deployment Runbook
 └── requirements.txt          # Python dependencies
